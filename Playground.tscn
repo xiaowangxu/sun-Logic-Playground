@@ -1,0 +1,111 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Playground.gd" type="Script" id=1]
+[ext_resource path="res://Module/Counter.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Module/DigitalNumberScreen4.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Module/Button1.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Module/AndGate2.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Connection/Line.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Module/OrGate2.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Module/NotGate.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Module/38Encoder.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Module/Button8.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Module/Adder0.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Module/Adder1.tscn" type="PackedScene" id=12]
+
+[node name="Playground" type="Node2D"]
+script = ExtResource( 1 )
+ModuleList = [ NodePath("Counter"), NodePath("DigitalNumberScreen4"), NodePath("Button1"), NodePath("Button2"), NodePath("AndGate2"), NodePath("AndGate3") ]
+ConnectionList = [ NodePath("ConnectionLine/Line"), NodePath("ConnectionLine/Line2"), NodePath("ConnectionLine/Line3"), NodePath("ConnectionLine/Line4"), NodePath("ConnectionLine/Line5") ]
+
+[node name="Counter" parent="." instance=ExtResource( 2 )]
+position = Vector2( 48, 48 )
+
+[node name="DigitalNumberScreen4" parent="." instance=ExtResource( 3 )]
+position = Vector2( 144, 188 )
+
+[node name="Button1" parent="." instance=ExtResource( 4 )]
+position = Vector2( 364, 96 )
+
+[node name="Button2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 436, 98 )
+
+[node name="AndGate2" parent="." instance=ExtResource( 5 )]
+position = Vector2( 372, 152 )
+
+[node name="AndGate3" parent="." instance=ExtResource( 5 )]
+position = Vector2( 428, 152 )
+
+[node name="ConnectionLine" type="CanvasLayer" parent="."]
+editor/display_folded = true
+layer = -1
+
+[node name="Line" parent="ConnectionLine" instance=ExtResource( 6 )]
+
+[node name="Line2D" type="Line2D" parent="ConnectionLine/Line"]
+points = PoolVector2Array( 128, 72, 174, 72, 174, 152, 146, 152, 112, 152, 112, 220, 144, 220 )
+width = 20.0
+default_color = Color( 0.211765, 0.572549, 0.631373, 1 )
+texture_mode = 875706424
+joint_mode = 2
+
+[node name="Line2" parent="ConnectionLine" instance=ExtResource( 6 )]
+editor/display_folded = true
+LineMode = 1
+
+[node name="Line2D" type="Line2D" parent="ConnectionLine/Line2"]
+points = PoolVector2Array( 380, 128, 380, 152 )
+width = 4.0
+default_color = Color( 0.211765, 0.572549, 0.631373, 1 )
+texture_mode = 875706424
+joint_mode = 2
+
+[node name="Line3" parent="ConnectionLine" instance=ExtResource( 6 )]
+editor/display_folded = true
+LineMode = 1
+
+[node name="Line2D" type="Line2D" parent="ConnectionLine/Line3"]
+points = PoolVector2Array( 452, 130, 452, 154 )
+width = 4.0
+default_color = Color( 0.211765, 0.572549, 0.631373, 1 )
+texture_mode = 875706424
+joint_mode = 2
+
+[node name="Line4" parent="ConnectionLine" instance=ExtResource( 6 )]
+LineMode = 1
+
+[node name="Line2D" type="Line2D" parent="ConnectionLine/Line4"]
+points = PoolVector2Array( 388, 200, 388, 212.563, 388, 218, 404, 218, 426, 140, 436, 140, 436, 152 )
+width = 4.0
+default_color = Color( 0.211765, 0.572549, 0.631373, 1 )
+texture_mode = 875706424
+joint_mode = 2
+
+[node name="Line5" parent="ConnectionLine" instance=ExtResource( 6 )]
+LineMode = 1
+
+[node name="Line2D" type="Line2D" parent="ConnectionLine/Line5"]
+points = PoolVector2Array( 444, 200, 444, 218, 428, 218, 408, 140, 396, 140, 396, 152 )
+width = 4.0
+default_color = Color( 0.211765, 0.572549, 0.631373, 1 )
+texture_mode = 875706424
+joint_mode = 2
+
+[node name="OrGate2" parent="." instance=ExtResource( 7 )]
+editor/display_folded = true
+position = Vector2( 466, 152 )
+
+[node name="NotGate" parent="OrGate2" instance=ExtResource( 8 )]
+position = Vector2( 36, 0 )
+
+[node name="38Encoder" parent="." instance=ExtResource( 9 )]
+position = Vector2( 385, 242 )
+
+[node name="Button8" parent="." instance=ExtResource( 10 )]
+position = Vector2( 386, 290 )
+
+[node name="Adder" parent="." instance=ExtResource( 11 )]
+position = Vector2( 645, 131 )
+
+[node name="Adder1" parent="Adder" instance=ExtResource( 12 )]
+position = Vector2( 35, 0 )

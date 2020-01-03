@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Assets/Button/Button.tres" type="SpriteFrames" id=1]
+[ext_resource path="res://Assets/Button/SingleButton.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 10, 6 )
+
+[node name="SingleButton" type="AnimatedSprite"]
+frames = ExtResource( 1 )
+centered = false
+script = ExtResource( 2 )
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="."]
+position = Vector2( 10, 6 )
+shape = SubResource( 1 )
+shape_visible = false
+[connection signal="pressed" from="TouchScreenButton" to="." method="_on_TouchScreenButton_pressed"]

@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Module/ModuleScript/Button1.gd" type="Script" id=1]
+[ext_resource path="res://Pin/Pin.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/Button.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Button/SingleButton.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/LED/SingleLED.tscn" type="PackedScene" id=5]
+
+
+[node name="Button1" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Pin" parent="." instance=ExtResource( 2 )]
+position = Vector2( 16, 32 )
+rotation = 3.14159
+PinMode = 1
+
+[node name="ButtonBG" type="Sprite" parent="."]
+texture = ExtResource( 3 )
+centered = false
+
+[node name="SingleButton" parent="ButtonBG" instance=ExtResource( 4 )]
+position = Vector2( 6, 14 )
+
+[node name="SingleLED" parent="ButtonBG" instance=ExtResource( 5 )]
+position = Vector2( 25, 7 )
+animation = "Mini"
+[connection signal="button_Clicked" from="ButtonBG/SingleButton" to="." method="_on_SingleButton_button_Clicked"]

@@ -1,0 +1,19 @@
+[gd_resource type="SpriteFrames" load_steps=5 format=2]
+
+[ext_resource path="res://Assets/LED/LedMini-false.png" type="Texture" id=1]
+[ext_resource path="res://Assets/LED/LedMini-true.png" type="Texture" id=2]
+[ext_resource path="res://Assets/LED/Led-false.png" type="Texture" id=3]
+[ext_resource path="res://Assets/LED/Led-true.png" type="Texture" id=4]
+
+[resource]
+animations = [ {
+"frames": [ ExtResource( 1 ), ExtResource( 2 ) ],
+"loop": false,
+"name": "Mini",
+"speed": 0.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ) ],
+"loop": false,
+"name": "Normal",
+"speed": 0.0
+} ]
