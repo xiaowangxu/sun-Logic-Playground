@@ -3,8 +3,8 @@
 [ext_resource path="res://Playground.gd" type="Script" id=1]
 [ext_resource path="res://Connection/Line.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/Background.png" type="Texture" id=3]
-[ext_resource path="res://Module/Counter.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Module/DigitalNumberScreen4.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Module/DigitalNumberScreen4.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Module/Counter.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Module/Button1.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Module/AndGate2.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Module/OrGate2.tscn" type="PackedScene" id=8]
@@ -37,6 +37,7 @@ texture_mode = 875706424
 joint_mode = 2
 
 [node name="Line2" parent="ConnectionLine" instance=ExtResource( 2 )]
+editor/display_folded = false
 LineMode = 1
 
 [node name="Line2D" type="Line2D" parent="ConnectionLine/Line2"]
@@ -91,12 +92,12 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Counter" parent="." instance=ExtResource( 4 )]
-position = Vector2( 849, 492 )
+[node name="DigitalNumberScreen4" parent="." instance=ExtResource( 4 )]
+position = Vector2( 858, 592 )
 ShiftPosition = Vector2( 4, 4 )
 
-[node name="DigitalNumberScreen4" parent="." instance=ExtResource( 5 )]
-position = Vector2( 855, 633 )
+[node name="Counter" parent="." instance=ExtResource( 5 )]
+position = Vector2( 888, 511 )
 ShiftPosition = Vector2( 4, 4 )
 
 [node name="Button1" parent="." instance=ExtResource( 6 )]
@@ -140,3 +141,8 @@ current = true
 drag_margin_h_enabled = false
 drag_margin_v_enabled = false
 script = ExtResource( 13 )
+ZoomMin = 1.5
+ZoomMax = 0.3
+ZoomStep = 0.15
+
+[node name="Tween" type="Tween" parent="Camera2D"]
