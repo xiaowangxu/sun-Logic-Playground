@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Module/ModuleScript/Adder0.gd" type="Script" id=1]
 [ext_resource path="res://Pin/Pin.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/Adder0.png" type="Texture" id=3]
 [ext_resource path="res://Assets/LED/SingleLED.tscn" type="PackedScene" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 16, 24 )
 
 [node name="Adder0" type="Node2D"]
 script = ExtResource( 1 )
@@ -53,3 +56,9 @@ animation = "Mini"
 [node name="SingleLED_R" parent="Adder0BG" instance=ExtResource( 4 )]
 position = Vector2( 24, 42 )
 animation = "Mini"
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 16, 24 )
+shape = SubResource( 1 )

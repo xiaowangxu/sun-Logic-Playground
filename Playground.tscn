@@ -1,111 +1,142 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Playground.gd" type="Script" id=1]
-[ext_resource path="res://Module/Counter.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Module/DigitalNumberScreen4.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Module/Button1.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Module/AndGate2.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Connection/Line.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Module/OrGate2.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Module/NotGate.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Module/38Encoder.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Connection/Line.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/Background.png" type="Texture" id=3]
+[ext_resource path="res://Module/Counter.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Module/DigitalNumberScreen4.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Module/Button1.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Module/AndGate2.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Module/OrGate2.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Module/NotGate.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Module/Button8.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Module/Adder0.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Module/Adder1.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Camera2D.gd" type="Script" id=13]
 
 [node name="Playground" type="Node2D"]
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
 ModuleList = [ NodePath("Counter"), NodePath("DigitalNumberScreen4"), NodePath("Button1"), NodePath("Button2"), NodePath("AndGate2"), NodePath("AndGate3") ]
 ConnectionList = [ NodePath("ConnectionLine/Line"), NodePath("ConnectionLine/Line2"), NodePath("ConnectionLine/Line3"), NodePath("ConnectionLine/Line4"), NodePath("ConnectionLine/Line5") ]
 
-[node name="Counter" parent="." instance=ExtResource( 2 )]
-position = Vector2( 48, 48 )
+[node name="ConnectionLine" type="Node2D" parent="."]
+z_index = -1
 
-[node name="DigitalNumberScreen4" parent="." instance=ExtResource( 3 )]
-position = Vector2( 144, 188 )
-
-[node name="Button1" parent="." instance=ExtResource( 4 )]
-position = Vector2( 364, 96 )
-
-[node name="Button2" parent="." instance=ExtResource( 4 )]
-position = Vector2( 436, 98 )
-
-[node name="AndGate2" parent="." instance=ExtResource( 5 )]
-position = Vector2( 372, 152 )
-
-[node name="AndGate3" parent="." instance=ExtResource( 5 )]
-position = Vector2( 428, 152 )
-
-[node name="ConnectionLine" type="CanvasLayer" parent="."]
-editor/display_folded = true
-layer = -1
-
-[node name="Line" parent="ConnectionLine" instance=ExtResource( 6 )]
+[node name="Line" parent="ConnectionLine" instance=ExtResource( 2 )]
+editor/display_folded = false
 
 [node name="Line2D" type="Line2D" parent="ConnectionLine/Line"]
-points = PoolVector2Array( 128, 72, 174, 72, 174, 152, 146, 152, 112, 152, 112, 220, 144, 220 )
+position = Vector2( 703, 441 )
+points = PoolVector2Array( 112, 220, 144, 220 )
 width = 20.0
 default_color = Color( 0.211765, 0.572549, 0.631373, 1 )
 texture_mode = 875706424
 joint_mode = 2
 
-[node name="Line2" parent="ConnectionLine" instance=ExtResource( 6 )]
-editor/display_folded = true
+[node name="Line2" parent="ConnectionLine" instance=ExtResource( 2 )]
 LineMode = 1
 
 [node name="Line2D" type="Line2D" parent="ConnectionLine/Line2"]
+position = Vector2( 703, 441 )
 points = PoolVector2Array( 380, 128, 380, 152 )
 width = 4.0
 default_color = Color( 0.211765, 0.572549, 0.631373, 1 )
 texture_mode = 875706424
 joint_mode = 2
 
-[node name="Line3" parent="ConnectionLine" instance=ExtResource( 6 )]
-editor/display_folded = true
+[node name="Line3" parent="ConnectionLine" instance=ExtResource( 2 )]
 LineMode = 1
 
 [node name="Line2D" type="Line2D" parent="ConnectionLine/Line3"]
+position = Vector2( 703, 441 )
 points = PoolVector2Array( 452, 130, 452, 154 )
 width = 4.0
 default_color = Color( 0.211765, 0.572549, 0.631373, 1 )
 texture_mode = 875706424
 joint_mode = 2
 
-[node name="Line4" parent="ConnectionLine" instance=ExtResource( 6 )]
+[node name="Line4" parent="ConnectionLine" instance=ExtResource( 2 )]
 LineMode = 1
 
 [node name="Line2D" type="Line2D" parent="ConnectionLine/Line4"]
+position = Vector2( 703, 441 )
 points = PoolVector2Array( 388, 200, 388, 212.563, 388, 218, 404, 218, 426, 140, 436, 140, 436, 152 )
 width = 4.0
 default_color = Color( 0.211765, 0.572549, 0.631373, 1 )
 texture_mode = 875706424
 joint_mode = 2
 
-[node name="Line5" parent="ConnectionLine" instance=ExtResource( 6 )]
+[node name="Line5" parent="ConnectionLine" instance=ExtResource( 2 )]
 LineMode = 1
 
 [node name="Line2D" type="Line2D" parent="ConnectionLine/Line5"]
+position = Vector2( 703, 441 )
 points = PoolVector2Array( 444, 200, 444, 218, 428, 218, 408, 140, 396, 140, 396, 152 )
 width = 4.0
 default_color = Color( 0.211765, 0.572549, 0.631373, 1 )
 texture_mode = 875706424
 joint_mode = 2
 
-[node name="OrGate2" parent="." instance=ExtResource( 7 )]
-editor/display_folded = true
-position = Vector2( 466, 152 )
+[node name="TextureRect" type="TextureRect" parent="."]
+self_modulate = Color( 1, 1, 1, 0.0980392 )
+margin_right = 2160.0
+margin_bottom = 1270.0
+mouse_filter = 2
+texture = ExtResource( 3 )
+stretch_mode = 2
+__meta__ = {
+"_edit_lock_": true
+}
 
-[node name="NotGate" parent="OrGate2" instance=ExtResource( 8 )]
-position = Vector2( 36, 0 )
+[node name="Counter" parent="." instance=ExtResource( 4 )]
+position = Vector2( 849, 492 )
+ShiftPosition = Vector2( 4, 4 )
 
-[node name="38Encoder" parent="." instance=ExtResource( 9 )]
-position = Vector2( 385, 242 )
+[node name="DigitalNumberScreen4" parent="." instance=ExtResource( 5 )]
+position = Vector2( 855, 633 )
+ShiftPosition = Vector2( 4, 4 )
+
+[node name="Button1" parent="." instance=ExtResource( 6 )]
+position = Vector2( 1067, 537 )
+ShiftPosition = Vector2( 0, 4 )
+
+[node name="Button2" parent="." instance=ExtResource( 6 )]
+position = Vector2( 1139, 539 )
+ShiftPosition = Vector2( 0, 4 )
+
+[node name="AndGate2" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1075, 593 )
+ShiftPosition = Vector2( 0, 4 )
+
+[node name="AndGate3" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1131, 593 )
+ShiftPosition = Vector2( 0, 4 )
+
+[node name="OrGate2" parent="." instance=ExtResource( 8 )]
+position = Vector2( 743, 510 )
+ShiftPosition = Vector2( 0, 4 )
+
+[node name="NotGate" parent="." instance=ExtResource( 9 )]
+position = Vector2( 1227, 630 )
+ShiftPosition = Vector2( 0, 4 )
 
 [node name="Button8" parent="." instance=ExtResource( 10 )]
-position = Vector2( 386, 290 )
+position = Vector2( 1079, 738 )
 
 [node name="Adder" parent="." instance=ExtResource( 11 )]
-position = Vector2( 645, 131 )
+position = Vector2( 1303, 542 )
+ShiftPosition = Vector2( 0, 4 )
 
-[node name="Adder1" parent="Adder" instance=ExtResource( 12 )]
-position = Vector2( 35, 0 )
+[node name="Adder1" parent="." instance=ExtResource( 12 )]
+position = Vector2( 1383, 572 )
+ShiftPosition = Vector2( 0, 4 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 1073, 600 )
+current = true
+drag_margin_h_enabled = false
+drag_margin_v_enabled = false
+script = ExtResource( 13 )
