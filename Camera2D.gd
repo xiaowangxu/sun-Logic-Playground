@@ -34,7 +34,7 @@ func zoom_Out() -> void:
 	$Tween.start()
 	pass
 
-func _input(event):
+func _unhandled_input(event):
 	if event.is_action_pressed("mousewheel_up") :
 		self.zoom_In()
 		
