@@ -9,6 +9,7 @@ var LastPosition : Vector2 = Vector2.ZERO
 var LastDragState : bool = false
 var IsDragging : bool = false
 export(Vector2) var ShiftPosition : Vector2 = Vector2.ZERO
+export(int, FLAGS, "Up", "Down", "Left", "Right") var PinBoarder : int = 0
 
 signal on_drag
 signal is_dragging

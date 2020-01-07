@@ -9,11 +9,11 @@ extents = Vector2( 40, 24 )
 
 [node name="Counter" type="Node2D"]
 script = ExtResource( 1 )
+PinBoarder = 12
 
 [node name="Pin" parent="." instance=ExtResource( 2 )]
 position = Vector2( 80, 24 )
 rotation = 1.5708
-PinMode = 0
 
 [node name="Pin2" parent="." instance=ExtResource( 2 )]
 position = Vector2( 0, 12 )

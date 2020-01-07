@@ -11,6 +11,7 @@ extents = Vector2( 16, 24 )
 [node name="OrGate2" type="Node2D"]
 script = ExtResource( 1 )
 ShiftPosition = Vector2( 4, 0 )
+PinBoarder = 3
 
 [node name="Pin_A" parent="." instance=ExtResource( 2 )]
 position = Vector2( 8, 0 )

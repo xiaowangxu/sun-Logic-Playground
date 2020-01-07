@@ -10,6 +10,7 @@ extents = Vector2( 16, 24 )
 
 [node name="AndGate2" type="Node2D"]
 script = ExtResource( 1 )
+PinBoarder = 3
 
 [node name="Pin_A" parent="." instance=ExtResource( 2 )]
 position = Vector2( 8, 0 )

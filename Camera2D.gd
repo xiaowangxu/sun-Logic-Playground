@@ -22,7 +22,7 @@ func zoom_In() -> void:
 	self.ZoomTarget = self.ZoomMax if self.ZoomTarget - self.ZoomStep <= self.ZoomMax else self.ZoomTarget - self.ZoomStep
 	var zoom : Vector2 = Vector2(self.ZoomTarget, self.ZoomTarget)
 	$Tween.stop_all()
-	$Tween.interpolate_method(self, "tween_CameraZoom", self.zoom, zoom, self.ZoomDuration, Tween.TRANS_QUAD, Tween.EASE_IN)
+	$Tween.interpolate_method(self, "tween_CameraZoom", self.zoom, zoom, self.ZoomDuration, Tween.TRANS_CIRC, Tween.EASE_OUT)
 	$Tween.start()
 	pass
 	
@@ -30,7 +30,7 @@ func zoom_Out() -> void:
 	self.ZoomTarget = self.ZoomMin if self.ZoomTarget + self.ZoomStep >= self.ZoomMin else self.ZoomTarget + self.ZoomStep
 	var zoom : Vector2 = Vector2(self.ZoomTarget, self.ZoomTarget)
 	$Tween.stop_all()
-	$Tween.interpolate_method(self, "tween_CameraZoom", self.zoom, zoom, self.ZoomDuration, Tween.TRANS_QUAD, Tween.EASE_IN)
+	$Tween.interpolate_method(self, "tween_CameraZoom", self.zoom, zoom, self.ZoomDuration, Tween.TRANS_CIRC, Tween.EASE_OUT)
 	$Tween.start()
 	pass
 
