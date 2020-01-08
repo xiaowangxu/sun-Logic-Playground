@@ -20,15 +20,15 @@
 [ext_resource path="res://Module/Counter.tscn" type="PackedScene" id=18]
 [ext_resource path="res://Module/Adder0.tscn" type="PackedScene" id=19]
 [ext_resource path="res://Module/Adder1.tscn" type="PackedScene" id=20]
-[ext_resource path="res://Module/Button1.tscn" type="PackedScene" id=21]
-[ext_resource path="res://Module/NotGate.tscn" type="PackedScene" id=22]
-[ext_resource path="res://Module/LED1.tscn" type="PackedScene" id=23]
+[ext_resource path="res://Module/AndGate2.tscn" type="PackedScene" id=21]
+[ext_resource path="res://Module/OrGate2.tscn" type="PackedScene" id=22]
+[ext_resource path="res://Module/NotGate.tscn" type="PackedScene" id=23]
 [ext_resource path="res://Assets/Panel-run.png" type="Texture" id=24]
-[ext_resource path="res://Assets/Tab-run.png" type="Texture" id=25]
-[ext_resource path="res://Connection/Line.tscn" type="PackedScene" id=26]
-[ext_resource path="res://Assets/Background.png" type="Texture" id=27]
-[ext_resource path="res://Module/AndGate2.tscn" type="PackedScene" id=28]
-[ext_resource path="res://Module/OrGate2.tscn" type="PackedScene" id=29]
+[ext_resource path="res://Assets/Logo-run.png" type="Texture" id=25]
+[ext_resource path="res://Assets/Tab-run.png" type="Texture" id=26]
+[ext_resource path="res://Connection/Line.tscn" type="PackedScene" id=27]
+[ext_resource path="res://Assets/Background.png" type="Texture" id=28]
+[ext_resource path="res://Module/Button1.tscn" type="PackedScene" id=29]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -140,18 +140,17 @@ texture_pressed = ExtResource( 13 )
 texture_hover = ExtResource( 14 )
 
 [node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/ToolBox"]
-editor/display_folded = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 23.0
 margin_top = 30.0
-margin_right = -23.0
+margin_right = -21.0
 margin_bottom = -30.0
 theme = ExtResource( 15 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/ToolBox/ScrollContainer"]
-margin_right = 294.0
-margin_bottom = 42.0
+margin_right = 296.0
+margin_bottom = 28.0
 size_flags_horizontal = 3
 custom_constants/separation = 7
 
@@ -159,7 +158,7 @@ custom_constants/separation = 7
 editor/display_folded = true
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 294.0
+margin_right = 296.0
 Module = ExtResource( 17 )
 
 [node name="Control12" parent="CanvasLayer/ToolBox/ScrollContainer/VBoxContainer" instance=ExtResource( 16 )]
@@ -167,7 +166,7 @@ editor/display_folded = true
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 7.0
-margin_right = 294.0
+margin_right = 296.0
 margin_bottom = 7.0
 Module = ExtResource( 18 )
 
@@ -176,7 +175,7 @@ editor/display_folded = true
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 14.0
-margin_right = 294.0
+margin_right = 296.0
 margin_bottom = 14.0
 Module = ExtResource( 19 )
 
@@ -185,48 +184,34 @@ editor/display_folded = true
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 21.0
-margin_right = 294.0
+margin_right = 296.0
 margin_bottom = 21.0
 Module = ExtResource( 20 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/ToolBox/ScrollContainer/VBoxContainer"]
 margin_top = 28.0
-margin_right = 294.0
+margin_right = 296.0
 margin_bottom = 28.0
 size_flags_horizontal = 3
 
-[node name="Control15" parent="CanvasLayer/ToolBox/ScrollContainer/VBoxContainer/HBoxContainer" instance=ExtResource( 16 )]
-editor/display_folded = true
+[node name="AndGate2" parent="CanvasLayer/ToolBox/ScrollContainer/VBoxContainer/HBoxContainer" instance=ExtResource( 16 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 10.0
 Module = ExtResource( 21 )
 
-[node name="Control16" parent="CanvasLayer/ToolBox/ScrollContainer/VBoxContainer/HBoxContainer" instance=ExtResource( 16 )]
-editor/display_folded = true
+[node name="OrGate2" parent="CanvasLayer/ToolBox/ScrollContainer/VBoxContainer/HBoxContainer" instance=ExtResource( 16 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 15.0
-margin_right = 25.0
+margin_left = 5.0
+margin_right = 5.0
 Module = ExtResource( 22 )
 
-[node name="Control17" parent="CanvasLayer/ToolBox/ScrollContainer/VBoxContainer" instance=ExtResource( 16 )]
-editor/display_folded = true
+[node name="NotGate" parent="CanvasLayer/ToolBox/ScrollContainer/VBoxContainer/HBoxContainer" instance=ExtResource( 16 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 35.0
-margin_right = 294.0
-margin_bottom = 35.0
+margin_left = 10.0
+margin_right = 10.0
 Module = ExtResource( 23 )
-
-[node name="Control15" parent="CanvasLayer/ToolBox/ScrollContainer/VBoxContainer" instance=ExtResource( 16 )]
-editor/display_folded = true
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 42.0
-margin_right = 294.0
-margin_bottom = 42.0
-Module = ExtResource( 17 )
 
 [node name="RunBox" type="NinePatchRect" parent="CanvasLayer"]
 margin_left = -155.0
@@ -238,7 +223,7 @@ region_rect = Rect2( 0, 0, 64, 64 )
 patch_margin_left = 27
 patch_margin_top = 30
 patch_margin_right = 29
-patch_margin_bottom = 27
+patch_margin_bottom = 25
 axis_stretch_horizontal = 2
 axis_stretch_vertical = 2
 script = ExtResource( 5 )
@@ -253,25 +238,14 @@ margin_left = 10.0
 margin_top = 7.0
 margin_right = 51.0
 margin_bottom = 14.0
-texture = ExtResource( 6 )
-
-[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/RunBox"]
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -51.0
-margin_top = -14.0
-margin_right = -10.0
-margin_bottom = -7.0
-texture = ExtResource( 6 )
+texture = ExtResource( 25 )
 
 [node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/RunBox"]
 show_behind_parent = true
 margin_left = 136.0
 margin_right = 187.0
 margin_bottom = 60.0
-texture = ExtResource( 25 )
+texture = ExtResource( 26 )
 region_rect = Rect2( 0, 0, 32, 113 )
 patch_margin_top = 5
 patch_margin_right = 32
@@ -285,16 +259,16 @@ custom_styles/focus = SubResource( 1 )
 flat = true
 
 [node name="ConnectionLine" type="Node2D" parent="."]
-editor/display_folded = true
 z_index = -1
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Line" parent="ConnectionLine" instance=ExtResource( 26 )]
+[node name="Line" parent="ConnectionLine" instance=ExtResource( 27 )]
 editor/display_folded = false
 
 [node name="Line2D" type="Line2D" parent="ConnectionLine/Line"]
+visible = false
 position = Vector2( 703, 441 )
 points = PoolVector2Array( 112, 220, 144, 220 )
 width = 20.0
@@ -302,11 +276,12 @@ default_color = Color( 0.211765, 0.572549, 0.631373, 1 )
 texture_mode = 875706424
 joint_mode = 2
 
-[node name="Line2" parent="ConnectionLine" instance=ExtResource( 26 )]
+[node name="Line2" parent="ConnectionLine" instance=ExtResource( 27 )]
 editor/display_folded = false
 LineMode = 1
 
 [node name="Line2D" type="Line2D" parent="ConnectionLine/Line2"]
+visible = false
 position = Vector2( 703, 441 )
 points = PoolVector2Array( 380, 128, 380, 152 )
 width = 4.0
@@ -314,10 +289,12 @@ default_color = Color( 0.211765, 0.572549, 0.631373, 1 )
 texture_mode = 875706424
 joint_mode = 2
 
-[node name="Line3" parent="ConnectionLine" instance=ExtResource( 26 )]
+[node name="Line3" parent="ConnectionLine" instance=ExtResource( 27 )]
+editor/display_folded = false
 LineMode = 1
 
 [node name="Line2D" type="Line2D" parent="ConnectionLine/Line3"]
+visible = false
 position = Vector2( 703, 441 )
 points = PoolVector2Array( 452, 130, 452, 154 )
 width = 4.0
@@ -325,10 +302,12 @@ default_color = Color( 0.211765, 0.572549, 0.631373, 1 )
 texture_mode = 875706424
 joint_mode = 2
 
-[node name="Line4" parent="ConnectionLine" instance=ExtResource( 26 )]
+[node name="Line4" parent="ConnectionLine" instance=ExtResource( 27 )]
+editor/display_folded = false
 LineMode = 1
 
 [node name="Line2D" type="Line2D" parent="ConnectionLine/Line4"]
+visible = false
 position = Vector2( 703, 441 )
 points = PoolVector2Array( 388, 200, 388, 212.563, 388, 218, 404, 218, 426, 140, 436, 140, 436, 152 )
 width = 4.0
@@ -336,10 +315,12 @@ default_color = Color( 0.211765, 0.572549, 0.631373, 1 )
 texture_mode = 875706424
 joint_mode = 2
 
-[node name="Line5" parent="ConnectionLine" instance=ExtResource( 26 )]
+[node name="Line5" parent="ConnectionLine" instance=ExtResource( 27 )]
+editor/display_folded = false
 LineMode = 1
 
 [node name="Line2D" type="Line2D" parent="ConnectionLine/Line5"]
+visible = false
 position = Vector2( 703, 441 )
 points = PoolVector2Array( 444, 200, 444, 218, 428, 218, 408, 140, 396, 140, 396, 152 )
 width = 4.0
@@ -352,40 +333,43 @@ self_modulate = Color( 1, 1, 1, 0.0980392 )
 margin_right = 2160.0
 margin_bottom = 1270.0
 mouse_filter = 2
-texture = ExtResource( 27 )
+texture = ExtResource( 28 )
 stretch_mode = 2
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="DigitalNumberScreen4" parent="." instance=ExtResource( 17 )]
-position = Vector2( 795, 385 )
+position = Vector2( 1068, 431 )
 ShiftPosition = Vector2( 4, 4 )
 
 [node name="Counter" parent="." instance=ExtResource( 18 )]
-position = Vector2( 795, 385 )
+position = Vector2( 999, 507 )
 ShiftPosition = Vector2( 4, 4 )
 
-[node name="Button2" parent="." instance=ExtResource( 21 )]
-position = Vector2( 795, 385 )
+[node name="Button2" parent="." instance=ExtResource( 29 )]
+position = Vector2( 819, 405 )
 ShiftPosition = Vector2( 0, 4 )
 
-[node name="Button1" parent="." instance=ExtResource( 21 )]
-position = Vector2( 795, 385 )
+[node name="Button1" parent="." instance=ExtResource( 29 )]
+position = Vector2( 882, 392 )
 ShiftPosition = Vector2( 0, 4 )
 
-[node name="AndGate2" parent="." instance=ExtResource( 28 )]
-position = Vector2( 795, 385 )
+[node name="AndGate2" parent="." instance=ExtResource( 21 )]
+position = Vector2( 795, 487 )
 ShiftPosition = Vector2( 0, 4 )
 
-[node name="AndGate3" parent="." instance=ExtResource( 28 )]
-position = Vector2( 795, 385 )
+[node name="AndGate3" parent="." instance=ExtResource( 21 )]
+position = Vector2( 961, 429 )
 ShiftPosition = Vector2( 0, 4 )
 
-[node name="OrGate2" parent="." instance=ExtResource( 29 )]
-position = Vector2( 795, 385 )
+[node name="OrGate2" parent="." instance=ExtResource( 22 )]
+position = Vector2( 873, 490 )
 ShiftPosition = Vector2( 0, 4 )
+[connection signal="on_mouseright_clicked" from="Camera2D" to="CanvasLayer" method="hide_All"]
 [connection signal="on_show" from="CanvasLayer/ToolBox" to="CanvasLayer" method="hide_All"]
 [connection signal="pressed" from="CanvasLayer/ToolBox/NinePatchRect/Button" to="CanvasLayer/ToolBox" method="_on_Button_pressed"]
 [connection signal="on_show" from="CanvasLayer/RunBox" to="CanvasLayer" method="hide_All"]
 [connection signal="pressed" from="CanvasLayer/RunBox/NinePatchRect/Button" to="CanvasLayer/RunBox" method="_on_Button_pressed"]
+[connection signal="on_drag" from="DigitalNumberScreen4" to="DigitalNumberScreen4" method="_on_DigitalNumberScreen4_on_drag"]
+[connection signal="on_drop" from="DigitalNumberScreen4" to="DigitalNumberScreen4" method="_on_DigitalNumberScreen4_on_drop"]

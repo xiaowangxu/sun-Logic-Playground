@@ -8,6 +8,7 @@ const GridSize : float = 8.0
 var LastPosition : Vector2 = Vector2.ZERO
 var LastDragState : bool = false
 var IsDragging : bool = false
+export(bool) var DragEnable : bool = true
 export(Vector2) var ShiftPosition : Vector2 = Vector2.ZERO
 export(int, FLAGS, "Up", "Down", "Left", "Right") var PinBoarder : int = 0
 
@@ -18,6 +19,7 @@ signal on_drop
 func _ready():
 	set_process(false)
 	set_physics_process(false)
+	self.connect("on_drag", get_node("/root/Playground/CanvasLayer"), "hide_All")
 #	print(str(CollisionBox))
 	if DragArea != null && DragArea is Area2D :
 		#print(str(DragArea))
@@ -36,7 +38,7 @@ func drop() -> void:
 	pass
 
 func DragArea_InputEvent(viewport : Node, event : InputEvent, shape : int) -> void:
-	if event.is_action_pressed("mouse_left") :
+	if self.DragEnable and event.is_action_pressed("mouse_left") :
 		if get_tree().get_nodes_in_group("dragging_module").size() == 0 :
 			self.add_to_group("dragging_module")
 			self.LastPosition = event.position
@@ -57,22 +59,31 @@ func DragArea_InputEvent(viewport : Node, event : InputEvent, shape : int) -> vo
 	pass
 	
 func _unhandled_input(event):
+	
 	if not self.IsDragging :
 		return
-	
-	if not self.LastDragState :
-		self.LastDragState = true
-		var parent : Node = self.get_parent()
-		self.emit_signal("on_drag")
-		if self.IsDragging :
-			parent.move_child(self, parent.get_child_count())
 		
-	if event.is_action_released("mouse_left") : 
+	if not self.DragEnable :
 		self.remove_from_group("dragging_module")
 		self.LastPosition = Vector2.ZERO
 		self.IsDragging = false
 		self.LastDragState = false
-		self.emit_signal("on_drop")
+		
+	if event is InputEventMouseMotion:
+		if not self.LastDragState :
+			self.LastDragState = true
+			var parent : Node = self.get_parent()
+			self.emit_signal("on_drag")
+			if self.IsDragging :
+				parent.move_child(self, parent.get_child_count())
+		
+	if self.IsDragging and event.is_action_released("mouse_left") : 
+		self.remove_from_group("dragging_module")
+		self.LastPosition = Vector2.ZERO
+		self.IsDragging = false
+		if self.LastDragState :
+			self.emit_signal("on_drop")
+		self.LastDragState = false
 		#var new_position : Vector2 = self.position
 		#self.position.x = round((self.position.x - (self.GridSize + self.ShiftPosition.x) / 2.0) / self.GridSize) * self.GridSize + self.ShiftPosition.x
 		#self.position.y = round((self.position.y - (self.GridSize + self.ShiftPosition.y) / 2.0) / self.GridSize) * self.GridSize + self.ShiftPosition.y

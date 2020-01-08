@@ -15,6 +15,8 @@ func _ready():
 	pass
 
 func show() -> void:
+	if self.IsShow :
+		return
 	$Tween.stop_all()
 	$Tween.interpolate_property(self, "rect_position", self.rect_position, self.ShowPosition, Duration, Tween.TRANS_EXPO, Tween.EASE_OUT)
 	$Tween.start()
@@ -22,6 +24,8 @@ func show() -> void:
 	pass
 	
 func hide() -> void:
+	if not self.IsShow :
+		return
 	$Tween.stop_all()
 	$Tween.interpolate_property(self, "rect_position", self.rect_position, self.HidePosition, Duration, Tween.TRANS_EXPO, Tween.EASE_OUT)
 	$Tween.start()

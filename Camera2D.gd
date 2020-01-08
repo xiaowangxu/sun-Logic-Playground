@@ -8,6 +8,12 @@ export(float) var ZoomStep : float = 0.1
 export(float) var ZoomDuration : float = 0.1
 var ZoomTarget : float = 1.0
 
+signal on_drag
+signal is_dragging
+signal on_drop
+signal on_mouseleft_clicked
+signal on_mouseright_clicked
+
 func _ready():
 	set_physics_process(false)
 	set_process(false)
@@ -34,6 +40,11 @@ func zoom_Out() -> void:
 	$Tween.start()
 	pass
 
+func drop() -> void:
+	self.LastPosition = Vector2.ZERO
+	self.IsDragging = false
+	pass
+
 func _unhandled_input(event):
 	if event.is_action_pressed("mousewheel_up") :
 		self.zoom_In()
@@ -41,10 +52,17 @@ func _unhandled_input(event):
 	if event.is_action_pressed("mousewheel_down") :
 		self.zoom_Out()
 	
+	if event.is_action_pressed("mouse_left") :
+		self.emit_signal("on_mouseleft_clicked")
+	
+	if event.is_action_pressed("mouse_right") :
+		self.emit_signal("on_mouseright_clicked")
+	
 	if event.is_action_pressed("mouse_middle") :
 		get_tree().set_input_as_handled()
 		self.LastPosition = event.position
 		self.IsDragging = true
+		self.emit_signal("on_drag")
 	
 	if not self.IsDragging :
 		return
@@ -52,9 +70,11 @@ func _unhandled_input(event):
 	if event.is_action_released("mouse_middle") : 
 		self.LastPosition = Vector2.ZERO
 		self.IsDragging = false
+		self.emit_signal("on_drop")
 		
 	if self.IsDragging and event is InputEventMouseMotion:
 		self.position -= (event.position - LastPosition) * self.zoom
 		self.LastPosition = event.position
+		self.emit_signal("is_dragging")
 		
 	pass
