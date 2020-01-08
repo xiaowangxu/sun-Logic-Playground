@@ -1,0 +1,85 @@
+# AngelCode Bitmap Font Generator configuration file
+fileVersion=1
+
+# font settings
+fontName=Arial
+fontFile=
+charSet=0
+fontSize=32
+aa=1
+scaleH=100
+useSmoothing=1
+isBold=0
+isItalic=0
+useUnicode=1
+disableBoxChars=1
+outputInvalidCharGlyph=0
+dontIncludeKerningPairs=0
+useHinting=1
+renderFromOutline=0
+useClearType=1
+autoFitNumPages=0
+autoFitFontSizeMin=0
+autoFitFontSizeMax=0
+
+# character alignment
+paddingDown=0
+paddingUp=0
+paddingRight=0
+paddingLeft=0
+spacingHoriz=1
+spacingVert=1
+useFixedHeight=0
+forceZero=0
+widthPaddingFactor=0.00
+
+# output file
+outWidth=256
+outHeight=256
+outBitDepth=8
+fontDescFormat=0
+fourChnlPacked=0
+textureFormat=tga
+textureCompression=0
+alphaChnl=1
+redChnl=0
+greenChnl=0
+blueChnl=0
+invA=0
+invR=0
+invG=0
+invB=0
+
+# outline
+outlineThickness=0
+
+# selected chars
+chars=65-90
+
+# imported icon images
+icon="A.png",65,0,0,0
+icon="B.png",66,0,0,0
+icon="C.png",67,0,0,0
+icon="D.png",68,0,0,0
+icon="E.png",69,0,0,0
+icon="F.png",70,0,0,0
+icon="G.png",71,0,0,0
+icon="H.png",72,0,0,0
+icon="I.png",73,0,0,0
+icon="J.png",74,0,0,0
+icon="K.png",75,0,0,0
+icon="L.png",76,0,0,0
+icon="M.png",77,0,0,0
+icon="N.png",78,0,0,0
+icon="O.png",79,0,0,0
+icon="P.png",80,0,0,0
+icon="Q.png",81,0,0,0
+icon="R.png",82,0,0,0
+icon="R.png",83,0,0,0
+icon="S.png",84,0,0,0
+icon="U.png",85,0,0,0
+icon="V.png",86,0,0,0
+icon="W.png",87,0,0,0
+icon="X.png",88,0,0,0
+icon="Y.png",89,0,0,0
+icon="Z.png",90,0,0,0

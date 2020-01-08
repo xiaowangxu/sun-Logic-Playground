@@ -72,7 +72,7 @@ func _unhandled_input(event):
 		self.IsDragging = false
 		self.emit_signal("on_drop")
 		
-	if self.IsDragging and event is InputEventMouseMotion:
+	if self.IsDragging and event is InputEventMouseMotion :
 		self.position -= (event.position - LastPosition) * self.zoom
 		self.LastPosition = event.position
 		self.emit_signal("is_dragging")

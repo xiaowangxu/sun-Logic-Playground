@@ -43,38 +43,36 @@ func DragArea_InputEvent(viewport : Node, event : InputEvent, shape : int) -> vo
 			self.add_to_group("dragging_module")
 			self.LastPosition = event.position
 			self.IsDragging = true
-			var parent : Node = self.get_parent()
 		else :
 			var module = get_tree().get_nodes_in_group("dragging_module")[0]
-			if module.get_index() < self.get_index() :
+			if module.get_index() <= self.get_index() :
 				module.IsDragging = false
 				module.remove_from_group("dragging_module")
 				self.add_to_group("dragging_module")
 				self.LastPosition = event.position
 				self.IsDragging = true
-				get_tree().set_input_as_handled()
 			else :
 				self.IsDragging = false
-	#print(get_tree().get_nodes_in_group("dragging_module"))
 	pass
 	
 func _unhandled_input(event):
-	
 	if not self.IsDragging :
 		return
-		
+	
 	if not self.DragEnable :
 		self.remove_from_group("dragging_module")
 		self.LastPosition = Vector2.ZERO
 		self.IsDragging = false
 		self.LastDragState = false
-		
+	
+	#self.get_tree().set_input_as_handled()
+	
 	if event is InputEventMouseMotion:
 		if not self.LastDragState :
 			self.LastDragState = true
-			var parent : Node = self.get_parent()
 			self.emit_signal("on_drag")
 			if self.IsDragging :
+				var parent : Node = self.get_parent()
 				parent.move_child(self, parent.get_child_count())
 		
 	if self.IsDragging and event.is_action_released("mouse_left") : 

@@ -1,10 +1,25 @@
 extends MarginContainer
 
 export(PackedScene) var Module : PackedScene
+export(String) var Name : String = ""
 
-# Called when the node enters the scene tree for the first time.
+signal on_ButtonAdd_Clicked(modulepackedscene, mouseposition)
+
 func _ready():
+	set_process(false)
+	set_physics_process(false)
+	
+	self.connect("on_ButtonAdd_Clicked", self.get_node("/root/Playground/NewModuleLayer"), "on_ButtonAdd_clicked")
+	
 	var module = Module.instance()
+	
+	if self.Name != "" :
+		$HBoxContainer/VBoxContainer/NameLabel.text = self.Name
+		$HBoxContainer/VBoxContainer/NameLabel.visible = true
+	else :
+		$HBoxContainer/VBoxContainer/NameLabel.visible = false
+	
+	module.DragEnable = false
 	
 	var additionalvec : Vector2 = Vector2.ZERO
 	
@@ -29,4 +44,12 @@ func _ready():
 	$HBoxContainer/ViewportContainer/Viewport.size = modulesize
 	
 	#self.rect_min_size = modulesize
-	pass # Replace with function body.
+	pass
+
+func _on_ViewportContainer_gui_input(event) :
+	if event.is_action_pressed("mouse_left") :
+		#print("left Mouse Clicked")
+		self.get_tree().set_input_as_handled()
+		#print(event.position)
+		self.emit_signal("on_ButtonAdd_Clicked", self.Module, event.position)
+	pass
