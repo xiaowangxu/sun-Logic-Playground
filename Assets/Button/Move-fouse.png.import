@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/PanelShadow.png-c466bdc1b0748793bca861d1ea96b0e1.stex"
+path="res://.import/Move-fouse.png-d2958014d7f4df5bec37fe0b8f3050cf.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/PanelShadow.png"
-dest_files=[ "res://.import/PanelShadow.png-c466bdc1b0748793bca861d1ea96b0e1.stex" ]
+source_file="res://Assets/Button/Move-fouse.png"
+dest_files=[ "res://.import/Move-fouse.png-d2958014d7f4df5bec37fe0b8f3050cf.stex" ]
 
 [params]
 

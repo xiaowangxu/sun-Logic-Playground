@@ -1,24 +1,36 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://Playground.gd" type="Script" id=1]
 [ext_resource path="res://Camera2D.gd" type="Script" id=2]
-[ext_resource path="res://Assets/Panel.png" type="Texture" id=3]
-[ext_resource path="res://ToolBox.gd" type="Script" id=4]
-[ext_resource path="res://Assets/Logo.png" type="Texture" id=5]
-[ext_resource path="res://Assets/Tab.png" type="Texture" id=6]
-[ext_resource path="res://Theme.tres" type="Theme" id=7]
-[ext_resource path="res://Node2D.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Module/DigitalNumberScreen4.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Module/Counter.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Module/Adder0.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Module/Adder1.tscn" type="PackedScene" id=12]
-[ext_resource path="res://Module/Button1.tscn" type="PackedScene" id=13]
-[ext_resource path="res://Module/NotGate.tscn" type="PackedScene" id=14]
-[ext_resource path="res://Module/LED1.tscn" type="PackedScene" id=15]
-[ext_resource path="res://Connection/Line.tscn" type="PackedScene" id=16]
-[ext_resource path="res://Assets/Background.png" type="Texture" id=17]
-[ext_resource path="res://Module/AndGate2.tscn" type="PackedScene" id=18]
-[ext_resource path="res://Module/OrGate2.tscn" type="PackedScene" id=19]
+[ext_resource path="res://BoxLayer.gd" type="Script" id=3]
+[ext_resource path="res://Assets/Panel.png" type="Texture" id=4]
+[ext_resource path="res://ToolBox.gd" type="Script" id=5]
+[ext_resource path="res://Assets/Logo.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Tab.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Button/ToolBoxButtonGroup.tres" type="ButtonGroup" id=8]
+[ext_resource path="res://Assets/Button/Move-default.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Button/Move-fouse.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Button/Move-hover.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Button/Connect-default.png" type="Texture" id=12]
+[ext_resource path="res://Assets/Button/Connect-fouse.png" type="Texture" id=13]
+[ext_resource path="res://Assets/Button/Connect-hover.png" type="Texture" id=14]
+[ext_resource path="res://Theme.tres" type="Theme" id=15]
+[ext_resource path="res://ModuleView.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Module/DigitalNumberScreen4.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Module/Counter.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Module/Adder0.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Module/Adder1.tscn" type="PackedScene" id=20]
+[ext_resource path="res://Module/Button1.tscn" type="PackedScene" id=21]
+[ext_resource path="res://Module/NotGate.tscn" type="PackedScene" id=22]
+[ext_resource path="res://Module/LED1.tscn" type="PackedScene" id=23]
+[ext_resource path="res://Assets/Panel-run.png" type="Texture" id=24]
+[ext_resource path="res://Assets/Tab-run.png" type="Texture" id=25]
+[ext_resource path="res://Connection/Line.tscn" type="PackedScene" id=26]
+[ext_resource path="res://Assets/Background.png" type="Texture" id=27]
+[ext_resource path="res://Module/AndGate2.tscn" type="PackedScene" id=28]
+[ext_resource path="res://Module/OrGate2.tscn" type="PackedScene" id=29]
+
+[sub_resource type="StyleBoxEmpty" id=1]
 
 [node name="Playground" type="Node2D"]
 script = ExtResource( 1 )
@@ -42,14 +54,16 @@ ZoomStep = 0.15
 [node name="Tween" type="Tween" parent="Camera2D"]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource( 3 )
+BoxArray = [ NodePath("ToolBox"), NodePath("RunBox") ]
 
-[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer"]
+[node name="ToolBox" type="NinePatchRect" parent="CanvasLayer"]
 anchor_bottom = 1.0
 margin_left = -340.0
 margin_top = 4.0
 margin_bottom = -4.0
 mouse_filter = 0
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 region_rect = Rect2( 0, 0, 64, 64 )
 patch_margin_left = 27
 patch_margin_top = 30
@@ -57,20 +71,21 @@ patch_margin_right = 29
 patch_margin_bottom = 27
 axis_stretch_horizontal = 2
 axis_stretch_vertical = 2
-script = ExtResource( 4 )
+script = ExtResource( 5 )
+ShowPosition = Vector2( 36, 4 )
 HidePosition = Vector2( -340, 4 )
 Duration = 0.4
 
-[node name="Tween" type="Tween" parent="CanvasLayer/NinePatchRect"]
+[node name="Tween" type="Tween" parent="CanvasLayer/ToolBox"]
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/NinePatchRect"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/ToolBox"]
 margin_left = 10.0
 margin_top = 7.0
 margin_right = 51.0
 margin_bottom = 14.0
-texture = ExtResource( 5 )
+texture = ExtResource( 6 )
 
-[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/NinePatchRect"]
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/ToolBox"]
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -79,103 +94,195 @@ margin_left = -51.0
 margin_top = -14.0
 margin_right = -10.0
 margin_bottom = -7.0
-texture = ExtResource( 5 )
-
-[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/NinePatchRect"]
-show_behind_parent = true
-margin_left = 330.0
-margin_right = 362.0
-margin_bottom = 130.0
-mouse_filter = 0
 texture = ExtResource( 6 )
+
+[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/ToolBox"]
+show_behind_parent = true
+margin_left = 327.0
+margin_top = 40.0
+margin_right = 372.0
+margin_bottom = 170.0
+texture = ExtResource( 7 )
 region_rect = Rect2( 0, 0, 32, 113 )
-patch_margin_left = 7
 patch_margin_top = 24
-patch_margin_right = 8
+patch_margin_right = 32
 patch_margin_bottom = 46
 
-[node name="Button" type="Button" parent="CanvasLayer/NinePatchRect"]
-margin_left = 343.0
-margin_top = 5.0
-margin_right = 359.0
-margin_bottom = 25.0
+[node name="Button" type="Button" parent="CanvasLayer/ToolBox/NinePatchRect"]
+margin_left = 13.0
+margin_right = 45.0
+margin_bottom = 44.0
+custom_styles/focus = SubResource( 1 )
+flat = true
 
-[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/NinePatchRect"]
+[node name="TextureButton" type="TextureButton" parent="CanvasLayer/ToolBox/NinePatchRect"]
+margin_left = 19.0
+margin_top = 47.0
+margin_right = 39.0
+margin_bottom = 67.0
+toggle_mode = true
+shortcut_in_tooltip = false
+group = ExtResource( 8 )
+texture_normal = ExtResource( 9 )
+texture_pressed = ExtResource( 10 )
+texture_hover = ExtResource( 11 )
+
+[node name="TextureButton2" type="TextureButton" parent="CanvasLayer/ToolBox/NinePatchRect"]
+margin_left = 19.0
+margin_top = 73.0
+margin_right = 39.0
+margin_bottom = 93.0
+toggle_mode = true
+shortcut_in_tooltip = false
+group = ExtResource( 8 )
+texture_normal = ExtResource( 12 )
+texture_pressed = ExtResource( 13 )
+texture_hover = ExtResource( 14 )
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/ToolBox"]
+editor/display_folded = true
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 18.0
-margin_top = 27.0
-margin_right = -18.0
-margin_bottom = -27.0
-theme = ExtResource( 7 )
+margin_left = 23.0
+margin_top = 30.0
+margin_right = -23.0
+margin_bottom = -30.0
+theme = ExtResource( 15 )
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/NinePatchRect/ScrollContainer"]
-margin_right = 304.0
-margin_bottom = 273.0
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/ToolBox/ScrollContainer"]
+margin_right = 294.0
+margin_bottom = 42.0
 size_flags_horizontal = 3
 custom_constants/separation = 7
 
-[node name="Control11" parent="CanvasLayer/NinePatchRect/ScrollContainer/VBoxContainer" instance=ExtResource( 8 )]
+[node name="Control11" parent="CanvasLayer/ToolBox/ScrollContainer/VBoxContainer" instance=ExtResource( 16 )]
 editor/display_folded = true
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 304.0
-margin_bottom = 33.0
-Module = ExtResource( 9 )
+margin_right = 294.0
+Module = ExtResource( 17 )
 
-[node name="Control12" parent="CanvasLayer/NinePatchRect/ScrollContainer/VBoxContainer" instance=ExtResource( 8 )]
+[node name="Control12" parent="CanvasLayer/ToolBox/ScrollContainer/VBoxContainer" instance=ExtResource( 16 )]
 editor/display_folded = true
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 40.0
-margin_right = 304.0
-margin_bottom = 73.0
-Module = ExtResource( 10 )
+margin_top = 7.0
+margin_right = 294.0
+margin_bottom = 7.0
+Module = ExtResource( 18 )
 
-[node name="Control13" parent="CanvasLayer/NinePatchRect/ScrollContainer/VBoxContainer" instance=ExtResource( 8 )]
+[node name="Control13" parent="CanvasLayer/ToolBox/ScrollContainer/VBoxContainer" instance=ExtResource( 16 )]
 editor/display_folded = true
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 80.0
-margin_right = 304.0
-margin_bottom = 113.0
-Module = ExtResource( 11 )
+margin_top = 14.0
+margin_right = 294.0
+margin_bottom = 14.0
+Module = ExtResource( 19 )
 
-[node name="Control14" parent="CanvasLayer/NinePatchRect/ScrollContainer/VBoxContainer" instance=ExtResource( 8 )]
+[node name="Control14" parent="CanvasLayer/ToolBox/ScrollContainer/VBoxContainer" instance=ExtResource( 16 )]
 editor/display_folded = true
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 120.0
-margin_right = 304.0
-margin_bottom = 153.0
-Module = ExtResource( 12 )
+margin_top = 21.0
+margin_right = 294.0
+margin_bottom = 21.0
+Module = ExtResource( 20 )
 
-[node name="Control15" parent="CanvasLayer/NinePatchRect/ScrollContainer/VBoxContainer" instance=ExtResource( 8 )]
-editor/display_folded = true
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 160.0
-margin_right = 304.0
-margin_bottom = 193.0
-Module = ExtResource( 13 )
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/ToolBox/ScrollContainer/VBoxContainer"]
+margin_top = 28.0
+margin_right = 294.0
+margin_bottom = 28.0
+size_flags_horizontal = 3
 
-[node name="Control16" parent="CanvasLayer/NinePatchRect/ScrollContainer/VBoxContainer" instance=ExtResource( 8 )]
+[node name="Control15" parent="CanvasLayer/ToolBox/ScrollContainer/VBoxContainer/HBoxContainer" instance=ExtResource( 16 )]
 editor/display_folded = true
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 200.0
-margin_right = 304.0
-margin_bottom = 233.0
-Module = ExtResource( 14 )
+margin_right = 10.0
+Module = ExtResource( 21 )
 
-[node name="Control17" parent="CanvasLayer/NinePatchRect/ScrollContainer/VBoxContainer" instance=ExtResource( 8 )]
+[node name="Control16" parent="CanvasLayer/ToolBox/ScrollContainer/VBoxContainer/HBoxContainer" instance=ExtResource( 16 )]
 editor/display_folded = true
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 240.0
-margin_right = 304.0
-margin_bottom = 273.0
-Module = ExtResource( 15 )
+margin_left = 15.0
+margin_right = 25.0
+Module = ExtResource( 22 )
+
+[node name="Control17" parent="CanvasLayer/ToolBox/ScrollContainer/VBoxContainer" instance=ExtResource( 16 )]
+editor/display_folded = true
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 35.0
+margin_right = 294.0
+margin_bottom = 35.0
+Module = ExtResource( 23 )
+
+[node name="Control15" parent="CanvasLayer/ToolBox/ScrollContainer/VBoxContainer" instance=ExtResource( 16 )]
+editor/display_folded = true
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 42.0
+margin_right = 294.0
+margin_bottom = 42.0
+Module = ExtResource( 17 )
+
+[node name="RunBox" type="NinePatchRect" parent="CanvasLayer"]
+margin_left = -155.0
+margin_top = 4.0
+margin_bottom = 77.0
+mouse_filter = 0
+texture = ExtResource( 24 )
+region_rect = Rect2( 0, 0, 64, 64 )
+patch_margin_left = 27
+patch_margin_top = 30
+patch_margin_right = 29
+patch_margin_bottom = 27
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+script = ExtResource( 5 )
+ShowPosition = Vector2( 36, 4 )
+HidePosition = Vector2( -155, 4 )
+Duration = 0.4
+
+[node name="Tween" type="Tween" parent="CanvasLayer/RunBox"]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/RunBox"]
+margin_left = 10.0
+margin_top = 7.0
+margin_right = 51.0
+margin_bottom = 14.0
+texture = ExtResource( 6 )
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/RunBox"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -51.0
+margin_top = -14.0
+margin_right = -10.0
+margin_bottom = -7.0
+texture = ExtResource( 6 )
+
+[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/RunBox"]
+show_behind_parent = true
+margin_left = 136.0
+margin_right = 187.0
+margin_bottom = 60.0
+texture = ExtResource( 25 )
+region_rect = Rect2( 0, 0, 32, 113 )
+patch_margin_top = 5
+patch_margin_right = 32
+patch_margin_bottom = 32
+
+[node name="Button" type="Button" parent="CanvasLayer/RunBox/NinePatchRect"]
+margin_left = 19.0
+margin_right = 51.0
+margin_bottom = 40.0
+custom_styles/focus = SubResource( 1 )
+flat = true
 
 [node name="ConnectionLine" type="Node2D" parent="."]
 editor/display_folded = true
@@ -184,7 +291,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Line" parent="ConnectionLine" instance=ExtResource( 16 )]
+[node name="Line" parent="ConnectionLine" instance=ExtResource( 26 )]
 editor/display_folded = false
 
 [node name="Line2D" type="Line2D" parent="ConnectionLine/Line"]
@@ -195,7 +302,7 @@ default_color = Color( 0.211765, 0.572549, 0.631373, 1 )
 texture_mode = 875706424
 joint_mode = 2
 
-[node name="Line2" parent="ConnectionLine" instance=ExtResource( 16 )]
+[node name="Line2" parent="ConnectionLine" instance=ExtResource( 26 )]
 editor/display_folded = false
 LineMode = 1
 
@@ -207,7 +314,7 @@ default_color = Color( 0.211765, 0.572549, 0.631373, 1 )
 texture_mode = 875706424
 joint_mode = 2
 
-[node name="Line3" parent="ConnectionLine" instance=ExtResource( 16 )]
+[node name="Line3" parent="ConnectionLine" instance=ExtResource( 26 )]
 LineMode = 1
 
 [node name="Line2D" type="Line2D" parent="ConnectionLine/Line3"]
@@ -218,7 +325,7 @@ default_color = Color( 0.211765, 0.572549, 0.631373, 1 )
 texture_mode = 875706424
 joint_mode = 2
 
-[node name="Line4" parent="ConnectionLine" instance=ExtResource( 16 )]
+[node name="Line4" parent="ConnectionLine" instance=ExtResource( 26 )]
 LineMode = 1
 
 [node name="Line2D" type="Line2D" parent="ConnectionLine/Line4"]
@@ -229,7 +336,7 @@ default_color = Color( 0.211765, 0.572549, 0.631373, 1 )
 texture_mode = 875706424
 joint_mode = 2
 
-[node name="Line5" parent="ConnectionLine" instance=ExtResource( 16 )]
+[node name="Line5" parent="ConnectionLine" instance=ExtResource( 26 )]
 LineMode = 1
 
 [node name="Line2D" type="Line2D" parent="ConnectionLine/Line5"]
@@ -245,37 +352,40 @@ self_modulate = Color( 1, 1, 1, 0.0980392 )
 margin_right = 2160.0
 margin_bottom = 1270.0
 mouse_filter = 2
-texture = ExtResource( 17 )
+texture = ExtResource( 27 )
 stretch_mode = 2
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="DigitalNumberScreen4" parent="." instance=ExtResource( 9 )]
+[node name="DigitalNumberScreen4" parent="." instance=ExtResource( 17 )]
 position = Vector2( 795, 385 )
 ShiftPosition = Vector2( 4, 4 )
 
-[node name="Counter" parent="." instance=ExtResource( 10 )]
+[node name="Counter" parent="." instance=ExtResource( 18 )]
 position = Vector2( 795, 385 )
 ShiftPosition = Vector2( 4, 4 )
 
-[node name="Button2" parent="." instance=ExtResource( 13 )]
+[node name="Button2" parent="." instance=ExtResource( 21 )]
 position = Vector2( 795, 385 )
 ShiftPosition = Vector2( 0, 4 )
 
-[node name="Button1" parent="." instance=ExtResource( 13 )]
+[node name="Button1" parent="." instance=ExtResource( 21 )]
 position = Vector2( 795, 385 )
 ShiftPosition = Vector2( 0, 4 )
 
-[node name="AndGate2" parent="." instance=ExtResource( 18 )]
+[node name="AndGate2" parent="." instance=ExtResource( 28 )]
 position = Vector2( 795, 385 )
 ShiftPosition = Vector2( 0, 4 )
 
-[node name="AndGate3" parent="." instance=ExtResource( 18 )]
+[node name="AndGate3" parent="." instance=ExtResource( 28 )]
 position = Vector2( 795, 385 )
 ShiftPosition = Vector2( 0, 4 )
 
-[node name="OrGate2" parent="." instance=ExtResource( 19 )]
+[node name="OrGate2" parent="." instance=ExtResource( 29 )]
 position = Vector2( 795, 385 )
 ShiftPosition = Vector2( 0, 4 )
-[connection signal="pressed" from="CanvasLayer/NinePatchRect/Button" to="CanvasLayer/NinePatchRect" method="_on_Button_pressed"]
+[connection signal="on_show" from="CanvasLayer/ToolBox" to="CanvasLayer" method="hide_All"]
+[connection signal="pressed" from="CanvasLayer/ToolBox/NinePatchRect/Button" to="CanvasLayer/ToolBox" method="_on_Button_pressed"]
+[connection signal="on_show" from="CanvasLayer/RunBox" to="CanvasLayer" method="hide_All"]
+[connection signal="pressed" from="CanvasLayer/RunBox/NinePatchRect/Button" to="CanvasLayer/RunBox" method="_on_Button_pressed"]

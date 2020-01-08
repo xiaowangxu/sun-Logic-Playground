@@ -5,6 +5,9 @@ export(Vector2) var HidePosition : Vector2 = Vector2(-300,4)
 export(float) var Duration : float = 0.2
 var IsShow : bool = false
 
+signal on_show
+signal on_hide
+
 func _ready():
 	set_process(false)
 	set_physics_process(false)
@@ -29,5 +32,6 @@ func _on_Button_pressed():
 	if self.IsShow :
 		self.hide()
 	else :
+		self.emit_signal("on_show")
 		self.show()
 	pass # Replace with function body.
