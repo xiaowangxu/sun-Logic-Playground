@@ -21,6 +21,22 @@ func delete_Module(module) -> void :
 		self.ModuleList.erase(module)
 	pass
 
+func arrange_Module() -> void :
+	var maxwidth : float = $Camera2D.position.x + self.get_viewport_rect().size.x / 2 - 100
+	var startx : float = ($Camera2D.position - self.get_viewport_rect().size / 2).x
+	var currentposition : Vector2 = $Camera2D.position - self.get_viewport_rect().size / 2
+	currentposition += Vector2(70, 20)
+	var thislinemaxheight : float = 0
+	
+	for module in self.ModuleList :
+		var modulesize : Vector2 = module.get_Rect2().size - module.get_Rect2().position
+		if currentposition.x + modulesize.x > maxwidth : 
+			currentposition.y += thislinemaxheight + 8
+			currentposition.x = startx
+		module.position = currentposition
+		currentposition.x += modulesize.x + 8
+		thislinemaxheight = max(thislinemaxheight, modulesize.y)
+
 func _ready():
 	pass
 
@@ -36,7 +52,6 @@ func update_Playground() -> void:
 		get_node(line).Update()
 	pass
 
-
 func _on_NewModuleLayer_on_NewModule_drop(newmodulelist):
 	#print(newmodulelist)
 	for newmodule in newmodulelist :
@@ -49,7 +64,6 @@ func _on_NewModuleLayer_on_NewModule_drop(newmodulelist):
 		newmodule.DragEnable = true
 		self.add_Module(newmodule)
 	pass
-
 
 func _on_CanvasLayer_on_ModuleDelete_drop(module):
 	self.delete_Module(module)
