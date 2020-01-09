@@ -47,8 +47,8 @@ drag_margin_h_enabled = false
 drag_margin_v_enabled = false
 script = ExtResource( 2 )
 ZoomMin = 1.5
-ZoomMax = 0.3
-ZoomStep = 0.15
+ZoomMax = 0.4
+ZoomStep = 0.2
 
 [node name="Tween" type="Tween" parent="Camera2D"]
 
@@ -133,12 +133,14 @@ joint_mode = 2
 [node name="NewModuleLayer" type="CanvasLayer" parent="."]
 layer = 2
 script = ExtResource( 5 )
+ToolBoxNodePath = NodePath("../CanvasLayer/ToolBox")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 script = ExtResource( 6 )
 BoxArray = [ NodePath("ToolBox"), NodePath("RunBox") ]
 
 [node name="ToolBox" type="NinePatchRect" parent="CanvasLayer"]
+editor/display_folded = true
 anchor_bottom = 1.0
 margin_left = -340.0
 margin_top = 4.0
@@ -159,14 +161,15 @@ Duration = 0.4
 
 [node name="Tween" type="Tween" parent="CanvasLayer/ToolBox"]
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/ToolBox"]
+[node name="Logo1" type="TextureRect" parent="CanvasLayer/ToolBox"]
 margin_left = 10.0
 margin_top = 7.0
 margin_right = 51.0
 margin_bottom = 14.0
+mouse_filter = 2
 texture = ExtResource( 9 )
 
-[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/ToolBox"]
+[node name="Logo2" type="TextureRect" parent="CanvasLayer/ToolBox"]
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -175,28 +178,30 @@ margin_left = -51.0
 margin_top = -14.0
 margin_right = -10.0
 margin_bottom = -7.0
+mouse_filter = 2
 texture = ExtResource( 9 )
 
-[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/ToolBox"]
+[node name="Tab" type="NinePatchRect" parent="CanvasLayer/ToolBox"]
 show_behind_parent = true
 margin_left = 327.0
 margin_top = 40.0
 margin_right = 372.0
 margin_bottom = 170.0
+mouse_filter = 1
 texture = ExtResource( 10 )
 region_rect = Rect2( 0, 0, 32, 113 )
 patch_margin_top = 24
 patch_margin_right = 32
 patch_margin_bottom = 46
 
-[node name="Button" type="Button" parent="CanvasLayer/ToolBox/NinePatchRect"]
+[node name="Button" type="Button" parent="CanvasLayer/ToolBox/Tab"]
 margin_left = 13.0
 margin_right = 45.0
 margin_bottom = 44.0
 custom_styles/focus = SubResource( 1 )
 flat = true
 
-[node name="TextureButton" type="TextureButton" parent="CanvasLayer/ToolBox/NinePatchRect"]
+[node name="ButtonMove" type="TextureButton" parent="CanvasLayer/ToolBox/Tab"]
 margin_left = 19.0
 margin_top = 47.0
 margin_right = 39.0
@@ -208,7 +213,7 @@ texture_normal = ExtResource( 12 )
 texture_pressed = ExtResource( 13 )
 texture_hover = ExtResource( 14 )
 
-[node name="TextureButton2" type="TextureButton" parent="CanvasLayer/ToolBox/NinePatchRect"]
+[node name="ButtonConnect" type="TextureButton" parent="CanvasLayer/ToolBox/Tab"]
 margin_left = 19.0
 margin_top = 73.0
 margin_right = 39.0
@@ -221,6 +226,7 @@ texture_pressed = ExtResource( 16 )
 texture_hover = ExtResource( 17 )
 
 [node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/ToolBox"]
+editor/display_folded = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 23.0
@@ -316,14 +322,15 @@ Duration = 0.4
 
 [node name="Tween" type="Tween" parent="CanvasLayer/RunBox"]
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/RunBox"]
+[node name="Logo" type="TextureRect" parent="CanvasLayer/RunBox"]
 margin_left = 10.0
 margin_top = 7.0
 margin_right = 51.0
 margin_bottom = 14.0
 texture = ExtResource( 28 )
 
-[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/RunBox"]
+[node name="Tab" type="NinePatchRect" parent="CanvasLayer/RunBox"]
+editor/display_folded = true
 show_behind_parent = true
 margin_left = 136.0
 margin_right = 187.0
@@ -334,7 +341,7 @@ patch_margin_top = 5
 patch_margin_right = 32
 patch_margin_bottom = 32
 
-[node name="Button" type="Button" parent="CanvasLayer/RunBox/NinePatchRect"]
+[node name="Button" type="Button" parent="CanvasLayer/RunBox/Tab"]
 margin_left = 19.0
 margin_right = 51.0
 margin_bottom = 40.0
@@ -343,6 +350,6 @@ flat = true
 [connection signal="on_mouseright_clicked" from="Camera2D" to="CanvasLayer" method="hide_All"]
 [connection signal="on_NewModule_drop" from="NewModuleLayer" to="." method="_on_NewModuleLayer_on_NewModule_drop"]
 [connection signal="on_show" from="CanvasLayer/ToolBox" to="CanvasLayer" method="hide_All"]
-[connection signal="pressed" from="CanvasLayer/ToolBox/NinePatchRect/Button" to="CanvasLayer/ToolBox" method="_on_Button_pressed"]
+[connection signal="pressed" from="CanvasLayer/ToolBox/Tab/Button" to="CanvasLayer/ToolBox" method="_on_Button_pressed"]
 [connection signal="on_show" from="CanvasLayer/RunBox" to="CanvasLayer" method="hide_All"]
-[connection signal="pressed" from="CanvasLayer/RunBox/NinePatchRect/Button" to="CanvasLayer/RunBox" method="_on_Button_pressed"]
+[connection signal="pressed" from="CanvasLayer/RunBox/Tab/Button" to="CanvasLayer/RunBox" method="_on_Button_pressed"]

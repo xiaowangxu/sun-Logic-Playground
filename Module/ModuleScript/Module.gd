@@ -37,6 +37,25 @@ func drop() -> void:
 	self.LastDragState = false
 	pass
 
+func get_Rect2() -> Rect2 :
+	var rect : Rect2 = Rect2(0,  0, 0, 0)
+	var size : Vector2 = self.get_node("Area2D/CollisionShape2D").shape.extents * 2
+	
+	if self.PinBoarder & 1 :
+		rect.position.y -= 4
+		size.y += 4
+	if self.PinBoarder & 4 :
+		rect.position.x -= 4
+		size.x += 4
+	if self.PinBoarder & 2 :
+		size.y += 4
+	if self.PinBoarder & 8 :
+		size.x += 4
+		
+	rect.size = size
+	
+	return rect
+
 func DragArea_InputEvent(viewport : Node, event : InputEvent, shape : int) -> void:
 	if self.DragEnable and event.is_action_pressed("mouse_left") :
 		if get_tree().get_nodes_in_group("dragging_module").size() == 0 :

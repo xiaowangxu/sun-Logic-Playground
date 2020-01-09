@@ -49,7 +49,7 @@ func _ready():
 func _on_ViewportContainer_gui_input(event) :
 	if event.is_action_pressed("mouse_left") :
 		#print("left Mouse Clicked")
-		self.get_tree().set_input_as_handled()
+		#self.get_tree().set_input_as_handled()
 		#print(event.position)
 		self.emit_signal("on_ButtonAdd_Clicked", self.Module, event.position)
 	pass
