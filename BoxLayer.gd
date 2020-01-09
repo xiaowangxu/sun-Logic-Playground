@@ -22,7 +22,7 @@ func hide_DeleteBox() -> void:
 	pass
 	
 func highlight_DeleteBox(highlight : bool) -> void:
-	self.DeleteBox.get_node("ColorRect").color = Color(255, 255, 255) if highlight else Color(255, 0, 0)
+	self.DeleteBox.get_node("Logo").self_modulate.a = 0.85 if highlight else 0.25
 	pass
 	
 func on_Module_drag(module : Module) -> void:

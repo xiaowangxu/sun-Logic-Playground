@@ -12,6 +12,8 @@ export(bool) var DragEnable : bool = true
 export(Vector2) var ShiftPosition : Vector2 = Vector2.ZERO
 export(int, FLAGS, "Up", "Down", "Left", "Right") var PinBoarder : int = 0
 
+var PinList : Array = []
+
 signal on_drag(module)
 signal is_dragging(module)
 signal on_drop(module)
@@ -19,16 +21,23 @@ signal on_drop(module)
 func _ready():
 	set_process(false)
 	set_physics_process(false)
+	
+	for pin in self.get_children() :
+		if pin is Pin :
+			self.PinList.append(pin)
+			
+	print(self.PinList)
+	
 	self.get_node("Area2D").monitoring = false
 	self.get_node("Area2D").monitorable = false
+	
 	self.connect("on_drag", get_node("/root/Playground/CanvasLayer"), "on_Module_drag")
 	self.connect("on_drop", get_node("/root/Playground/CanvasLayer"), "on_Module_drop")
 	self.connect("is_dragging", get_node("/root/Playground/CanvasLayer"), "is_Module_dragging")
-#	print(str(CollisionBox))
+
 	if DragArea != null && DragArea is Area2D :
-		#print(str(DragArea))
 		DragArea.connect("input_event", self, "DragArea_InputEvent")
-		#print(DragArea.get_signal_connection_list("input_event"))
+
 	pass
 
 func Update() -> void:

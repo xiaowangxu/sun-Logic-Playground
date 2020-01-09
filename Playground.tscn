@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://Playground.gd" type="Script" id=1]
 [ext_resource path="res://Camera2D.gd" type="Script" id=2]
@@ -30,6 +30,7 @@
 [ext_resource path="res://Assets/Panel/Logo-run.png" type="Texture" id=28]
 [ext_resource path="res://Assets/Panel/Tab-run.png" type="Texture" id=29]
 [ext_resource path="res://Assets/Panel/Panel-delete.png" type="Texture" id=30]
+[ext_resource path="res://Assets/Panel/Logo-delete.png" type="Texture" id=31]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -137,6 +138,7 @@ script = ExtResource( 5 )
 ToolBoxNodePath = NodePath("../CanvasLayer/ToolBox")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+editor/display_folded = true
 script = ExtResource( 6 )
 BoxArray = [ NodePath("ToolBox"), NodePath("RunBox") ]
 DeleteBoxNodePath = NodePath("DeleteBox")
@@ -371,12 +373,14 @@ Duration = 0.4
 
 [node name="Tween" type="Tween" parent="CanvasLayer/DeleteBox"]
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/DeleteBox"]
-margin_left = 9.0
-margin_top = 10.0
-margin_right = 13.0
-margin_bottom = 14.0
+[node name="Logo" type="TextureRect" parent="CanvasLayer/DeleteBox"]
+self_modulate = Color( 1, 1, 1, 0.156863 )
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 36.0
+margin_bottom = 36.0
 mouse_filter = 2
+texture = ExtResource( 31 )
 [connection signal="on_mouseright_clicked" from="Camera2D" to="CanvasLayer" method="hide_All"]
 [connection signal="on_NewModule_drop" from="NewModuleLayer" to="." method="_on_NewModuleLayer_on_NewModule_drop"]
 [connection signal="on_ModuleDelete_drop" from="CanvasLayer" to="." method="_on_CanvasLayer_on_ModuleDelete_drop"]
