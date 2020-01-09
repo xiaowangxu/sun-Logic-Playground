@@ -15,6 +15,11 @@ func add_Module(newmodule) -> void :
 	if not self.ModuleList.has(newmodule) :
 		self.ModuleList.append(newmodule)
 	pass
+	
+func delete_Module(module) -> void :
+	if self.ModuleList.has(module) :
+		self.ModuleList.erase(module)
+	pass
 
 func _ready():
 	pass
@@ -43,4 +48,10 @@ func _on_NewModuleLayer_on_NewModule_drop(newmodulelist):
 		parent.move_child(newmodule, parent.get_child_count())
 		newmodule.DragEnable = true
 		self.add_Module(newmodule)
+	pass
+
+
+func _on_CanvasLayer_on_ModuleDelete_drop(module):
+	self.delete_Module(module)
+	module.queue_free()
 	pass

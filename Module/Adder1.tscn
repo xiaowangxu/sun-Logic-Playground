@@ -2,8 +2,9 @@
 
 [ext_resource path="res://Module/ModuleScript/Adder1.gd" type="Script" id=1]
 [ext_resource path="res://Pin/Pin.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Assets/Adder1.png" type="Texture" id=3]
+[ext_resource path="res://Assets/ModuleBackground/Adder1.png" type="Texture" id=3]
 [ext_resource path="res://Assets/LED/SingleLED.tscn" type="PackedScene" id=4]
+
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 16, 24 )

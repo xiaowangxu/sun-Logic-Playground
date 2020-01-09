@@ -1,10 +1,41 @@
 extends CanvasLayer
 
 export(Array, NodePath) var BoxArray : Array
+export(NodePath) var DeleteBoxNodePath : NodePath
+onready var DeleteBox = get_node(DeleteBoxNodePath)
+
+signal on_ModuleDelete_drop(module)
 
 func hide_All() -> void :
 	for boxnodepath in BoxArray :
 		var box = get_node(boxnodepath)
 		if not box.Pinned :
 			box.hide()
-		pass
+	pass
+
+func show_DeleteBox() -> void:
+	self.DeleteBox.show()
+	pass
+	
+func hide_DeleteBox() -> void:
+	self.DeleteBox.hide()
+	pass
+	
+func highlight_DeleteBox(highlight : bool) -> void:
+	self.DeleteBox.get_node("ColorRect").color = Color(255, 255, 255) if highlight else Color(255, 0, 0)
+	pass
+	
+func on_Module_drag(module : Module) -> void:
+	self.hide_All()
+	self.show_DeleteBox()
+	pass
+	
+func on_Module_drop(module : Module) -> void:
+	self.hide_DeleteBox()
+	if self.DeleteBox.is_Position_inside(self.get_viewport().get_mouse_position()) :
+		self.emit_signal("on_ModuleDelete_drop", module)
+	pass
+	
+func is_Module_dragging(module : Module) -> void:
+	self.highlight_DeleteBox(self.DeleteBox.is_Position_inside(self.get_viewport().get_mouse_position()))
+	pass

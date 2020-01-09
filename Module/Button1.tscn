@@ -2,9 +2,10 @@
 
 [ext_resource path="res://Module/ModuleScript/Button1.gd" type="Script" id=1]
 [ext_resource path="res://Pin/Pin.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Assets/Button.png" type="Texture" id=3]
+[ext_resource path="res://Assets/ModuleBackground/Button.png" type="Texture" id=3]
 [ext_resource path="res://Assets/Button/SingleButton.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Assets/LED/SingleLED.tscn" type="PackedScene" id=5]
+
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 16, 16 )

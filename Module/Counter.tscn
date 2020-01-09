@@ -2,7 +2,8 @@
 
 [ext_resource path="res://Module/ModuleScript/Counter.gd" type="Script" id=1]
 [ext_resource path="res://Pin/Pin.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Assets/Counter.png" type="Texture" id=3]
+[ext_resource path="res://Assets/ModuleBackground/Counter.png" type="Texture" id=3]
+
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 40, 24 )

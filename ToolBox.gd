@@ -12,7 +12,8 @@ signal on_hide
 func _ready():
 	set_process(false)
 	set_physics_process(false)
-	self.rect_position = self.HidePosition
+	if not self.Pinned :
+		self.rect_position = self.HidePosition
 	pass
 
 func is_Position_inside(position : Vector2) -> bool :
@@ -26,19 +27,19 @@ func is_Area_inside(rect2 : Rect2) -> bool:
 	pass
 
 func show() -> void:
-	if self.IsShow :
+	if self.IsShow or self.Pinned :
 		return
 	$Tween.stop_all()
-	$Tween.interpolate_property(self, "rect_position", self.rect_position, self.ShowPosition, Duration, Tween.TRANS_EXPO, Tween.EASE_OUT)
+	$Tween.interpolate_property(self, "rect_position", self.rect_position, Vector2(self.ShowPosition.x, self.rect_position.y), Duration, Tween.TRANS_EXPO, Tween.EASE_OUT)
 	$Tween.start()
 	self.IsShow = true
 	pass
 	
 func hide() -> void:
-	if not self.IsShow :
+	if not self.IsShow or self.Pinned :
 		return
 	$Tween.stop_all()
-	$Tween.interpolate_property(self, "rect_position", self.rect_position, self.HidePosition, Duration, Tween.TRANS_EXPO, Tween.EASE_OUT)
+	$Tween.interpolate_property(self, "rect_position", self.rect_position, Vector2(self.HidePosition.x, self.rect_position.y), Duration, Tween.TRANS_EXPO, Tween.EASE_OUT)
 	$Tween.start()
 	self.IsShow = false
 	pass
