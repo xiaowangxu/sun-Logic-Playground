@@ -5,9 +5,11 @@
 
 [node name="Pin" type="Node2D"]
 script = ExtResource( 1 )
+PinMode = 1
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = ExtResource( 2 )
+frame = 1
 offset = Vector2( 0, -2 )
 
 [node name="Label" type="Label" parent="."]
@@ -17,3 +19,11 @@ margin_top = -18.0
 margin_right = 24.0
 margin_bottom = 13.0
 text = "0"
+
+[node name="Area2D" type="Area2D" parent="."]
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 0, -2 )
+[connection signal="input_event" from="Area2D" to="." method="_on_Area2D_input_event"]

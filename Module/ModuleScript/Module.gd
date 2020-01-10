@@ -25,8 +25,6 @@ func _ready():
 	for pin in self.get_children() :
 		if pin is Pin :
 			self.PinList.append(pin)
-			
-	print(self.PinList)
 	
 	self.get_node("Area2D").monitoring = false
 	self.get_node("Area2D").monitorable = false
@@ -34,6 +32,8 @@ func _ready():
 	self.connect("on_drag", get_node("/root/Playground/CanvasLayer"), "on_Module_drag")
 	self.connect("on_drop", get_node("/root/Playground/CanvasLayer"), "on_Module_drop")
 	self.connect("is_dragging", get_node("/root/Playground/CanvasLayer"), "is_Module_dragging")
+	self.connect("is_dragging", self, "is_Module_dragging")
+	self.connect("on_drop", self, "on_Module_drop")
 
 	if DragArea != null && DragArea is Area2D :
 		DragArea.connect("input_event", self, "DragArea_InputEvent")
@@ -44,7 +44,8 @@ func Update() -> void:
 	pass
 
 func drop() -> void:
-	self.remove_from_group("dragging_module")
+	if self.is_in_group("dragging_module") :
+		self.remove_from_group("dragging_module")
 	self.LastPosition = Vector2.ZERO
 	self.IsDragging = false
 	self.LastDragState = false
@@ -124,3 +125,23 @@ func _unhandled_input(event):
 		self.emit_signal("is_dragging", self)
 		
 	pass
+
+func is_Module_dragging(module : Module) -> void:
+	for pin in self.PinList :
+		for line in pin.LineList :
+			line.move_Visual()
+	pass
+
+func on_Module_drop(module : Module) -> void:
+	self.position.x = round((self.position.x - (self.GridSize + self.ShiftPosition.x) / 2.0) / self.GridSize) * self.GridSize + self.ShiftPosition.x
+	self.position.y = round((self.position.y - (self.GridSize + self.ShiftPosition.y) / 2.0) / self.GridSize) * self.GridSize + self.ShiftPosition.y
+	self.is_Module_dragging(self)
+	
+	
+	
+	
+	
+	
+	
+	
+	

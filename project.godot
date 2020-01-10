@@ -9,7 +9,7 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Node",
+"base": "Node2D",
 "class": "Line",
 "language": "GDScript",
 "path": "res://Connection/Line.gd"
@@ -34,8 +34,6 @@ _global_script_class_icons={
 
 config/name="sun Logic Playground"
 run/main_scene="res://Playground.tscn"
-run/disable_stdout=true
-run/disable_stderr=true
 boot_splash/image="res://SLP.png"
 boot_splash/fullsize=false
 boot_splash/bg_color=Color( 0.490196, 0.490196, 0.490196, 1 )

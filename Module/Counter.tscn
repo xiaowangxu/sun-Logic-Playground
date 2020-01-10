@@ -4,7 +4,6 @@
 [ext_resource path="res://Pin/Pin.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/ModuleBackground/Counter.png" type="Texture" id=3]
 
-
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 40, 24 )
 
@@ -15,16 +14,15 @@ PinBoarder = 12
 [node name="Pin" parent="." instance=ExtResource( 2 )]
 position = Vector2( 80, 24 )
 rotation = 1.5708
+PinMode = 0
 
 [node name="Pin2" parent="." instance=ExtResource( 2 )]
 position = Vector2( 0, 12 )
 rotation = -1.5708
-PinMode = 1
 
 [node name="Pin3" parent="." instance=ExtResource( 2 )]
 position = Vector2( 0, 36 )
 rotation = -1.5708
-PinMode = 1
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 3 )

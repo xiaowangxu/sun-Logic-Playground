@@ -15,6 +15,7 @@ PinBoarder = 4
 [node name="Pin_Number" parent="." instance=ExtResource( 2 )]
 position = Vector2( 0, 32 )
 rotation = -1.5708
+PinMode = 0
 
 [node name="DigitalNumberScreen4" type="Sprite" parent="."]
 editor/display_folded = true
