@@ -5,6 +5,7 @@ export(NodePath) var DeleteBoxNodePath : NodePath
 onready var DeleteBox = get_node(DeleteBoxNodePath)
 
 signal on_ModuleDelete_drop(module)
+signal on_LineDelete_drop(line)
 
 func hide_All() -> void :
 	for boxnodepath in BoxArray :
@@ -34,6 +35,19 @@ func on_Module_drop(module : Module) -> void:
 	self.hide_DeleteBox()
 	if self.DeleteBox.is_Position_inside(self.get_viewport().get_mouse_position()) :
 		self.emit_signal("on_ModuleDelete_drop", module)
+	pass
+	
+func on_Line_drag(line : Line) -> void:
+	self.hide_All()
+	self.show_DeleteBox()
+	pass
+	
+func on_Line_drop(line : Line) -> void:
+	self.hide_DeleteBox()
+	if self.DeleteBox.is_Position_inside(self.get_viewport().get_mouse_position()) :
+		self.emit_signal("on_LineDelete_drop", line)
+	else :
+		line.on_Drop(line)
 	pass
 	
 func is_Module_dragging(module : Module) -> void:

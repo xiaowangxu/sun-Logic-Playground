@@ -1,6 +1,7 @@
 extends NinePatchRect
 
 export(bool) var Pinned : bool = false
+export(bool) var hasTab : bool = true
 export(Vector2) var ShowPosition : Vector2 = Vector2(4,4)
 export(Vector2) var HidePosition : Vector2 = Vector2(-300,4)
 export(float) var Duration : float = 0.2
@@ -17,13 +18,17 @@ func _ready():
 	pass
 
 func is_Position_inside(position : Vector2) -> bool :
-	var rect : Rect2 = Rect2(self.rect_position, self.rect_size)
-	return rect.has_point(position)
+	if self.hasTab :
+		return self.get_global_rect().has_point(position) or $Tab.get_global_rect().has_point(position)
+	else :
+		return self.get_global_rect().has_point(position)
 	pass
 	
 func is_Area_inside(rect2 : Rect2) -> bool:
-	var rect : Rect2 = Rect2(self.rect_position, self.rect_size)
-	return rect.encloses(rect2)
+	if self.hasTab :
+		return self.get_global_rect().encloses(rect2) or $Tab.get_global_rect().encloses(rect2)
+	else :
+		return self.get_global_rect().encloses(rect2)
 	pass
 
 func show() -> void:

@@ -13,6 +13,9 @@ func _ready():
 	pass
 
 func on_ButtonAdd_clicked(modulepackedscene : PackedScene, mouseposition : Vector2):
+	if not GlobalData.ToolMode=="Move" or GlobalData.ConnectLineState :
+		return
+	
 	self.MousePosition = mouseposition
 	
 	self.NewModule = modulepackedscene.instance()
@@ -42,6 +45,7 @@ func _input(event):
 			self.emit_signal("on_NewModule_drop", self.get_children())
 		else :
 			for module in self.get_children() :
+				self.remove_child(module)
 				module.queue_free()
 		
 	

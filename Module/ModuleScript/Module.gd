@@ -9,6 +9,7 @@ var LastPosition : Vector2 = Vector2.ZERO
 var LastDragState : bool = false
 var IsDragging : bool = false
 export(bool) var DragEnable : bool = true
+export(bool) var ClickEnable : bool = true
 export(Vector2) var ShiftPosition : Vector2 = Vector2.ZERO
 export(int, FLAGS, "Up", "Down", "Left", "Right") var PinBoarder : int = 0
 
@@ -17,10 +18,13 @@ var PinList : Array = []
 signal on_drag(module)
 signal is_dragging(module)
 signal on_drop(module)
+signal on_doubleclick(module)
 
 func _ready():
 	set_process(false)
 	set_physics_process(false)
+	
+	self.add_to_group("Module")
 	
 	for pin in self.get_children() :
 		if pin is Pin :
@@ -71,6 +75,10 @@ func get_Rect2() -> Rect2 :
 	return rect
 
 func DragArea_InputEvent(viewport : Node, event : InputEvent, shape : int) -> void:
+	if self.ClickEnable and event is InputEventMouseButton and event.doubleclick and event.button_index == BUTTON_LEFT:
+		self.emit_signal("on_doubleclick", self)
+		return
+
 	if self.DragEnable and event.is_action_pressed("mouse_left") :
 		if get_tree().get_nodes_in_group("dragging_module").size() == 0 :
 			self.add_to_group("dragging_module")
@@ -78,7 +86,7 @@ func DragArea_InputEvent(viewport : Node, event : InputEvent, shape : int) -> vo
 			self.IsDragging = true
 		else :
 			var module = get_tree().get_nodes_in_group("dragging_module")[0]
-			if module.get_index() <= self.get_index() :
+			if module.is_in_group("Module") and module.get_index() <= self.get_index() :
 				module.IsDragging = false
 				module.remove_from_group("dragging_module")
 				self.add_to_group("dragging_module")

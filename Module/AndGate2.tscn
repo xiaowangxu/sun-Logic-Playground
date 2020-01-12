@@ -5,7 +5,6 @@
 [ext_resource path="res://Assets/ModuleBackground/AndGate2.png" type="Texture" id=3]
 [ext_resource path="res://Assets/LED/SingleLED.tscn" type="PackedScene" id=4]
 
-
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 16, 24 )
 
@@ -15,16 +14,13 @@ PinBoarder = 3
 
 [node name="Pin_A" parent="." instance=ExtResource( 2 )]
 position = Vector2( 8, 0 )
-PinMode = 1
 
 [node name="Pin_B" parent="." instance=ExtResource( 2 )]
 position = Vector2( 24, 0 )
-PinMode = 1
 
 [node name="Pin_R" parent="." instance=ExtResource( 2 )]
 position = Vector2( 16, 48 )
 rotation = 3.14159
-PinMode = 1
 
 [node name="AndGate2BG" type="Sprite" parent="."]
 texture = ExtResource( 3 )

@@ -1,15 +1,33 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Connection/Line.gd" type="Script" id=1]
+[ext_resource path="res://Connection/Line-defaul.png" type="Texture" id=2]
+[ext_resource path="res://Connection/Line-fouse.png" type="Texture" id=3]
 
-[node name="Line" type="Node2D"]
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
+"loop": false,
+"name": "default",
+"speed": 0.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+
+[node name="Line" type="Node2D" groups=[
+"Line",
+]]
 script = ExtResource( 1 )
 
-[node name="ColorRect" type="ColorRect" parent="."]
-margin_left = -1.0
-margin_top = -1.0
-margin_right = 1.0
-margin_bottom = 1.0
-color = Color( 0.286275, 0.678431, 0.913725, 1 )
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+self_modulate = Color( 1, 1, 1, 0.533333 )
+z_index = 3
+frames = SubResource( 1 )
+
+[node name="Area2D" type="Area2D" parent="AnimatedSprite"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite/Area2D"]
+shape = SubResource( 2 )
 
 [node name="LineHelper" type="Node2D" parent="."]
+[connection signal="input_event" from="AnimatedSprite/Area2D" to="." method="DragArea_InputEvent"]

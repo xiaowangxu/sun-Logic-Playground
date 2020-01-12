@@ -24,10 +24,19 @@ func add_Line(newline) -> void :
 		self.ConnectionList.append(newline)
 	pass
 
-
 func delete_Module(module) -> void :
+	for pin in module.PinList :
+		for line in pin.LineList :
+			line.disconnect_Pin(pin)
 	if self.ModuleList.has(module) :
 		self.ModuleList.erase(module)
+	pass
+	
+func delete_Line(line) -> void :
+	for pin in line.PinList :
+		pin.disconnect_Line(line)
+	if self.ConnectionList.has(line) :
+		self.ConnectionList.erase(line)
 	pass
 
 func arrange_Module() -> void :
@@ -50,7 +59,9 @@ func _ready():
 	pass
 
 func _process(delta : float) -> void:
-	#if Input.is_action_just_pressed("ui_accept"):
+	if Input.is_action_just_pressed("ui_cancel"):
+		self.exit_ConnectLine()
+	#if GlobalData.ToolMode == "Run" :
 	update_Playground()
 	pass
 
@@ -71,81 +82,157 @@ func _on_NewModuleLayer_on_NewModule_drop(newmodulelist):
 		parent.move_child(newmodule, 0)
 		parent.move_child(newmodule, parent.get_child_count())
 		newmodule.DragEnable = true
+		newmodule.on_Module_drop(newmodule)
 		self.add_Module(newmodule)
 	pass
 
 func _on_CanvasLayer_on_ModuleDelete_drop(module):
+	$ModuleLayer.remove_child(module)
 	self.delete_Module(module)
 	module.queue_free()
 	pass
 
-func refresh_ToolMode() -> void:
-	if GlobalData.ToolMode == "Connect" :
-		for module in self.ModuleList :
-			module.drop()
-			module.DragEnable = false
-			for pin in module.PinList :
-				pin.ClickEnable = true
-	elif GlobalData.ToolMode == "Move" :
-		for module in self.ModuleList :
-			module.DragEnable = true
-			for pin in module.PinList :
-				pin.ClickEnable = false
-	pass
+func set_Module_Enable(clickable : bool, dragable : bool, pinclickable : bool = true) -> void:
+	for module in self.ModuleList :
+		if not dragable:	module.drop()
+		module.DragEnable = dragable
+		module.ClickEnable = clickable
+		for pin in module.PinList :
+			pin.ClickEnable = pinclickable
 
-func _on_ButtonConnect_toggled(button_pressed):
-	if button_pressed :
-		GlobalData.ToolMode = "Connect"
-	self.refresh_ToolMode()
+func set_Line_Enable(clickable : bool, dragable : bool) -> void:
+	for line in self.ConnectionList :
+		if not dragable:	line.drop()
+		line.DragEnable = dragable
+		line.ClickEnable = clickable
+
+func refresh_ToolMode() -> void:
+	if GlobalData.ToolMode == "Move" :
+		self.set_Module_Enable(true, true, false)
+		self.set_Line_Enable(true, true)
+		$CanvasLayer/ToolBox/Tab/ButtonConnect.disabled = false
+		for line in self.ConnectionList :
+			line.set_Logo(0, true)
+			line.set_Line(true)
+	elif GlobalData.ToolMode == "Run" :
+		self.set_Module_Enable(false, false, false)
+		self.set_Line_Enable(false, false)
+		$CanvasLayer/ToolBox/Tab/ButtonConnect.disabled = true
+		for line in self.ConnectionList :
+			line.set_Logo(0, false)
+			line.set_Line(true)
 	pass
 
 func _on_ButtonMove_toggled(button_pressed):
 	if button_pressed :
 		GlobalData.ToolMode = "Move"
-	self.refresh_ToolMode()
+		self.refresh_ToolMode()
 	pass
 
-
-# Connect Pins
-var connectionhelper : Line2D = null
-var startpin : Pin = null
-var endpin : Pin = null
-
-func _on_Pin_on_MouseLeft_click(pin : Pin):
-	print("_on_Pin_on_MouseLeft_click ", pin)
-	if GlobalData.ToolMode == "Connect" and startpin == null :
-		startpin = pin
-		if connectionhelper != null :
-			self.remove_child(connectionhelper)
-		connectionhelper = Line2D.new()
-		self.add_child(connectionhelper)
-		connectionhelper.default_color = Color8(0, 255, 0)
-		connectionhelper.width = 2
-		connectionhelper.begin_cap_mode = Line2D.LINE_CAP_ROUND
-		connectionhelper.end_cap_mode = Line2D.LINE_CAP_ROUND
-		connectionhelper.add_point(pin.to_global(self.position))
-		connectionhelper.add_point(self.get_local_mouse_position())
+func _on_ButtonRun_toggled(button_pressed):
+	if button_pressed :
+		$CanvasLayer.hide_All()
+		GlobalData.ToolMode = "Run"
+		self.refresh_ToolMode()
 	pass
 
-func _unhandled_input(event : InputEvent):
-	if GlobalData.ToolMode == "Connect" and connectionhelper != null and event is InputEventMouseMotion:
-		connectionhelper.set_point_position(1, self.get_local_mouse_position())
+func _on_NewLineLayer_on_NewLine_drop(newlinelist):
+	for newline in newlinelist :
+		newline.get_parent().remove_child(newline)
+		newline.position = (newline.position - self.get_viewport_rect().size / 2) * GlobalData.CameraZoom + $Camera2D.position
+		$ConnectionLine.add_child(newline)
+		var parent : Node = newline.get_parent()
+		parent.move_child(newline, 0)
+		parent.move_child(newline, parent.get_child_count())
+		newline.DragEnable = true
+		newline.on_Drop(newline)
+		newline.set_process(true)
+		self.add_Line(newline)
+	pass # Replace with function body.
 
-func _on_Pin_on_MouseLeft_release(pin : Pin):
-	if GlobalData.ToolMode == "Connect" and startpin != null and startpin != endpin:
-		endpin = pin
-		if startpin.PinMode == endpin.PinMode :
-			var line : Line = self.Line.instance()
-			line.position = (startpin.to_global(self.position) + endpin.to_global(self.position)) / 2
-			line.LineMode = startpin.PinMode
-			$ConnectionLine.add_child(line)
-			self.add_Line(line)
-			self.connect_LineModule(startpin, endpin, line)
-	if connectionhelper != null :
-		connectionhelper.queue_free()
-		connectionhelper = null
-	if startpin != null :
-		 startpin = null
-	if endpin != null :
-		endpin = null
-	pass
+func _on_CanvasLayer_on_LineDelete_drop(line):
+	$ConnectionLine.remove_child(line)
+	self.delete_Line(line)
+	line.queue_free()
+	pass # Replace with function body.
+
+####################################
+#          connect Line            #
+####################################
+
+func ready_ConnectLine(line) -> void:
+	if not GlobalData.ConnectLineState :
+		$CanvasLayer/ToolBox/Tab/ButtonRun.disabled = true
+		$CanvasLayer/ToolBox/Tab/ButtonMove.disabled = true
+		$CanvasLayer/ToolBox/Tab/ButtonConnect.disabled = true
+		$CanvasLayer.hide_All()
+		for line in self.ConnectionList :
+			line.set_Logo(0, false)
+			line.set_Line(false)
+			line.set_Edit(false)
+		GlobalData.CurrentLine = line
+		GlobalData.ConnectLineState = true
+		
+		GlobalData.CurrentLine.set_Logo(1, true)
+		GlobalData.CurrentLine.set_Line(true)
+		GlobalData.CurrentLine.set_Edit(true)
+		
+		GlobalData.CurrentLine.get_node("AnimatedSprite").frame = 1
+		self.set_Module_Enable(false, false, true)
+		self.set_Line_Enable(false, false)
+		
+func exit_ConnectLine() -> void:
+	if GlobalData.ConnectLineState :
+		for line in self.ConnectionList :
+			line.set_Logo(0, true)
+			line.set_Line(true)
+			line.set_Edit(false)
+		GlobalData.CurrentLine.get_node("AnimatedSprite").frame = 0
+		GlobalData.ConnectLineState = false
+		GlobalData.CurrentLine = null
+		$CanvasLayer/ToolBox/Tab/ButtonRun.disabled = false
+		$CanvasLayer/ToolBox/Tab/ButtonMove.disabled = false
+		$CanvasLayer/ToolBox/Tab/ButtonConnect.disabled = false
+		self.set_Module_Enable(true, true, false)
+		self.set_Line_Enable(true, true)
+
+func _input(event) -> void:
+	if GlobalData.ConnectLineState and event is InputEventMouseButton and event.is_action_pressed("mouse_right") :
+		self.exit_ConnectLine()
+
+func _on_Pin_on_doubleclick(pin : Pin) -> void:
+	if GlobalData.ConnectLineState :
+		GlobalData.CurrentLine.set_Edit(false)
+		if GlobalData.CurrentLine.PinList.size() == 0 :
+			GlobalData.CurrentLine.LineMode = pin.PinMode
+		if GlobalData.CurrentLine.has_Pin(pin) :
+			GlobalData.CurrentLine.disconnect_Pin(pin)
+			pin.disconnect_Line(GlobalData.CurrentLine)
+		else :
+			GlobalData.CurrentLine.connect_Pin(pin)
+			pin.connect_Line(GlobalData.CurrentLine)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

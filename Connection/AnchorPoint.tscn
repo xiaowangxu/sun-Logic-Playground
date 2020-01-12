@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Connection/Point-add.png" type="Texture" id=1]
+[ext_resource path="res://Connection/Point-anchor.png" type="Texture" id=2]
+[ext_resource path="res://Connection/AnchorPoint.gd" type="Script" id=3]
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 1 ), ExtResource( 2 ) ],
+"loop": false,
+"name": "default",
+"speed": 0.0
+} ]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 4.0
+
+[node name="AnimatedSprite" type="AnimatedSprite" groups=[
+"Point",
+]]
+z_index = 4
+frames = SubResource( 2 )
+script = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 1 )
+[connection signal="input_event" from="Area2D" to="." method="DragArea_InputEvent"]
