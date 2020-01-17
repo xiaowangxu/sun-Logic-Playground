@@ -111,6 +111,8 @@ func refresh_ToolMode() -> void:
 		self.set_Module_Enable(true, true, false)
 		self.set_Line_Enable(true, true)
 		$CanvasLayer/ToolBox/Tab/ButtonConnect.disabled = false
+		$CanvasLayer/SaveLoadBox/ButtonLoad.disabled = false
+		$CanvasLayer/SaveLoadBox/ButtonSave.disabled = false
 		for line in self.ConnectionList :
 			line.set_Logo(0, true)
 			line.set_Line(true)
@@ -118,6 +120,8 @@ func refresh_ToolMode() -> void:
 		self.set_Module_Enable(false, false, false)
 		self.set_Line_Enable(false, false)
 		$CanvasLayer/ToolBox/Tab/ButtonConnect.disabled = true
+		$CanvasLayer/SaveLoadBox/ButtonLoad.disabled = true
+		$CanvasLayer/SaveLoadBox/ButtonSave.disabled = true
 		for line in self.ConnectionList :
 			line.set_Logo(0, false)
 			line.set_Line(true)
@@ -206,7 +210,7 @@ func _on_Pin_on_MouseLeft_click(pin : Pin) -> void:
 		if GlobalData.CurrentLine.PinList.size() == 0 :
 			GlobalData.CurrentLine.LineMode = pin.PinMode
 		if !GlobalData.CurrentLine.has_Pin(pin) :
-			GlobalData.CurrentLine.connect_Pin(pin)
+			GlobalData.CurrentLine.connect_Pin(pin, true)
 			pin.connect_Line(GlobalData.CurrentLine)
 		else :
 			GlobalData.CurrentLine.set_Line_Edit(pin, true)
@@ -258,20 +262,76 @@ func save_Playground() -> void:
 	for line in self.ConnectionList :
 		LineSaveList.append(line.save_Line())
 	
-	var filesaver : File = File.new()
-	filesaver.open("user://save.slp", File.WRITE)
-	filesaver.store_line(to_json({"ModuleList": ModuleSaveList, "LineList": LineSaveList}))
-	filesaver.close()
+	self.Data = {"ModuleCount": self.ModuleList.size(), "ModuleList": ModuleSaveList, "LineList": LineSaveList}
+	self.datastring = to_json(self.Data)
 
-func load_Playground() -> void:
+func load_Playground(path : String) -> void:
 	var fileloader : File = File.new()
-	if fileloader.file_exists("user://save.slp") :
-		fileloader.open("user://save.slp", File.READ)
-		datastring = fileloader.get_line()
-		Data = parse_json(datastring)
+	if fileloader.file_exists(path) :
+		fileloader.open(path, File.READ)
+		self.datastring = fileloader.get_line()
+		self.Data = parse_json(self.datastring)
+		
+		var ModuleList : Array = []
+		ModuleList.resize(Data["ModuleCount"])
 		
 		for moduledata in Data["ModuleList"] :
 			print(str(moduledata))
+			if GlobalData.ModuleInstance.has(moduledata["Module"]) :
+				var module : Module = GlobalData.ModuleInstance[moduledata["Module"]].instance()
+				module.load_Module(moduledata["SaveData"])
+				ModuleList[moduledata["SaveID"]] = module
+				$ModuleLayer.add_child(module)
+				module.position = Vector2(moduledata["Position"][0], moduledata["Position"][1])
+				var parent : Node = module.get_parent()
+				parent.move_child(module, 0)
+				parent.move_child(module, parent.get_child_count())
+				module.DragEnable = true
+				module.on_Module_drop(module)
+				self.add_Module(module)
+				print(ModuleList)
+		
+		for linedata in Data["LineList"] :
+			print(linedata)
+			var line : Line = GlobalData.LineInstance.instance()
+			$ConnectionLine.add_child(line)
+			line.position = Vector2(linedata["Position"][0], linedata["Position"][1])
+			line.LineMode = linedata["LineMode"] as int
+			var parent : Node = line.get_parent()
+			parent.move_child(line, 0)
+			parent.move_child(line, parent.get_child_count())
+			line.DragEnable = true
+			line.on_Drop(line)
+			line.set_process(true)
+			self.add_Line(line)
+			for pindata in linedata["PinList"] :
+				var pin : Pin = ModuleList[pindata["ModuleSaveID"]].get_node(pindata["PinName"])
+				line.connect_Pin(pin)
+				pin.connect_Line(line)
 		
 		fileloader.close()
 	pass
+
+func _on_ButtonSave_pressed():
+	$CanvasLayer/FileDialogSave.popup()
+	pass # Replace with function body.
+
+func _on_FileDialogSave_file_selected(path):
+	self.save_Playground()
+	var filesaver : File = File.new()
+	filesaver.open(path, File.WRITE)
+	filesaver.store_line(self.datastring)
+	filesaver.close()
+	pass # Replace with function body.
+
+
+func _on_ButtonLoad_pressed():
+	$CanvasLayer/FileDialogLoad.popup()
+	pass # Replace with function body.
+
+
+func _on_FileDialogLoad_file_selected(path):
+	self.clear_Playground()
+	self.load_Playground(path)
+	$CanvasLayer.hide_All()
+	pass # Replace with function body.

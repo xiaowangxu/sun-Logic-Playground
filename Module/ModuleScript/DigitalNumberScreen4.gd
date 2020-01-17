@@ -40,3 +40,9 @@ func _on_DigitalNumberScreen4_on_drop():
 	self.position.x = round((self.position.x - (self.GridSize + self.ShiftPosition.x) / 2.0) / self.GridSize) * self.GridSize + self.ShiftPosition.x
 	self.position.y = round((self.position.y - (self.GridSize + self.ShiftPosition.y) / 2.0) / self.GridSize) * self.GridSize + self.ShiftPosition.y
 	pass
+	
+func save_Module() -> Dictionary:
+	return {"SaveID": self.SaveID, "Module": "DigitalNumberScreen4", "Position": [self.position.x, self.position.y], "SaveData": {}}
+	
+func load_Module(data : Dictionary) -> void:
+	pass

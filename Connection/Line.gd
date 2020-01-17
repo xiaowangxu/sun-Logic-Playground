@@ -22,7 +22,7 @@ signal is_dragging(line)
 signal on_drop(line)
 signal on_doubleclick(line)
 
-func connect_Pin(pin) -> void:
+func connect_Pin(pin : Pin, edit : bool = false, points : PoolVector2Array = []) -> void:
 	if pin.PinMode==LineMode && !PinList.has(pin):
 		PinList.append(pin)
 		var linehelper = LineHelper.instance()
@@ -35,7 +35,8 @@ func connect_Pin(pin) -> void:
 		linehelper.joint_mode = Line2D.LINE_JOINT_ROUND
 		linehelper.add_point(Vector2.ZERO)
 		linehelper.add_point(self.to_local(linehelper.target.to_global(self.get_node("/root/Playground").position)))
-		linehelper.start_Edit()
+		if edit :
+			linehelper.start_Edit()
 	pass
 
 func disconnect_Pin(pin) -> void:

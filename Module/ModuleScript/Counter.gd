@@ -4,7 +4,7 @@ var Count : int = 0
 
 func Update() -> void:
 	Count += 1
-	Count %= 256
+	Count %= 10000
 	$Pin.set_Data(Count)
 	pass
 	
@@ -13,5 +13,5 @@ func save_Module() -> Dictionary:
 	
 func load_Module(data : Dictionary) -> void:
 	if data.has("Count") :
-		self.Count = data["Count"]
+		self.Count = data["Count"] as int
 	pass
