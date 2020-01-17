@@ -204,3 +204,20 @@ func set_Edit(edit : bool) -> void:
 	else :
 		for line in $LineHelper.get_children() :
 			line.exit_Edit()
+
+func set_Line_Edit(pin : Pin, edit : bool) -> void:
+	self.set_Edit(false)
+	if self.has_Pin(pin) :
+		for line in $LineHelper.get_children() :
+			if line.target == pin :
+				line.start_Edit()
+				return
+	pass
+	
+func save_Line() -> Dictionary:
+	var PinList : Array = []
+	for pin in self.PinList :
+		var ModuleSaveID : int = pin.get_parent().SaveID
+		PinList.append({"ModuleSaveID": ModuleSaveID, "PinName": pin.name})
+	var data : Dictionary = {"LineMode": self.LineMode, "Position": [self.position.x, self.position.y], "PinList": PinList}
+	return data

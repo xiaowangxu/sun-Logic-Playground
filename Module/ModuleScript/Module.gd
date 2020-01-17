@@ -15,6 +15,8 @@ export(int, FLAGS, "Up", "Down", "Left", "Right") var PinBoarder : int = 0
 
 var PinList : Array = []
 
+var SaveID : int = -1
+
 signal on_drag(module)
 signal is_dragging(module)
 signal on_drop(module)
@@ -145,11 +147,8 @@ func on_Module_drop(module : Module) -> void:
 	self.position.y = round((self.position.y - (self.GridSize + self.ShiftPosition.y) / 2.0) / self.GridSize) * self.GridSize + self.ShiftPosition.y
 	self.is_Module_dragging(self)
 	
+func save_Module() -> Dictionary :
+	return {}
 	
-	
-	
-	
-	
-	
-	
-	
+func load_Module(data : Dictionary) -> void:
+	return 

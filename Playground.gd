@@ -175,7 +175,6 @@ func ready_ConnectLine(line) -> void:
 		
 		GlobalData.CurrentLine.set_Logo(1, true)
 		GlobalData.CurrentLine.set_Line(true)
-		GlobalData.CurrentLine.set_Edit(true)
 		
 		GlobalData.CurrentLine.get_node("AnimatedSprite").frame = 1
 		self.set_Module_Enable(false, false, true)
@@ -200,39 +199,79 @@ func _input(event) -> void:
 	if GlobalData.ConnectLineState and event is InputEventMouseButton and event.is_action_pressed("mouse_right") :
 		self.exit_ConnectLine()
 
-func _on_Pin_on_doubleclick(pin : Pin) -> void:
+func _on_Pin_on_MouseLeft_click(pin : Pin) -> void:
+	print("Pin Clicked")
 	if GlobalData.ConnectLineState :
 		GlobalData.CurrentLine.set_Edit(false)
 		if GlobalData.CurrentLine.PinList.size() == 0 :
 			GlobalData.CurrentLine.LineMode = pin.PinMode
+		if !GlobalData.CurrentLine.has_Pin(pin) :
+			GlobalData.CurrentLine.connect_Pin(pin)
+			pin.connect_Line(GlobalData.CurrentLine)
+		else :
+			GlobalData.CurrentLine.set_Line_Edit(pin, true)
+	pass
+
+func _on_Pin_on_doubleclick(pin : Pin) -> void:
+	if GlobalData.ConnectLineState :
+		GlobalData.CurrentLine.set_Edit(false)
 		if GlobalData.CurrentLine.has_Pin(pin) :
 			GlobalData.CurrentLine.disconnect_Pin(pin)
 			pin.disconnect_Line(GlobalData.CurrentLine)
-		else :
-			GlobalData.CurrentLine.connect_Pin(pin)
-			pin.connect_Line(GlobalData.CurrentLine)
+	pass
 
+####################################
+#           save & load            #
+####################################
+func clear_Playground():
+	var ModuleList : Array
+	ModuleList = self.ModuleList.duplicate()
+	for module in ModuleList :
+		self.delete_Module(module)
+		var parent = module.get_parent()
+		parent.remove_child(module)
+		module.queue_free()
+	var LineList : Array
+	LineList = self.ConnectionList.duplicate()
+	for line in LineList :
+		self.delete_Line(line)
+		var parent = line.get_parent()
+		parent.remove_child(line)
+		line.queue_free()
+	pass
+	
+func _on_ButtonClear_pressed():
+	self.save_Playground()
 
+var datastring : String = ""
+var Data = null
 
+func save_Playground() -> void:
+	var ModuleSaveList : Array = []
+	var idx : int = 0
+	for module in self.ModuleList :
+		module.SaveID = idx
+		idx += 1
+		ModuleSaveList.append(module.save_Module())
+	
+	var LineSaveList : Array = []
+	for line in self.ConnectionList :
+		LineSaveList.append(line.save_Line())
+	
+	var filesaver : File = File.new()
+	filesaver.open("user://save.slp", File.WRITE)
+	filesaver.store_line(to_json({"ModuleList": ModuleSaveList, "LineList": LineSaveList}))
+	filesaver.close()
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+func load_Playground() -> void:
+	var fileloader : File = File.new()
+	if fileloader.file_exists("user://save.slp") :
+		fileloader.open("user://save.slp", File.READ)
+		datastring = fileloader.get_line()
+		Data = parse_json(datastring)
+		
+		for moduledata in Data["ModuleList"] :
+			print(str(moduledata))
+		
+		fileloader.close()
+	pass
