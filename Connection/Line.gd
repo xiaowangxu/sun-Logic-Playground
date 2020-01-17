@@ -22,7 +22,7 @@ signal is_dragging(line)
 signal on_drop(line)
 signal on_doubleclick(line)
 
-func connect_Pin(pin : Pin, edit : bool = false, points : PoolVector2Array = []) -> void:
+func connect_Pin(pin : Pin, edit : bool = false, points : Array = []) -> void:
 	if pin.PinMode==LineMode && !PinList.has(pin):
 		PinList.append(pin)
 		var linehelper = LineHelper.instance()
@@ -34,6 +34,9 @@ func connect_Pin(pin : Pin, edit : bool = false, points : PoolVector2Array = [])
 		linehelper.end_cap_mode = Line2D.LINE_CAP_ROUND
 		linehelper.joint_mode = Line2D.LINE_JOINT_ROUND
 		linehelper.add_point(Vector2.ZERO)
+		if !points.empty() :
+			for pointdata in points :
+				linehelper.add_point(Vector2(pointdata[0], pointdata[1]))
 		linehelper.add_point(self.to_local(linehelper.target.to_global(self.get_node("/root/Playground").position)))
 		if edit :
 			linehelper.start_Edit()
@@ -44,7 +47,7 @@ func disconnect_Pin(pin) -> void:
 		PinList.erase(pin)
 		for linehelper in $LineHelper.get_children() :
 			if not PinList.has(linehelper.target) :
-				print("remove ", str(linehelper))
+#				print("remove ", str(linehelper))
 				$LineHelper.remove_child(linehelper)
 				linehelper.queue_free()
 	pass
@@ -218,7 +221,16 @@ func set_Line_Edit(pin : Pin, edit : bool) -> void:
 func save_Line() -> Dictionary:
 	var PinList : Array = []
 	for pin in self.PinList :
+		var linehelper : Line2D = null
+		for line in $LineHelper.get_children() :
+			if line.target == pin :
+				linehelper = line
+		var points : Array = []
+		if linehelper.points.size() > 2 :
+			for idx in range(1, linehelper.points.size()-1) :
+				var point : Vector2 = linehelper.points[idx]
+				points.append([point.x, point.y])
 		var ModuleSaveID : int = pin.get_parent().SaveID
-		PinList.append({"ModuleSaveID": ModuleSaveID, "PinName": pin.name})
+		PinList.append({"ModuleSaveID": ModuleSaveID, "PinName": pin.name, "LinePoints": points})
 	var data : Dictionary = {"LineMode": self.LineMode, "Position": [self.position.x, self.position.y], "PinList": PinList}
 	return data

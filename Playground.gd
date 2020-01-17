@@ -262,7 +262,7 @@ func save_Playground() -> void:
 	for line in self.ConnectionList :
 		LineSaveList.append(line.save_Line())
 	
-	self.Data = {"ModuleCount": self.ModuleList.size(), "ModuleList": ModuleSaveList, "LineList": LineSaveList}
+	self.Data = {"CameraPosition": [$Camera2D.position.x, $Camera2D.position.y], "ModuleCount": self.ModuleList.size(), "ModuleList": ModuleSaveList, "LineList": LineSaveList}
 	self.datastring = to_json(self.Data)
 
 func load_Playground(path : String) -> void:
@@ -272,11 +272,13 @@ func load_Playground(path : String) -> void:
 		self.datastring = fileloader.get_line()
 		self.Data = parse_json(self.datastring)
 		
+		$Camera2D.position = Vector2(Data["CameraPosition"][0], Data["CameraPosition"][1])
+		
 		var ModuleList : Array = []
 		ModuleList.resize(Data["ModuleCount"])
 		
 		for moduledata in Data["ModuleList"] :
-			print(str(moduledata))
+#			print(str(moduledata))
 			if GlobalData.ModuleInstance.has(moduledata["Module"]) :
 				var module : Module = GlobalData.ModuleInstance[moduledata["Module"]].instance()
 				module.load_Module(moduledata["SaveData"])
@@ -289,10 +291,10 @@ func load_Playground(path : String) -> void:
 				module.DragEnable = true
 				module.on_Module_drop(module)
 				self.add_Module(module)
-				print(ModuleList)
+#				print(ModuleList)
 		
 		for linedata in Data["LineList"] :
-			print(linedata)
+#			print(linedata)
 			var line : Line = GlobalData.LineInstance.instance()
 			$ConnectionLine.add_child(line)
 			line.position = Vector2(linedata["Position"][0], linedata["Position"][1])
@@ -306,14 +308,14 @@ func load_Playground(path : String) -> void:
 			self.add_Line(line)
 			for pindata in linedata["PinList"] :
 				var pin : Pin = ModuleList[pindata["ModuleSaveID"]].get_node(pindata["PinName"])
-				line.connect_Pin(pin)
+				line.connect_Pin(pin, false, pindata["LinePoints"])
 				pin.connect_Line(line)
 		
 		fileloader.close()
 	pass
 
 func _on_ButtonSave_pressed():
-	$CanvasLayer/FileDialogSave.popup()
+	$CanvasLayer/FileDialogSave.popup_centered()
 	pass # Replace with function body.
 
 func _on_FileDialogSave_file_selected(path):
@@ -326,7 +328,7 @@ func _on_FileDialogSave_file_selected(path):
 
 
 func _on_ButtonLoad_pressed():
-	$CanvasLayer/FileDialogLoad.popup()
+	$CanvasLayer/FileDialogLoad.popup_centered()
 	pass # Replace with function body.
 
 

@@ -43,6 +43,3 @@ func _on_DigitalNumberScreen4_on_drop():
 	
 func save_Module() -> Dictionary:
 	return {"SaveID": self.SaveID, "Module": "DigitalNumberScreen4", "Position": [self.position.x, self.position.y], "SaveData": {}}
-	
-func load_Module(data : Dictionary) -> void:
-	pass
