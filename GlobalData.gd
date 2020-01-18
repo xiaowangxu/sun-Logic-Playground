@@ -20,6 +20,8 @@ var ModuleInstance : Dictionary = {	"Counter": preload("res://Module/Counter.tsc
 
 var ToolMode : String = "Move"
 
+var RunMode : String = "Stop"
+
 var GridSize : float = 8.0
 
 var ConnectLineState : bool = false

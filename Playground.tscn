@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=2]
+[gd_scene load_steps=63 format=2]
 
 [ext_resource path="res://Playground.gd" type="Script" id=1]
 [ext_resource path="res://Camera2D.gd" type="Script" id=2]
@@ -21,30 +21,46 @@
 [ext_resource path="res://Assets/Panel/Tab-toolbox.png" type="Texture" id=19]
 [ext_resource path="res://Tab.gd" type="Script" id=20]
 [ext_resource path="res://Assets/Button/ToolBoxButtonGroup.tres" type="ButtonGroup" id=21]
-[ext_resource path="res://Assets/Button/Move-default.png" type="Texture" id=22]
-[ext_resource path="res://Assets/Button/Move-fouse.png" type="Texture" id=23]
-[ext_resource path="res://Assets/Button/Move-hover.png" type="Texture" id=24]
-[ext_resource path="res://Assets/Button/Connect-default.png" type="Texture" id=25]
-[ext_resource path="res://Assets/Button/Connect-fouse.png" type="Texture" id=26]
-[ext_resource path="res://Assets/Button/Connect-hover.png" type="Texture" id=27]
-[ext_resource path="res://Theme.tres" type="Theme" id=28]
-[ext_resource path="res://ModuleView.tscn" type="PackedScene" id=29]
-[ext_resource path="res://Module/DigitalNumberScreen4.tscn" type="PackedScene" id=30]
-[ext_resource path="res://Module/Counter.tscn" type="PackedScene" id=31]
-[ext_resource path="res://Module/Adder0.tscn" type="PackedScene" id=32]
-[ext_resource path="res://Module/Adder1.tscn" type="PackedScene" id=33]
-[ext_resource path="res://Module/AndGate2.tscn" type="PackedScene" id=34]
-[ext_resource path="res://Module/OrGate2.tscn" type="PackedScene" id=35]
-[ext_resource path="res://Module/NotGate.tscn" type="PackedScene" id=36]
-[ext_resource path="res://Module/Button1.tscn" type="PackedScene" id=37]
-[ext_resource path="res://Module/Button8.tscn" type="PackedScene" id=38]
-[ext_resource path="res://Module/LED1.tscn" type="PackedScene" id=39]
-[ext_resource path="res://Module/BusEncoder8.tscn" type="PackedScene" id=40]
-[ext_resource path="res://Assets/Panel/Panel-run.png" type="Texture" id=41]
-[ext_resource path="res://Assets/Panel/Logo-run.png" type="Texture" id=42]
-[ext_resource path="res://Assets/Panel/Tab-run.png" type="Texture" id=43]
-[ext_resource path="res://Assets/Panel/Panel-delete.png" type="Texture" id=44]
-[ext_resource path="res://Assets/Panel/Logo-delete.png" type="Texture" id=45]
+[ext_resource path="res://Assets/Button/Run-default.png" type="Texture" id=22]
+[ext_resource path="res://Assets/Button/Run-fouse.png" type="Texture" id=23]
+[ext_resource path="res://Assets/Button/Run-hover.png" type="Texture" id=24]
+[ext_resource path="res://Assets/Button/Move-default.png" type="Texture" id=25]
+[ext_resource path="res://Assets/Button/Move-fouse.png" type="Texture" id=26]
+[ext_resource path="res://Assets/Button/Move-hover.png" type="Texture" id=27]
+[ext_resource path="res://Assets/Button/Connect-default.png" type="Texture" id=28]
+[ext_resource path="res://Assets/Button/Connect-fouse.png" type="Texture" id=29]
+[ext_resource path="res://Assets/Button/Connect-hover.png" type="Texture" id=30]
+[ext_resource path="res://Theme.tres" type="Theme" id=31]
+[ext_resource path="res://ModuleView.tscn" type="PackedScene" id=32]
+[ext_resource path="res://Module/DigitalNumberScreen4.tscn" type="PackedScene" id=33]
+[ext_resource path="res://Module/Counter.tscn" type="PackedScene" id=34]
+[ext_resource path="res://Module/Adder0.tscn" type="PackedScene" id=35]
+[ext_resource path="res://Module/Adder1.tscn" type="PackedScene" id=36]
+[ext_resource path="res://Module/AndGate2.tscn" type="PackedScene" id=37]
+[ext_resource path="res://Module/OrGate2.tscn" type="PackedScene" id=38]
+[ext_resource path="res://Module/NotGate.tscn" type="PackedScene" id=39]
+[ext_resource path="res://Module/Button1.tscn" type="PackedScene" id=40]
+[ext_resource path="res://Module/Button8.tscn" type="PackedScene" id=41]
+[ext_resource path="res://Module/LED1.tscn" type="PackedScene" id=42]
+[ext_resource path="res://Module/BusEncoder8.tscn" type="PackedScene" id=43]
+[ext_resource path="res://Assets/Panel/Panel-run.png" type="Texture" id=44]
+[ext_resource path="res://Assets/Panel/Logo-run.png" type="Texture" id=45]
+[ext_resource path="res://Assets/Panel/Tab-run.png" type="Texture" id=46]
+[ext_resource path="res://Assets/Button/RunBoxButtonGroup.tres" type="ButtonGroup" id=47]
+[ext_resource path="res://Assets/Button/Continue-default.png" type="Texture" id=48]
+[ext_resource path="res://Assets/Button/Continue-fouse.png" type="Texture" id=49]
+[ext_resource path="res://Assets/Button/Continue-hover.png" type="Texture" id=50]
+[ext_resource path="res://Assets/Button/Stop-default.png" type="Texture" id=51]
+[ext_resource path="res://Assets/Button/Stop-fouse.png" type="Texture" id=52]
+[ext_resource path="res://Assets/Button/Stop-hover.png" type="Texture" id=53]
+[ext_resource path="res://Assets/Button/Next-default.png" type="Texture" id=54]
+[ext_resource path="res://Assets/Button/Next-fouse.png" type="Texture" id=55]
+[ext_resource path="res://Assets/Button/Next-hover.png" type="Texture" id=56]
+[ext_resource path="res://Assets/Button/Reset-default.png" type="Texture" id=57]
+[ext_resource path="res://Assets/Button/Reset-fouse.png" type="Texture" id=58]
+[ext_resource path="res://Assets/Button/Reset-hover.png" type="Texture" id=59]
+[ext_resource path="res://Assets/Panel/Panel-delete.png" type="Texture" id=60]
+[ext_resource path="res://Assets/Panel/Logo-delete.png" type="Texture" id=61]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -191,6 +207,7 @@ texture_hover = ExtResource( 16 )
 texture_disabled = ExtResource( 16 )
 
 [node name="ToolBox" type="NinePatchRect" parent="CanvasLayer"]
+editor/display_folded = true
 anchor_bottom = 1.0
 margin_left = -340.0
 margin_top = 4.0
@@ -232,7 +249,6 @@ mouse_filter = 2
 texture = ExtResource( 18 )
 
 [node name="Tab" type="NinePatchRect" parent="CanvasLayer/ToolBox"]
-editor/display_folded = true
 show_behind_parent = true
 margin_left = 327.0
 margin_top = 40.0
@@ -280,10 +296,10 @@ shortcut_in_tooltip = false
 pressed = true
 enabled_focus_mode = 0
 group = ExtResource( 21 )
-texture_normal = ExtResource( 22 )
-texture_pressed = ExtResource( 23 )
-texture_hover = ExtResource( 24 )
-texture_disabled = ExtResource( 24 )
+texture_normal = ExtResource( 25 )
+texture_pressed = ExtResource( 26 )
+texture_hover = ExtResource( 27 )
+texture_disabled = ExtResource( 27 )
 
 [node name="ButtonConnect" type="TextureButton" parent="CanvasLayer/ToolBox/Tab"]
 margin_left = 19.0
@@ -294,18 +310,19 @@ focus_mode = 0
 shortcut_in_tooltip = false
 action_mode = 0
 enabled_focus_mode = 0
-texture_normal = ExtResource( 25 )
-texture_pressed = ExtResource( 26 )
-texture_disabled = ExtResource( 27 )
+texture_normal = ExtResource( 28 )
+texture_pressed = ExtResource( 29 )
+texture_disabled = ExtResource( 30 )
 
 [node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/ToolBox"]
+editor/display_folded = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 23.0
 margin_top = 30.0
 margin_right = -21.0
 margin_bottom = -30.0
-theme = ExtResource( 28 )
+theme = ExtResource( 31 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/ToolBox/ScrollContainer"]
 margin_right = 296.0
@@ -313,20 +330,20 @@ margin_bottom = 42.0
 size_flags_horizontal = 3
 custom_constants/separation = 7
 
-[node name="Control11" parent="CanvasLayer/ToolBox/ScrollContainer/VBoxContainer" instance=ExtResource( 29 )]
+[node name="Control11" parent="CanvasLayer/ToolBox/ScrollContainer/VBoxContainer" instance=ExtResource( 32 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 296.0
-Module = ExtResource( 30 )
+Module = ExtResource( 33 )
 
-[node name="Control12" parent="CanvasLayer/ToolBox/ScrollContainer/VBoxContainer" instance=ExtResource( 29 )]
+[node name="Control12" parent="CanvasLayer/ToolBox/ScrollContainer/VBoxContainer" instance=ExtResource( 32 )]
 editor/display_folded = true
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 7.0
 margin_right = 296.0
 margin_bottom = 7.0
-Module = ExtResource( 31 )
+Module = ExtResource( 34 )
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/ToolBox/ScrollContainer/VBoxContainer"]
 editor/display_folded = true
@@ -335,20 +352,20 @@ margin_right = 296.0
 margin_bottom = 14.0
 size_flags_horizontal = 3
 
-[node name="Control13" parent="CanvasLayer/ToolBox/ScrollContainer/VBoxContainer/HBoxContainer2" instance=ExtResource( 29 )]
+[node name="Control13" parent="CanvasLayer/ToolBox/ScrollContainer/VBoxContainer/HBoxContainer2" instance=ExtResource( 32 )]
 editor/display_folded = true
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 5.0
-Module = ExtResource( 32 )
+Module = ExtResource( 35 )
 
-[node name="Control14" parent="CanvasLayer/ToolBox/ScrollContainer/VBoxContainer/HBoxContainer2" instance=ExtResource( 29 )]
+[node name="Control14" parent="CanvasLayer/ToolBox/ScrollContainer/VBoxContainer/HBoxContainer2" instance=ExtResource( 32 )]
 editor/display_folded = true
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 10.0
 margin_right = 15.0
-Module = ExtResource( 33 )
+Module = ExtResource( 36 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/ToolBox/ScrollContainer/VBoxContainer"]
 editor/display_folded = true
@@ -357,25 +374,25 @@ margin_right = 296.0
 margin_bottom = 21.0
 size_flags_horizontal = 3
 
-[node name="AndGate2" parent="CanvasLayer/ToolBox/ScrollContainer/VBoxContainer/HBoxContainer" instance=ExtResource( 29 )]
+[node name="AndGate2" parent="CanvasLayer/ToolBox/ScrollContainer/VBoxContainer/HBoxContainer" instance=ExtResource( 32 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 5.0
-Module = ExtResource( 34 )
+Module = ExtResource( 37 )
 
-[node name="OrGate2" parent="CanvasLayer/ToolBox/ScrollContainer/VBoxContainer/HBoxContainer" instance=ExtResource( 29 )]
+[node name="OrGate2" parent="CanvasLayer/ToolBox/ScrollContainer/VBoxContainer/HBoxContainer" instance=ExtResource( 32 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 10.0
 margin_right = 15.0
-Module = ExtResource( 35 )
+Module = ExtResource( 38 )
 
-[node name="NotGate" parent="CanvasLayer/ToolBox/ScrollContainer/VBoxContainer/HBoxContainer" instance=ExtResource( 29 )]
+[node name="NotGate" parent="CanvasLayer/ToolBox/ScrollContainer/VBoxContainer/HBoxContainer" instance=ExtResource( 32 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 20.0
 margin_right = 25.0
-Module = ExtResource( 36 )
+Module = ExtResource( 39 )
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="CanvasLayer/ToolBox/ScrollContainer/VBoxContainer"]
 margin_top = 28.0
@@ -383,46 +400,45 @@ margin_right = 296.0
 margin_bottom = 28.0
 size_flags_horizontal = 3
 
-[node name="Control15" parent="CanvasLayer/ToolBox/ScrollContainer/VBoxContainer/HBoxContainer3" instance=ExtResource( 29 )]
+[node name="Control15" parent="CanvasLayer/ToolBox/ScrollContainer/VBoxContainer/HBoxContainer3" instance=ExtResource( 32 )]
 editor/display_folded = true
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 5.0
-Module = ExtResource( 37 )
+Module = ExtResource( 40 )
 
-[node name="Control16" parent="CanvasLayer/ToolBox/ScrollContainer/VBoxContainer/HBoxContainer3" instance=ExtResource( 29 )]
+[node name="Control16" parent="CanvasLayer/ToolBox/ScrollContainer/VBoxContainer/HBoxContainer3" instance=ExtResource( 32 )]
 editor/display_folded = true
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 10.0
 margin_right = 15.0
-Module = ExtResource( 38 )
+Module = ExtResource( 41 )
 
-[node name="Control16" parent="CanvasLayer/ToolBox/ScrollContainer/VBoxContainer" instance=ExtResource( 29 )]
+[node name="Control16" parent="CanvasLayer/ToolBox/ScrollContainer/VBoxContainer" instance=ExtResource( 32 )]
 editor/display_folded = true
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 35.0
 margin_right = 296.0
 margin_bottom = 35.0
-Module = ExtResource( 39 )
+Module = ExtResource( 42 )
 
-[node name="Control17" parent="CanvasLayer/ToolBox/ScrollContainer/VBoxContainer" instance=ExtResource( 29 )]
+[node name="Control17" parent="CanvasLayer/ToolBox/ScrollContainer/VBoxContainer" instance=ExtResource( 32 )]
 editor/display_folded = true
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 42.0
 margin_right = 296.0
 margin_bottom = 42.0
-Module = ExtResource( 40 )
+Module = ExtResource( 43 )
 
 [node name="RunBox" type="NinePatchRect" parent="CanvasLayer"]
-editor/display_folded = true
-margin_left = -155.0
+margin_left = -170.0
 margin_top = 4.0
 margin_bottom = 77.0
 mouse_filter = 0
-texture = ExtResource( 41 )
+texture = ExtResource( 44 )
 region_rect = Rect2( 0, 0, 64, 64 )
 patch_margin_left = 27
 patch_margin_top = 30
@@ -432,7 +448,7 @@ axis_stretch_horizontal = 2
 axis_stretch_vertical = 2
 script = ExtResource( 8 )
 ShowPosition = Vector2( 36, 4 )
-HidePosition = Vector2( -155, 4 )
+HidePosition = Vector2( -170, 4 )
 Duration = 0.4
 
 [node name="Tween" type="Tween" parent="CanvasLayer/RunBox"]
@@ -442,14 +458,14 @@ margin_left = 10.0
 margin_top = 7.0
 margin_right = 51.0
 margin_bottom = 14.0
-texture = ExtResource( 42 )
+texture = ExtResource( 45 )
 
 [node name="Tab" type="NinePatchRect" parent="CanvasLayer/RunBox"]
 show_behind_parent = true
-margin_left = 136.0
-margin_right = 187.0
+margin_left = 151.0
+margin_right = 202.0
 margin_bottom = 60.0
-texture = ExtResource( 43 )
+texture = ExtResource( 46 )
 region_rect = Rect2( 0, 0, 32, 113 )
 patch_margin_top = 5
 patch_margin_right = 32
@@ -464,6 +480,63 @@ custom_styles/focus = SubResource( 1 )
 enabled_focus_mode = 0
 flat = true
 
+[node name="ButtonContiune" type="TextureButton" parent="CanvasLayer/RunBox"]
+margin_left = 16.0
+margin_top = 25.0
+margin_right = 48.0
+margin_bottom = 57.0
+focus_mode = 0
+toggle_mode = true
+shortcut_in_tooltip = false
+enabled_focus_mode = 0
+group = ExtResource( 47 )
+texture_normal = ExtResource( 48 )
+texture_pressed = ExtResource( 49 )
+texture_hover = ExtResource( 50 )
+texture_disabled = ExtResource( 50 )
+
+[node name="ButtonStop" type="TextureButton" parent="CanvasLayer/RunBox"]
+margin_left = 51.0
+margin_top = 25.0
+margin_right = 83.0
+margin_bottom = 57.0
+focus_mode = 0
+toggle_mode = true
+shortcut_in_tooltip = false
+pressed = true
+enabled_focus_mode = 0
+group = ExtResource( 47 )
+texture_normal = ExtResource( 51 )
+texture_pressed = ExtResource( 52 )
+texture_hover = ExtResource( 53 )
+texture_disabled = ExtResource( 53 )
+
+[node name="ButtonNext" type="TextureButton" parent="CanvasLayer/RunBox"]
+margin_left = 86.0
+margin_top = 25.0
+margin_right = 118.0
+margin_bottom = 57.0
+focus_mode = 0
+shortcut_in_tooltip = false
+enabled_focus_mode = 0
+texture_normal = ExtResource( 54 )
+texture_pressed = ExtResource( 55 )
+texture_hover = ExtResource( 56 )
+texture_disabled = ExtResource( 56 )
+
+[node name="ButtonReset" type="TextureButton" parent="CanvasLayer/RunBox"]
+margin_left = 122.0
+margin_top = 25.0
+margin_right = 154.0
+margin_bottom = 57.0
+focus_mode = 0
+shortcut_in_tooltip = false
+enabled_focus_mode = 0
+texture_normal = ExtResource( 57 )
+texture_pressed = ExtResource( 58 )
+texture_hover = ExtResource( 59 )
+texture_disabled = ExtResource( 59 )
+
 [node name="DeleteBox" type="NinePatchRect" parent="CanvasLayer"]
 editor/display_folded = true
 anchor_top = 1.0
@@ -471,7 +544,7 @@ anchor_bottom = 1.0
 margin_left = -40.0
 margin_top = -44.0
 margin_bottom = -4.0
-texture = ExtResource( 44 )
+texture = ExtResource( 60 )
 region_rect = Rect2( 0, 0, 64, 64 )
 patch_margin_left = 10
 patch_margin_top = 10
@@ -494,7 +567,7 @@ margin_top = 4.0
 margin_right = 36.0
 margin_bottom = 36.0
 mouse_filter = 2
-texture = ExtResource( 45 )
+texture = ExtResource( 61 )
 
 [node name="ConnectionLine" type="Node2D" parent="."]
 __meta__ = {
@@ -520,3 +593,7 @@ __meta__ = {
 [connection signal="pressed" from="CanvasLayer/ToolBox/Tab/ButtonConnect" to="NewLineLayer" method="_on_ButtonConnect_pressed"]
 [connection signal="on_show" from="CanvasLayer/RunBox" to="CanvasLayer" method="hide_All"]
 [connection signal="pressed" from="CanvasLayer/RunBox/Tab/Button" to="CanvasLayer/RunBox" method="_on_Button_pressed"]
+[connection signal="toggled" from="CanvasLayer/RunBox/ButtonContiune" to="." method="_on_ButtonContiune_toggled"]
+[connection signal="toggled" from="CanvasLayer/RunBox/ButtonStop" to="." method="_on_ButtonStop_toggled"]
+[connection signal="pressed" from="CanvasLayer/RunBox/ButtonNext" to="." method="_on_ButtonNext_pressed"]
+[connection signal="pressed" from="CanvasLayer/RunBox/ButtonReset" to="." method="_on_ButtonReset_pressed"]

@@ -5,17 +5,16 @@
 [ext_resource path="res://Assets/ModuleBackground/LED.png" type="Texture" id=3]
 [ext_resource path="res://Assets/LED/SingleLED.tscn" type="PackedScene" id=4]
 
-
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 16, 10 )
 
 [node name="LED1" type="Node2D"]
 script = ExtResource( 1 )
+ShiftPosition = Vector2( 0, 4 )
 PinBoarder = 1
 
 [node name="Pin" parent="." instance=ExtResource( 2 )]
 position = Vector2( 16, 0 )
-PinMode = 1
 
 [node name="LED" type="Sprite" parent="."]
 texture = ExtResource( 3 )

@@ -160,4 +160,16 @@ func save_Module() -> Dictionary :
 	return {}
 	
 func load_Module(data : Dictionary) -> void:
-	return 
+	return
+
+func reset_Module() -> void:
+	self.reset()
+	for pin in self.PinList :
+		if pin.PinMode == Pin.PINMODE.Bus :
+			pin.set_Data(0)
+		elif pin.PinMode == Pin.PINMODE.Bit :
+			pin.set_Data(false)
+	return
+	
+func reset() -> void:
+	return

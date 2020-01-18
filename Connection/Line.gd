@@ -234,3 +234,9 @@ func save_Line() -> Dictionary:
 		PinList.append({"ModuleSaveID": ModuleSaveID, "PinName": pin.name, "LinePoints": points})
 	var data : Dictionary = {"LineMode": self.LineMode, "Position": [self.position.x, self.position.y], "PinList": PinList}
 	return data
+	
+func reset_Line() -> void:
+	self.BusData = 0
+	self.BitData = false
+	self.update_Visual()
+	pass

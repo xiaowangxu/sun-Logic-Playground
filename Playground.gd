@@ -56,13 +56,14 @@ func arrange_Module() -> void :
 		thislinemaxheight = max(thislinemaxheight, modulesize.y)
 
 func _ready():
+	self.refresh_ToolMode()
 	pass
 
 func _process(delta : float) -> void:
 	if Input.is_action_just_pressed("ui_cancel"):
 		self.exit_ConnectLine()
-	#if GlobalData.ToolMode == "Run" :
-	update_Playground()
+	if GlobalData.ToolMode == "Run" and GlobalData.RunMode == "Continue" :
+		update_Playground()
 	pass
 
 func update_Playground() -> void:
@@ -113,6 +114,9 @@ func refresh_ToolMode() -> void:
 		$CanvasLayer/ToolBox/Tab/ButtonConnect.disabled = false
 		$CanvasLayer/SaveLoadBox/ButtonLoad.disabled = false
 		$CanvasLayer/SaveLoadBox/ButtonSave.disabled = false
+		$CanvasLayer/RunBox/ButtonContiune.disabled = true
+		$CanvasLayer/RunBox/ButtonStop.disabled = true
+		$CanvasLayer/RunBox/ButtonNext.disabled = true
 		for line in self.ConnectionList :
 			line.set_Logo(0, true)
 			line.set_Line(true)
@@ -122,6 +126,9 @@ func refresh_ToolMode() -> void:
 		$CanvasLayer/ToolBox/Tab/ButtonConnect.disabled = true
 		$CanvasLayer/SaveLoadBox/ButtonLoad.disabled = true
 		$CanvasLayer/SaveLoadBox/ButtonSave.disabled = true
+		$CanvasLayer/RunBox/ButtonContiune.disabled = false
+		$CanvasLayer/RunBox/ButtonStop.disabled = false
+		$CanvasLayer/RunBox/ButtonNext.disabled = false
 		for line in self.ConnectionList :
 			line.set_Logo(0, false)
 			line.set_Line(true)
@@ -135,7 +142,6 @@ func _on_ButtonMove_toggled(button_pressed):
 
 func _on_ButtonRun_toggled(button_pressed):
 	if button_pressed :
-		$CanvasLayer.hide_All()
 		GlobalData.ToolMode = "Run"
 		self.refresh_ToolMode()
 	pass
@@ -337,4 +343,31 @@ func _on_FileDialogLoad_file_selected(path):
 	self.clear_Playground()
 	self.load_Playground(path)
 	$CanvasLayer.hide_All()
+	pass # Replace with function body.
+
+####################################
+#           run  control           #
+####################################
+func _on_ButtonContiune_toggled(button_pressed):
+	if button_pressed :
+		$CanvasLayer/RunBox/ButtonNext.disabled = true
+		GlobalData.RunMode = "Continue"
+	pass # Replace with function body.
+
+
+func _on_ButtonStop_toggled(button_pressed):
+	if button_pressed :
+		$CanvasLayer/RunBox/ButtonNext.disabled = false
+		GlobalData.RunMode = "Stop"
+	pass # Replace with function body.
+
+func _on_ButtonNext_pressed():
+	self.update_Playground()
+	pass # Replace with function body.
+
+func _on_ButtonReset_pressed():
+	for module in self.ModuleList :
+		module.reset_Module()
+	for line in self.ConnectionList :
+		line.reset_Line()
 	pass # Replace with function body.
