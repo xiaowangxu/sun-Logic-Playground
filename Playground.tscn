@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=2]
+[gd_scene load_steps=47 format=2]
 
 [ext_resource path="res://Playground.gd" type="Script" id=1]
 [ext_resource path="res://Camera2D.gd" type="Script" id=2]
@@ -37,12 +37,14 @@
 [ext_resource path="res://Module/OrGate2.tscn" type="PackedScene" id=35]
 [ext_resource path="res://Module/NotGate.tscn" type="PackedScene" id=36]
 [ext_resource path="res://Module/Button1.tscn" type="PackedScene" id=37]
-[ext_resource path="res://Module/LED1.tscn" type="PackedScene" id=38]
-[ext_resource path="res://Assets/Panel/Panel-run.png" type="Texture" id=39]
-[ext_resource path="res://Assets/Panel/Logo-run.png" type="Texture" id=40]
-[ext_resource path="res://Assets/Panel/Tab-run.png" type="Texture" id=41]
-[ext_resource path="res://Assets/Panel/Panel-delete.png" type="Texture" id=42]
-[ext_resource path="res://Assets/Panel/Logo-delete.png" type="Texture" id=43]
+[ext_resource path="res://Module/Button8.tscn" type="PackedScene" id=38]
+[ext_resource path="res://Module/LED1.tscn" type="PackedScene" id=39]
+[ext_resource path="res://Module/BusEncoder8.tscn" type="PackedScene" id=40]
+[ext_resource path="res://Assets/Panel/Panel-run.png" type="Texture" id=41]
+[ext_resource path="res://Assets/Panel/Logo-run.png" type="Texture" id=42]
+[ext_resource path="res://Assets/Panel/Tab-run.png" type="Texture" id=43]
+[ext_resource path="res://Assets/Panel/Panel-delete.png" type="Texture" id=44]
+[ext_resource path="res://Assets/Panel/Logo-delete.png" type="Texture" id=45]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -107,7 +109,7 @@ current_path = "C:/Users/sun/SHU-Project/sun-Logic-Playground/"
 margin_right = 408.0
 margin_bottom = 228.0
 popup_exclusive = true
-window_title = "Load sun Logic Playground Project"
+window_title = "打开单个文件"
 resizable = true
 mode = 0
 access = 2
@@ -307,7 +309,7 @@ theme = ExtResource( 28 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/ToolBox/ScrollContainer"]
 margin_right = 296.0
-margin_bottom = 35.0
+margin_bottom = 42.0
 size_flags_horizontal = 3
 custom_constants/separation = 7
 
@@ -375,14 +377,26 @@ margin_left = 20.0
 margin_right = 25.0
 Module = ExtResource( 36 )
 
-[node name="Control15" parent="CanvasLayer/ToolBox/ScrollContainer/VBoxContainer" instance=ExtResource( 29 )]
-editor/display_folded = true
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="HBoxContainer3" type="HBoxContainer" parent="CanvasLayer/ToolBox/ScrollContainer/VBoxContainer"]
 margin_top = 28.0
 margin_right = 296.0
 margin_bottom = 28.0
+size_flags_horizontal = 3
+
+[node name="Control15" parent="CanvasLayer/ToolBox/ScrollContainer/VBoxContainer/HBoxContainer3" instance=ExtResource( 29 )]
+editor/display_folded = true
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 5.0
 Module = ExtResource( 37 )
+
+[node name="Control16" parent="CanvasLayer/ToolBox/ScrollContainer/VBoxContainer/HBoxContainer3" instance=ExtResource( 29 )]
+editor/display_folded = true
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 10.0
+margin_right = 15.0
+Module = ExtResource( 38 )
 
 [node name="Control16" parent="CanvasLayer/ToolBox/ScrollContainer/VBoxContainer" instance=ExtResource( 29 )]
 editor/display_folded = true
@@ -391,7 +405,16 @@ anchor_bottom = 0.0
 margin_top = 35.0
 margin_right = 296.0
 margin_bottom = 35.0
-Module = ExtResource( 38 )
+Module = ExtResource( 39 )
+
+[node name="Control17" parent="CanvasLayer/ToolBox/ScrollContainer/VBoxContainer" instance=ExtResource( 29 )]
+editor/display_folded = true
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 42.0
+margin_right = 296.0
+margin_bottom = 42.0
+Module = ExtResource( 40 )
 
 [node name="RunBox" type="NinePatchRect" parent="CanvasLayer"]
 editor/display_folded = true
@@ -399,7 +422,7 @@ margin_left = -155.0
 margin_top = 4.0
 margin_bottom = 77.0
 mouse_filter = 0
-texture = ExtResource( 39 )
+texture = ExtResource( 41 )
 region_rect = Rect2( 0, 0, 64, 64 )
 patch_margin_left = 27
 patch_margin_top = 30
@@ -419,14 +442,14 @@ margin_left = 10.0
 margin_top = 7.0
 margin_right = 51.0
 margin_bottom = 14.0
-texture = ExtResource( 40 )
+texture = ExtResource( 42 )
 
 [node name="Tab" type="NinePatchRect" parent="CanvasLayer/RunBox"]
 show_behind_parent = true
 margin_left = 136.0
 margin_right = 187.0
 margin_bottom = 60.0
-texture = ExtResource( 41 )
+texture = ExtResource( 43 )
 region_rect = Rect2( 0, 0, 32, 113 )
 patch_margin_top = 5
 patch_margin_right = 32
@@ -448,7 +471,7 @@ anchor_bottom = 1.0
 margin_left = -40.0
 margin_top = -44.0
 margin_bottom = -4.0
-texture = ExtResource( 42 )
+texture = ExtResource( 44 )
 region_rect = Rect2( 0, 0, 64, 64 )
 patch_margin_left = 10
 patch_margin_top = 10
@@ -471,7 +494,7 @@ margin_top = 4.0
 margin_right = 36.0
 margin_bottom = 36.0
 mouse_filter = 2
-texture = ExtResource( 43 )
+texture = ExtResource( 45 )
 
 [node name="ConnectionLine" type="Node2D" parent="."]
 __meta__ = {

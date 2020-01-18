@@ -281,6 +281,7 @@ func load_Playground(path : String) -> void:
 #			print(str(moduledata))
 			if GlobalData.ModuleInstance.has(moduledata["Module"]) :
 				var module : Module = GlobalData.ModuleInstance[moduledata["Module"]].instance()
+				module.Init()
 				module.load_Module(moduledata["SaveData"])
 				ModuleList[moduledata["SaveID"]] = module
 				$ModuleLayer.add_child(module)

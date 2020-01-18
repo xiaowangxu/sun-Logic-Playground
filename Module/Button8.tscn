@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Module/ModuleScript/Button8.gd" type="Script" id=1]
 [ext_resource path="res://Pin/Pin.tscn" type="PackedScene" id=2]
@@ -6,58 +6,54 @@
 [ext_resource path="res://Assets/LED/SingleLED.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Assets/Button/SingleButton.tscn" type="PackedScene" id=5]
 
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 74, 20 )
 
 [node name="Button8" type="Node2D"]
 script = ExtResource( 1 )
+ShiftPosition = Vector2( 0, 4 )
+PinBoarder = 10
 
 [node name="Pin1" parent="." instance=ExtResource( 2 )]
-position = Vector2( 26, 42 )
+position = Vector2( 24, 40 )
 rotation = -3.14159
-PinMode = 1
 
 [node name="Pin2" parent="." instance=ExtResource( 2 )]
-position = Vector2( 40, 42 )
+position = Vector2( 39.9999, 40 )
 rotation = -3.14159
-PinMode = 1
 
 [node name="Pin3" parent="." instance=ExtResource( 2 )]
-position = Vector2( 54, 42 )
+position = Vector2( 55.9999, 40 )
 rotation = -3.14159
-PinMode = 1
 
 [node name="Pin4" parent="." instance=ExtResource( 2 )]
-position = Vector2( 68, 42 )
+position = Vector2( 72, 40 )
 rotation = -3.14159
-PinMode = 1
 
 [node name="Pin5" parent="." instance=ExtResource( 2 )]
-position = Vector2( 82, 42 )
+position = Vector2( 87.9999, 40 )
 rotation = -3.14159
-PinMode = 1
 
 [node name="Pin6" parent="." instance=ExtResource( 2 )]
-position = Vector2( 96, 42 )
+position = Vector2( 104, 40 )
 rotation = -3.14159
-PinMode = 1
 
 [node name="Pin7" parent="." instance=ExtResource( 2 )]
-position = Vector2( 110, 42 )
+position = Vector2( 120, 40 )
 rotation = -3.14159
-PinMode = 1
 
 [node name="Pin8" parent="." instance=ExtResource( 2 )]
-position = Vector2( 124, 42 )
+position = Vector2( 136, 40 )
 rotation = -3.14159
-PinMode = 1
 
 [node name="Pin_Bus" parent="." instance=ExtResource( 2 )]
-position = Vector2( 137, 21 )
+position = Vector2( 148, 20 )
 rotation = 1.5708
 PinMode = 0
 
 [node name="Button8BG" type="NinePatchRect" parent="."]
-margin_right = 137.0
-margin_bottom = 42.0
+margin_right = 148.0
+margin_bottom = 40.0
 texture = ExtResource( 3 )
 region_rect = Rect2( 0.132603, -0.0917139, 31.8674, 31.9995 )
 patch_margin_left = 18
@@ -66,73 +62,86 @@ patch_margin_right = 10
 patch_margin_bottom = 9
 
 [node name="SingleLED1" parent="Button8BG" instance=ExtResource( 4 )]
-position = Vector2( 26, 9 )
+position = Vector2( 24.0001, 8 )
 animation = "Mini"
 
 [node name="SingleLED2" parent="Button8BG" instance=ExtResource( 4 )]
-position = Vector2( 40, 9 )
+position = Vector2( 40, 8 )
 animation = "Mini"
 
 [node name="SingleLED3" parent="Button8BG" instance=ExtResource( 4 )]
-position = Vector2( 54, 9 )
+position = Vector2( 56.0001, 8 )
 animation = "Mini"
 
 [node name="SingleLED4" parent="Button8BG" instance=ExtResource( 4 )]
-position = Vector2( 68, 9 )
+position = Vector2( 72.0001, 8 )
 animation = "Mini"
 
 [node name="SingleLED5" parent="Button8BG" instance=ExtResource( 4 )]
-position = Vector2( 82, 9 )
+position = Vector2( 88.0001, 8 )
 animation = "Mini"
 
 [node name="SingleLED6" parent="Button8BG" instance=ExtResource( 4 )]
-position = Vector2( 96, 9 )
+position = Vector2( 104, 8 )
 animation = "Mini"
 
 [node name="SingleLED7" parent="Button8BG" instance=ExtResource( 4 )]
-position = Vector2( 110, 9 )
+position = Vector2( 120, 8 )
 animation = "Mini"
 
 [node name="SingleLED8" parent="Button8BG" instance=ExtResource( 4 )]
-position = Vector2( 124, 9 )
+position = Vector2( 136, 8 )
 animation = "Mini"
 
 [node name="SingleButton1" parent="Button8BG" instance=ExtResource( 5 )]
-position = Vector2( 20, 35 )
+position = Vector2( 18.0001, 34 )
 rotation = -1.5708
 
 [node name="SingleButton2" parent="Button8BG" instance=ExtResource( 5 )]
-position = Vector2( 34, 35 )
+position = Vector2( 34, 34 )
 rotation = -1.5708
+idx = 1
 
 [node name="SingleButton3" parent="Button8BG" instance=ExtResource( 5 )]
-position = Vector2( 48, 35 )
+position = Vector2( 50.0001, 34 )
 rotation = -1.5708
+idx = 2
 
 [node name="SingleButton4" parent="Button8BG" instance=ExtResource( 5 )]
-position = Vector2( 62, 35 )
+position = Vector2( 66.0001, 34 )
 rotation = -1.5708
+idx = 3
 
 [node name="SingleButton5" parent="Button8BG" instance=ExtResource( 5 )]
-position = Vector2( 76, 35 )
+position = Vector2( 82.0001, 34 )
 rotation = -1.5708
+idx = 4
 
 [node name="SingleButton6" parent="Button8BG" instance=ExtResource( 5 )]
-position = Vector2( 90, 35 )
+position = Vector2( 98.0001, 34 )
 rotation = -1.5708
+idx = 5
 
 [node name="SingleButton7" parent="Button8BG" instance=ExtResource( 5 )]
-position = Vector2( 104, 35 )
+position = Vector2( 114, 34 )
 rotation = -1.5708
+idx = 6
 
 [node name="SingleButton8" parent="Button8BG" instance=ExtResource( 5 )]
-position = Vector2( 118, 35 )
+position = Vector2( 130, 34 )
 rotation = -1.5708
-[connection signal="button_Clicked" from="Button8BG/SingleButton1" to="." method="_on_SingleButton1_button_Clicked"]
-[connection signal="button_Clicked" from="Button8BG/SingleButton2" to="." method="_on_SingleButton2_button_Clicked"]
-[connection signal="button_Clicked" from="Button8BG/SingleButton3" to="." method="_on_SingleButton3_button_Clicked"]
-[connection signal="button_Clicked" from="Button8BG/SingleButton4" to="." method="_on_SingleButton4_button_Clicked"]
-[connection signal="button_Clicked" from="Button8BG/SingleButton5" to="." method="_on_SingleButton5_button_Clicked"]
-[connection signal="button_Clicked" from="Button8BG/SingleButton6" to="." method="_on_SingleButton6_button_Clicked"]
-[connection signal="button_Clicked" from="Button8BG/SingleButton7" to="." method="_on_SingleButton7_button_Clicked"]
-[connection signal="button_Clicked" from="Button8BG/SingleButton8" to="." method="_on_SingleButton8_button_Clicked"]
+idx = 7
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 74, 20 )
+shape = SubResource( 1 )
+[connection signal="button_Clicked" from="Button8BG/SingleButton1" to="." method="_on_SingleButton_button_Clicked"]
+[connection signal="button_Clicked" from="Button8BG/SingleButton2" to="." method="_on_SingleButton_button_Clicked"]
+[connection signal="button_Clicked" from="Button8BG/SingleButton3" to="." method="_on_SingleButton_button_Clicked"]
+[connection signal="button_Clicked" from="Button8BG/SingleButton4" to="." method="_on_SingleButton_button_Clicked"]
+[connection signal="button_Clicked" from="Button8BG/SingleButton5" to="." method="_on_SingleButton_button_Clicked"]
+[connection signal="button_Clicked" from="Button8BG/SingleButton6" to="." method="_on_SingleButton_button_Clicked"]
+[connection signal="button_Clicked" from="Button8BG/SingleButton7" to="." method="_on_SingleButton_button_Clicked"]
+[connection signal="button_Clicked" from="Button8BG/SingleButton8" to="." method="_on_SingleButton_button_Clicked"]

@@ -1,0 +1,91 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Module/ModuleScript/BusEncoder8.gd" type="Script" id=1]
+[ext_resource path="res://Pin/Pin.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/ModuleBackground/Button.png" type="Texture" id=3]
+[ext_resource path="res://Assets/LED/SingleLED.tscn" type="PackedScene" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 74, 20 )
+
+[node name="BusEncoder8" type="Node2D"]
+script = ExtResource( 1 )
+ShiftPosition = Vector2( 0, 4 )
+PinBoarder = 9
+
+[node name="Pin1" parent="." instance=ExtResource( 2 )]
+position = Vector2( 24, 0 )
+
+[node name="Pin2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 39.9999, 0 )
+
+[node name="Pin3" parent="." instance=ExtResource( 2 )]
+position = Vector2( 55.9999, 0 )
+
+[node name="Pin4" parent="." instance=ExtResource( 2 )]
+position = Vector2( 72, 0 )
+
+[node name="Pin5" parent="." instance=ExtResource( 2 )]
+position = Vector2( 87.9999, 0 )
+
+[node name="Pin6" parent="." instance=ExtResource( 2 )]
+position = Vector2( 104, 0 )
+
+[node name="Pin7" parent="." instance=ExtResource( 2 )]
+position = Vector2( 120, 0 )
+
+[node name="Pin8" parent="." instance=ExtResource( 2 )]
+position = Vector2( 136, 0 )
+
+[node name="Pin_Bus" parent="." instance=ExtResource( 2 )]
+position = Vector2( 148, 20 )
+rotation = 1.5708
+PinMode = 0
+
+[node name="BusEncoder8BG" type="NinePatchRect" parent="."]
+margin_right = 148.0
+margin_bottom = 40.0
+texture = ExtResource( 3 )
+region_rect = Rect2( 0.132603, -0.0917139, 31.8674, 31.9995 )
+patch_margin_left = 18
+patch_margin_top = 12
+patch_margin_right = 10
+patch_margin_bottom = 9
+
+[node name="SingleLED1" parent="BusEncoder8BG" instance=ExtResource( 4 )]
+position = Vector2( 24.0001, 8 )
+animation = "Mini"
+
+[node name="SingleLED2" parent="BusEncoder8BG" instance=ExtResource( 4 )]
+position = Vector2( 40, 8 )
+animation = "Mini"
+
+[node name="SingleLED3" parent="BusEncoder8BG" instance=ExtResource( 4 )]
+position = Vector2( 56.0001, 8 )
+animation = "Mini"
+
+[node name="SingleLED4" parent="BusEncoder8BG" instance=ExtResource( 4 )]
+position = Vector2( 72.0001, 8 )
+animation = "Mini"
+
+[node name="SingleLED5" parent="BusEncoder8BG" instance=ExtResource( 4 )]
+position = Vector2( 88.0001, 8 )
+animation = "Mini"
+
+[node name="SingleLED6" parent="BusEncoder8BG" instance=ExtResource( 4 )]
+position = Vector2( 104, 8 )
+animation = "Mini"
+
+[node name="SingleLED7" parent="BusEncoder8BG" instance=ExtResource( 4 )]
+position = Vector2( 120, 8 )
+animation = "Mini"
+
+[node name="SingleLED8" parent="BusEncoder8BG" instance=ExtResource( 4 )]
+position = Vector2( 136, 8 )
+animation = "Mini"
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 74, 20 )
+shape = SubResource( 1 )

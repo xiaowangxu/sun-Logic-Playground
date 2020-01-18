@@ -16,6 +16,7 @@ export(int, FLAGS, "Up", "Down", "Left", "Right") var PinBoarder : int = 0
 var PinList : Array = []
 
 var SaveID : int = -1
+var Inited : bool = false
 
 signal on_drag(module)
 signal is_dragging(module)
@@ -32,6 +33,9 @@ func _ready():
 		if pin is Pin :
 			self.PinList.append(pin)
 	
+	if not self.Inited :
+		self.Init()
+	
 	self.get_node("Area2D").monitoring = false
 	self.get_node("Area2D").monitorable = false
 	
@@ -44,6 +48,11 @@ func _ready():
 	if DragArea != null && DragArea is Area2D :
 		DragArea.connect("input_event", self, "DragArea_InputEvent")
 
+	pass
+
+func Init() -> void:
+#	print("self.init ", self.name)
+	self.Inited = true
 	pass
 
 func Update() -> void:
