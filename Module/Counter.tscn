@@ -9,6 +9,7 @@ extents = Vector2( 40, 24 )
 
 [node name="Counter" type="Node2D"]
 script = ExtResource( 1 )
+ShiftPosition = Vector2( 4, 0 )
 PinBoarder = 12
 
 [node name="Pin" parent="." instance=ExtResource( 2 )]
@@ -16,12 +17,16 @@ position = Vector2( 80, 24 )
 rotation = 1.5708
 PinMode = 0
 
-[node name="Pin2" parent="." instance=ExtResource( 2 )]
-position = Vector2( 0, 12 )
+[node name="PinAdd" parent="." instance=ExtResource( 2 )]
+position = Vector2( 0, 8 )
 rotation = -1.5708
 
-[node name="Pin3" parent="." instance=ExtResource( 2 )]
-position = Vector2( 0, 36 )
+[node name="PinReset" parent="." instance=ExtResource( 2 )]
+position = Vector2( 0, 40 )
+rotation = -1.5708
+
+[node name="PinEnable" parent="." instance=ExtResource( 2 )]
+position = Vector2( 0, 24 )
 rotation = -1.5708
 
 [node name="Sprite" type="Sprite" parent="."]

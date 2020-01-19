@@ -120,6 +120,7 @@ func refresh_ToolMode() -> void:
 		for line in self.ConnectionList :
 			line.set_Logo(0, true)
 			line.set_Line(true)
+			line.reset_Visual()
 	elif GlobalData.ToolMode == "Run" :
 		self.set_Module_Enable(false, false, false)
 		self.set_Line_Enable(false, false)

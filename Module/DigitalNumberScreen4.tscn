@@ -10,6 +10,7 @@ extents = Vector2( 64, 32 )
 
 [node name="DigitalNumberScreen4" type="Node2D"]
 script = ExtResource( 1 )
+ShiftPosition = Vector2( 4, 0 )
 PinBoarder = 4
 
 [node name="Pin_Number" parent="." instance=ExtResource( 2 )]

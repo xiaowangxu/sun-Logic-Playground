@@ -96,10 +96,19 @@ func update_Visual() -> void:
 	match LineMode:
 		PINMODE.Bus:
 			for line in $LineHelper.get_children() :
-				line.default_color = lerp(Color8(26, 200, 68, 255), Color8(255, 120, 60, 255), clamp(self.BusData, 0, 255) / 255.0)
+				line.default_color = lerp(Color8(73, 173, 233, 255), Color8(255, 120, 60, 255), clamp(self.BusData, 0, 255) / 255.0)
 		PINMODE.Bit:
 			for line in $LineHelper.get_children() :
-				line.default_color = Color8(255, 120, 60, 255) if self.BitData else Color8(73, 173, 233, 255)
+				line.default_color = Color8(255, 120, 60, 255) if self.BitData else Color8(110, 140, 160, 255)
+
+func reset_Visual() -> void:
+	match LineMode:
+		PINMODE.Bus:
+			for line in $LineHelper.get_children() :
+				line.default_color = Color8(73, 173, 233, 255)
+		PINMODE.Bit:
+			for line in $LineHelper.get_children() :
+				line.default_color = Color8(73, 173, 233, 255)
 
 func move_Visual() -> void:
 #	var center : Vector2 = Vector2.ZERO
@@ -198,7 +207,10 @@ func set_Logo(frame : int, show : bool) -> void:
 	
 func set_Line(show : bool) -> void:
 	for line in $LineHelper.get_children() :
-		line.visible = show
+		if show :
+			line.default_color.a = 1.0
+		else :
+			line.default_color.a = 0.1
 	pass
 	
 func set_Edit(edit : bool) -> void:
