@@ -1,0 +1,13 @@
+[gd_resource type="SpriteFrames" load_steps=4 format=2]
+
+[ext_resource path="res://Assets/LED/Register-None.png" type="Texture" id=1]
+[ext_resource path="res://Assets/LED/Register-Read.png" type="Texture" id=2]
+[ext_resource path="res://Assets/LED/Register-Write.png" type="Texture" id=3]
+
+[resource]
+animations = [ {
+"frames": [ ExtResource( 1 ), ExtResource( 2 ), ExtResource( 3 ) ],
+"loop": false,
+"name": "default",
+"speed": 0.0
+} ]

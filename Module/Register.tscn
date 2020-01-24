@@ -1,0 +1,72 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Module/ModuleScript/Register.gd" type="Script" id=1]
+[ext_resource path="res://Pin/Pin.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/ModuleBackground/Register.png" type="Texture" id=3]
+[ext_resource path="res://Assets/DigitalNumber/DigitalNumber.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/LED/SingleLED.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/LED/SingleLEDMode.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Assets/LED/SingleLEDMode.gd" type="Script" id=7]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 64, 32 )
+
+[node name="Register" type="Node2D"]
+script = ExtResource( 1 )
+ShiftPosition = Vector2( 4, 0 )
+PinBoarder = 12
+
+[node name="PinWrite" parent="." instance=ExtResource( 2 )]
+position = Vector2( 0, 40 )
+rotation = -1.5708
+PinMode = 0
+
+[node name="PinRead" parent="." instance=ExtResource( 2 )]
+position = Vector2( 128, 32 )
+rotation = 1.5708
+PinMode = 0
+
+[node name="PinMode" parent="." instance=ExtResource( 2 )]
+position = Vector2( 0, 16 )
+rotation = -1.5708
+
+[node name="PinEnable" parent="." instance=ExtResource( 2 )]
+position = Vector2( 0, 8 )
+rotation = -1.5708
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 3 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="DigitalNumber0" parent="Sprite" instance=ExtResource( 4 )]
+position = Vector2( 95, 21 )
+
+[node name="DigitalNumber1" parent="Sprite" instance=ExtResource( 4 )]
+position = Vector2( 72, 21 )
+
+[node name="DigitalNumber2" parent="Sprite" instance=ExtResource( 4 )]
+position = Vector2( 49, 21 )
+
+[node name="SingleLED" parent="Sprite" instance=ExtResource( 5 )]
+position = Vector2( 8, 8 )
+animation = "Mini"
+
+[node name="SingleLEDMode" parent="Sprite" instance=ExtResource( 6 )]
+position = Vector2( 6, 14 )
+script = ExtResource( 7 )
+
+[node name="Area2D" type="Area2D" parent="."]
+monitoring = false
+monitorable = false
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 64, 32 )
+shape = SubResource( 1 )
+one_way_collision_margin = 0.0

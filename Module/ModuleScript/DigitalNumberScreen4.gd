@@ -12,11 +12,11 @@ var show_type : bool = false
 
 func Update() -> void:
 	number = $Pin_Number.update_Data()
-	self.show()
+	self.show_Number()
 	$Pin_Number.set_Data(0)
 	pass
 
-func show() -> void:
+func show_Number() -> void:
 	number %= 10000
 	var a0 : int = number % 10
 	var a1 : int = number/10 % 10

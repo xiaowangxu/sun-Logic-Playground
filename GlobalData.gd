@@ -17,7 +17,8 @@ var ModuleInstance : Dictionary = {	"Counter": preload("res://Module/Counter.tsc
 									"BusEncoder8": preload("res://Module/BusEncoder8.tscn"),
 									"BusEncoder10": preload("res://Module/BusEncoder10.tscn"),
 									"LED1": preload("res://Module/LED1.tscn"),
-									"Delay": preload("res://Module/Delay.tscn")
+									"Delay": preload("res://Module/Delay.tscn"),
+									"Register": preload("res://Module/Register.tscn")
 									}
 
 var ToolMode : String = "Move"
