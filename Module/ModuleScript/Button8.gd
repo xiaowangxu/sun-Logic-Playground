@@ -59,7 +59,7 @@ func save_Module() -> Dictionary:
 func load_Module(data : Dictionary) -> void:
 	if data.has("ButtonStateList") :
 		var bitlist : Array = data["ButtonStateList"]
-		print(bitlist)
+#		print(bitlist)
 		for idx in range(0, bitlist.size()) :
 			var ButtonState : bool = bitlist[idx]
 			ButtonList[idx].set_Button(ButtonState)

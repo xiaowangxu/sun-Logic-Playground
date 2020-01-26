@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Module/ModuleScript/Register.gd" type="Script" id=1]
 [ext_resource path="res://Pin/Pin.tscn" type="PackedScene" id=2]
@@ -6,7 +6,6 @@
 [ext_resource path="res://Assets/DigitalNumber/DigitalNumber.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Assets/LED/SingleLED.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Assets/LED/SingleLEDMode.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Assets/LED/SingleLEDMode.gd" type="Script" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 64, 32 )
@@ -56,7 +55,6 @@ animation = "Mini"
 
 [node name="SingleLEDMode" parent="Sprite" instance=ExtResource( 6 )]
 position = Vector2( 6, 14 )
-script = ExtResource( 7 )
 
 [node name="Area2D" type="Area2D" parent="."]
 monitoring = false

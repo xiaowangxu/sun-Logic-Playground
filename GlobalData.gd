@@ -18,7 +18,10 @@ var ModuleInstance : Dictionary = {	"Counter": preload("res://Module/Counter.tsc
 									"BusEncoder10": preload("res://Module/BusEncoder10.tscn"),
 									"LED1": preload("res://Module/LED1.tscn"),
 									"Delay": preload("res://Module/Delay.tscn"),
-									"Register": preload("res://Module/Register.tscn")
+									"Register": preload("res://Module/Register.tscn"),
+									"Memory": preload("res://Module/Memory.tscn"),
+									"ALU": preload("res://Module/ALU.tscn"),
+									"1078Control": preload("res://Module/1078Control.tscn")
 									}
 
 var ToolMode : String = "Move"
@@ -42,3 +45,18 @@ func bin2dec(a : Array) -> int:
 			ans += mul
 		mul *= 2
 	return ans
+	
+func dec2bin(a : int, size : int = 8) -> Array:
+	var ans : Array = []
+	ans.resize(size)
+	var idx : int = size - 1
+	while a > 0 :
+		ans[idx] = false if a % 2 == 0 else true
+		a = (a / 2) as int
+		idx -= 1
+		if idx < 0 :
+			break
+	for i in range(idx, -1, -1) :
+		ans[i] = false
+	return ans
+	pass

@@ -16,6 +16,7 @@ func Update() -> void:
 			$Sprite/SingleLEDMode.set_LED(1)
 	else :
 		$Sprite/SingleLEDMode.set_LED(0)
+		$PinRead.set_Data(0)
 	self.show_Number(Data)
 	pass
 

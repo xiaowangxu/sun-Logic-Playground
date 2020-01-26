@@ -1,0 +1,67 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Module/ModuleScript/ALU.gd" type="Script" id=1]
+[ext_resource path="res://Pin/Pin.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/ModuleBackground/Blank.png" type="Texture" id=3]
+[ext_resource path="res://Assets/ModuleBackground/ALU-title.png" type="Texture" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 44, 28 )
+
+[node name="ALU" type="Node2D"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+ShiftPosition = Vector2( 0, 4 )
+PinBoarder = 15
+
+[node name="PinEnable" parent="." instance=ExtResource( 2 )]
+position = Vector2( 0, 20 )
+rotation = 4.71239
+
+[node name="PinMode1" parent="." instance=ExtResource( 2 )]
+position = Vector2( 0, 28 )
+rotation = 4.71239
+
+[node name="PinMode2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 0, 36 )
+rotation = 4.71239
+
+[node name="PinA" parent="." instance=ExtResource( 2 )]
+position = Vector2( 24, 0 )
+PinMode = 0
+
+[node name="PinW" parent="." instance=ExtResource( 2 )]
+position = Vector2( 64, 0 )
+PinMode = 0
+
+[node name="PinD" parent="." instance=ExtResource( 2 )]
+position = Vector2( 48, 56 )
+rotation = 3.14159
+PinMode = 0
+
+[node name="PinZero" parent="." instance=ExtResource( 2 )]
+position = Vector2( 88, 28 )
+rotation = 1.5708
+
+[node name="ALUBG" type="NinePatchRect" parent="."]
+margin_right = 88.0
+margin_bottom = 56.0
+texture = ExtResource( 3 )
+region_rect = Rect2( 0.132603, -0.0917139, 31.8674, 31.9995 )
+patch_margin_left = 18
+patch_margin_top = 12
+patch_margin_right = 10
+patch_margin_bottom = 9
+
+[node name="Logo" type="Sprite" parent="ALUBG"]
+position = Vector2( 6, 6 )
+texture = ExtResource( 4 )
+centered = false
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 44, 28 )
+shape = SubResource( 1 )

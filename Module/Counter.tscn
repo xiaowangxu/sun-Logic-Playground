@@ -1,43 +1,67 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Module/ModuleScript/Counter.gd" type="Script" id=1]
 [ext_resource path="res://Pin/Pin.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Assets/ModuleBackground/Counter.png" type="Texture" id=3]
+[ext_resource path="res://Assets/ModuleBackground/Blank.png" type="Texture" id=3]
+[ext_resource path="res://Assets/DigitalNumber/DigitalScreen3.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/LED/SingleLED.tscn" type="PackedScene" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 40, 24 )
+extents = Vector2( 60, 40 )
 
 [node name="Counter" type="Node2D"]
 script = ExtResource( 1 )
 ShiftPosition = Vector2( 4, 0 )
 PinBoarder = 12
 
-[node name="Pin" parent="." instance=ExtResource( 2 )]
-position = Vector2( 80, 24 )
-rotation = 1.5708
-PinMode = 0
-
-[node name="PinAdd" parent="." instance=ExtResource( 2 )]
+[node name="PinEnable" parent="." instance=ExtResource( 2 )]
 position = Vector2( 0, 8 )
 rotation = -1.5708
 
-[node name="PinReset" parent="." instance=ExtResource( 2 )]
-position = Vector2( 0, 40 )
+[node name="PinAdd" parent="." instance=ExtResource( 2 )]
+position = Vector2( 0, 16 )
 rotation = -1.5708
 
-[node name="PinEnable" parent="." instance=ExtResource( 2 )]
+[node name="PinSet" parent="." instance=ExtResource( 2 )]
 position = Vector2( 0, 24 )
 rotation = -1.5708
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="PinMode" parent="." instance=ExtResource( 2 )]
+position = Vector2( 0, 32 )
+rotation = -1.5708
+
+[node name="PinWrite" parent="." instance=ExtResource( 2 )]
+position = Vector2( 0, 56 )
+rotation = 4.71239
+PinMode = 0
+
+[node name="PinRead" parent="." instance=ExtResource( 2 )]
+position = Vector2( 120, 32 )
+rotation = 1.5708
+PinMode = 0
+
+[node name="CounterBG" type="NinePatchRect" parent="."]
+margin_right = 120.0
+margin_bottom = 80.0
 texture = ExtResource( 3 )
-centered = false
+region_rect = Rect2( 0, 0, 32, 32 )
+patch_margin_left = 5
+patch_margin_top = 24
+patch_margin_right = 5
+patch_margin_bottom = 26
+
+[node name="DigitalScreen3" parent="CounterBG" instance=ExtResource( 4 )]
+position = Vector2( 29, 6 )
+
+[node name="SingleLED" parent="CounterBG" instance=ExtResource( 5 )]
+position = Vector2( 8, 8 )
+animation = "Mini"
 
 [node name="Area2D" type="Area2D" parent="."]
 monitoring = false
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2( 40, 24 )
+position = Vector2( 60, 40 )
 shape = SubResource( 1 )
 one_way_collision_margin = 0.0

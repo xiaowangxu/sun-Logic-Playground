@@ -1,0 +1,87 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Module/ModuleScript/1078Control.gd" type="Script" id=1]
+[ext_resource path="res://Pin/Pin.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/ModuleBackground/Blank.png" type="Texture" id=3]
+[ext_resource path="res://Assets/ModuleBackground/Memory-title.png" type="Texture" id=4]
+[ext_resource path="res://Assets/LED/SingleLED.tscn" type="PackedScene" id=5]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 30, 54 )
+
+[node name="1078Control" type="Node2D"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+PinBoarder = 12
+
+[node name="Pin_Decode" parent="." instance=ExtResource( 2 )]
+position = Vector2( 0, 24 )
+rotation = 4.71239
+PinMode = 0
+
+[node name="Pin_PC_Enable" parent="." instance=ExtResource( 2 )]
+position = Vector2( 60, 8 )
+rotation = 1.5708
+
+[node name="Pin_PC_Increase" parent="." instance=ExtResource( 2 )]
+position = Vector2( 60, 16 )
+rotation = 1.5708
+
+[node name="Pin_PC_Read" parent="." instance=ExtResource( 2 )]
+position = Vector2( 60, 24 )
+rotation = 1.5708
+
+[node name="Pin_Memory_Enable" parent="." instance=ExtResource( 2 )]
+position = Vector2( 60, 68 )
+rotation = 1.5708
+
+[node name="Pin_Memory_Mode" parent="." instance=ExtResource( 2 )]
+position = Vector2( 60, 76 )
+rotation = 1.5708
+
+[node name="Pin_Program_Enable" parent="." instance=ExtResource( 2 )]
+position = Vector2( 60, 92 )
+rotation = 1.5708
+
+[node name="Pin_Program_Mode" parent="." instance=ExtResource( 2 )]
+position = Vector2( 60, 100 )
+rotation = 1.5708
+
+[node name="1078ControlBG" type="NinePatchRect" parent="."]
+margin_right = 60.0
+margin_bottom = 108.0
+texture = ExtResource( 3 )
+region_rect = Rect2( 0.132603, -0.0917139, 31.8674, 31.9995 )
+patch_margin_left = 18
+patch_margin_top = 12
+patch_margin_right = 10
+patch_margin_bottom = 9
+
+[node name="Logo" type="Sprite" parent="1078ControlBG"]
+position = Vector2( 6, 6 )
+texture = ExtResource( 4 )
+centered = false
+
+[node name="SingleLED1" parent="1078ControlBG" instance=ExtResource( 5 )]
+position = Vector2( 8, 20 )
+animation = "Mini"
+
+[node name="SingleLED2" parent="1078ControlBG" instance=ExtResource( 5 )]
+position = Vector2( 16, 20 )
+animation = "Mini"
+
+[node name="SingleLED3" parent="1078ControlBG" instance=ExtResource( 5 )]
+position = Vector2( 24, 20 )
+animation = "Mini"
+
+[node name="SingleLED4" parent="1078ControlBG" instance=ExtResource( 5 )]
+position = Vector2( 32, 20 )
+animation = "Mini"
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 30, 54 )
+shape = SubResource( 1 )
