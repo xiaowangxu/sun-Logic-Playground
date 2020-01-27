@@ -12,14 +12,6 @@ frames = ExtResource( 2 )
 frame = 1
 offset = Vector2( 0, -2 )
 
-[node name="Label" type="Label" parent="."]
-visible = false
-margin_left = -16.0
-margin_top = -18.0
-margin_right = 24.0
-margin_bottom = 13.0
-text = "0"
-
 [node name="Area2D" type="Area2D" parent="."]
 monitoring = false
 monitorable = false

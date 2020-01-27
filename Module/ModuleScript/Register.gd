@@ -41,3 +41,4 @@ func load_Module(data : Dictionary) -> void:
 	
 func reset() -> void:
 	self.Data = 0
+	self.show_Number(self.Data)

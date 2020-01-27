@@ -14,8 +14,8 @@ func Update() -> void:
 				AddLastState = true
 		else :
 			AddLastState = false
-		if $PinSet.update_Data() :
-			Count = clamp($PinWrite.update_Data(), 0, 255)
+			if $PinSet.update_Data() :
+				Count = clamp($PinWrite.update_Data(), 0, 255)
 		if $PinMode.update_Data() :
 			$PinRead.set_Data(self.Count)
 		else :

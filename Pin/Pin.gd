@@ -49,10 +49,8 @@ func set_Data(data) -> void:
 	match PinMode:
 		PINMODE.Bus:
 			BusData = data
-			$Label.text = str(BusData)
 		PINMODE.Bit:
 			BitData = data
-			$Label.text = str(BitData)
 	pass
 
 func update_Data():

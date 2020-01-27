@@ -7,7 +7,7 @@
 [ext_resource path="res://Assets/LED/SingleLED.tscn" type="PackedScene" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 30, 54 )
+extents = Vector2( 30, 184 )
 
 [node name="1078Control" type="Node2D"]
 script = ExtResource( 1 )
@@ -33,25 +33,98 @@ rotation = 1.5708
 position = Vector2( 60, 24 )
 rotation = 1.5708
 
-[node name="Pin_Memory_Enable" parent="." instance=ExtResource( 2 )]
-position = Vector2( 60, 68 )
+[node name="Pin_InstructionMemory_Enable" parent="." instance=ExtResource( 2 )]
+position = Vector2( 60, 272 )
 rotation = 1.5708
 
-[node name="Pin_Memory_Mode" parent="." instance=ExtResource( 2 )]
-position = Vector2( 60, 76 )
+[node name="Pin_InstructionMemory_Mode" parent="." instance=ExtResource( 2 )]
+position = Vector2( 60, 280 )
 rotation = 1.5708
 
 [node name="Pin_Program_Enable" parent="." instance=ExtResource( 2 )]
-position = Vector2( 60, 92 )
+position = Vector2( 60, 296 )
 rotation = 1.5708
 
 [node name="Pin_Program_Mode" parent="." instance=ExtResource( 2 )]
-position = Vector2( 60, 100 )
+position = Vector2( 60, 304 )
+rotation = 1.5708
+
+[node name="Pin_DataMemory_Enable" parent="." instance=ExtResource( 2 )]
+position = Vector2( 60, 216 )
+rotation = 1.5708
+
+[node name="Pin_DataMemory_Mode" parent="." instance=ExtResource( 2 )]
+position = Vector2( 60, 224 )
+rotation = 1.5708
+
+[node name="Pin_DataMemory_Address" parent="." instance=ExtResource( 2 )]
+position = Vector2( 60, 248 )
+rotation = 1.5708
+PinMode = 0
+
+[node name="Pin_A_Enable" parent="." instance=ExtResource( 2 )]
+position = Vector2( 60, 40 )
+rotation = 1.5708
+
+[node name="Pin_A_Mode" parent="." instance=ExtResource( 2 )]
+position = Vector2( 60, 48 )
+rotation = 1.5708
+
+[node name="Pin_B_Enable" parent="." instance=ExtResource( 2 )]
+position = Vector2( 60, 64 )
+rotation = 1.5708
+
+[node name="Pin_B_Mode" parent="." instance=ExtResource( 2 )]
+position = Vector2( 60, 72 )
+rotation = 1.5708
+
+[node name="Pin_C_Enable" parent="." instance=ExtResource( 2 )]
+position = Vector2( 60, 88 )
+rotation = 1.5708
+
+[node name="Pin_C_Mode" parent="." instance=ExtResource( 2 )]
+position = Vector2( 60, 96 )
+rotation = 1.5708
+
+[node name="Pin_D_Enable" parent="." instance=ExtResource( 2 )]
+position = Vector2( 60, 112 )
+rotation = 1.5708
+
+[node name="Pin_D_Mode" parent="." instance=ExtResource( 2 )]
+position = Vector2( 60, 120 )
+rotation = 1.5708
+
+[node name="Pin_Ans_Enable" parent="." instance=ExtResource( 2 )]
+position = Vector2( 60, 136 )
+rotation = 1.5708
+
+[node name="Pin_Ans_Mode" parent="." instance=ExtResource( 2 )]
+position = Vector2( 60, 144 )
+rotation = 1.5708
+
+[node name="Pin_ALU_Enable" parent="." instance=ExtResource( 2 )]
+position = Vector2( 60, 160 )
+rotation = 1.5708
+
+[node name="Pin_ALU1" parent="." instance=ExtResource( 2 )]
+position = Vector2( 60, 168 )
+rotation = 1.5708
+
+[node name="Pin_ALU2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 60, 176 )
+rotation = 1.5708
+
+[node name="Pin_Jump_Zero" parent="." instance=ExtResource( 2 )]
+position = Vector2( 60, 192 )
+rotation = 1.5708
+
+[node name="Pin_Jump" parent="." instance=ExtResource( 2 )]
+position = Vector2( 60, 200 )
 rotation = 1.5708
 
 [node name="1078ControlBG" type="NinePatchRect" parent="."]
 margin_right = 60.0
-margin_bottom = 108.0
+margin_bottom = 368.0
 texture = ExtResource( 3 )
 region_rect = Rect2( 0.132603, -0.0917139, 31.8674, 31.9995 )
 patch_margin_left = 18
@@ -83,5 +156,5 @@ animation = "Mini"
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2( 30, 54 )
+position = Vector2( 30, 184 )
 shape = SubResource( 1 )
