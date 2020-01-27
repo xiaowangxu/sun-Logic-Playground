@@ -36,3 +36,4 @@ func load_Module(data : Dictionary) -> void:
 	
 func reset() -> void:
 	self.Count = 0
+	$CounterBG/DigitalScreen3.set_Number(self.Count)

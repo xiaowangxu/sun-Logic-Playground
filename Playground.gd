@@ -211,7 +211,7 @@ func _input(event) -> void:
 		self.exit_ConnectLine()
 
 func _on_Pin_on_MouseLeft_click(pin : Pin) -> void:
-	print("Pin Clicked")
+#	print("Pin Clicked")
 	if GlobalData.ConnectLineState :
 		GlobalData.CurrentLine.set_Edit(false)
 		if GlobalData.CurrentLine.PinList.size() == 0 :
@@ -372,3 +372,7 @@ func _on_ButtonReset_pressed():
 	for line in self.ConnectionList :
 		line.reset_Line()
 	pass # Replace with function body.
+	
+func on_Module_doubleclick(module) -> void:
+	print(module)
+	pass

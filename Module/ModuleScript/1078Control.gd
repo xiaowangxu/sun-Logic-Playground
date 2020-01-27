@@ -47,7 +47,7 @@ func change_State() -> void:
 			address[0] = instruction[8]
 			self.Operation = GlobalData.bin2dec(op)
 			self.Address = GlobalData.bin2dec(address)
-			print(InstructionSet[self.Operation], " ", self.Address)
+#			print(InstructionSet[self.Operation], " ", self.Address)
 			return
 		"Execute" :
 			self.State = "Add"

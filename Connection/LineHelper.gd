@@ -19,7 +19,7 @@ func start_Edit() -> void:
 		self.add_child(addpoint)
 	if self.get_point_count() > 2 :
 		for index in range(1, self.get_point_count()-1) :
-			print(self.get_point_position(index))
+#			print(self.get_point_position(index))
 			var movepoint = AnchorPoint.instance()
 			movepoint.frame = 0
 			movepoint.Index = index
@@ -36,7 +36,7 @@ func exit_Edit() -> void:
 	pass
 
 func add_Point(point) -> void:
-	print(">> double click")
+#	print(">> double click")
 	var updated_list = points
 	updated_list.insert(point.Index, point.position)
 	self.points = updated_list
@@ -44,7 +44,7 @@ func add_Point(point) -> void:
 	self.start_Edit()
 
 func delete_Point(point) -> void:
-	print(">> double click")
+#	print(">> double click")
 	var updated_list = points
 	updated_list.remove(point.Index)
 	self.points = updated_list

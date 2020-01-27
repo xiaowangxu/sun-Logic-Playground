@@ -42,6 +42,7 @@ func _ready():
 	self.connect("on_drag", get_node("/root/Playground/CanvasLayer"), "on_Module_drag")
 	self.connect("on_drop", get_node("/root/Playground/CanvasLayer"), "on_Module_drop")
 	self.connect("is_dragging", get_node("/root/Playground/CanvasLayer"), "is_Module_dragging")
+	self.connect("on_doubleclick", get_node("/root/Playground"), "on_Module_doubleclick")
 	self.connect("is_dragging", self, "is_Module_dragging")
 	self.connect("on_drop", self, "on_Module_drop")
 

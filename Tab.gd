@@ -7,7 +7,7 @@ func _ready():
 
 func is_Position_inside(position : Vector2) -> bool :
 	var rect : Rect2 = self.get_global_rect()
-	print(rect)
+#	print(rect)
 	return rect.has_point(position)
 	pass
 	

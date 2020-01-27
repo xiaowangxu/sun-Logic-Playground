@@ -30,12 +30,12 @@ func show_Number() -> void:
 
 
 func _on_DigitalNumberScreen4_on_drag():
-	print("on_drag")
+#	print("on_drag")
 	pass
 
 
 func _on_DigitalNumberScreen4_on_drop():
-	print("on_drop")
+#	print("on_drop")
 	var new_position : Vector2 = self.position
 	self.position.x = round((self.position.x - (self.GridSize + self.ShiftPosition.x) / 2.0) / self.GridSize) * self.GridSize + self.ShiftPosition.x
 	self.position.y = round((self.position.y - (self.GridSize + self.ShiftPosition.y) / 2.0) / self.GridSize) * self.GridSize + self.ShiftPosition.y
