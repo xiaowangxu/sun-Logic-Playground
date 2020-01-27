@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=2]
+[gd_scene load_steps=69 format=2]
 
 [ext_resource path="res://Playground.gd" type="Script" id=1]
 [ext_resource path="res://Camera2D.gd" type="Script" id=2]
@@ -45,27 +45,28 @@
 [ext_resource path="res://Module/Delay.tscn" type="PackedScene" id=43]
 [ext_resource path="res://Module/BusEncoder8.tscn" type="PackedScene" id=44]
 [ext_resource path="res://Module/BusEncoder10.tscn" type="PackedScene" id=45]
-[ext_resource path="res://Module/Register.tscn" type="PackedScene" id=46]
-[ext_resource path="res://Module/Memory.tscn" type="PackedScene" id=47]
-[ext_resource path="res://Module/1078Control.tscn" type="PackedScene" id=48]
-[ext_resource path="res://Assets/Panel/Panel-run.png" type="Texture" id=49]
-[ext_resource path="res://Assets/Panel/Logo-run.png" type="Texture" id=50]
-[ext_resource path="res://Assets/Panel/Tab-run.png" type="Texture" id=51]
-[ext_resource path="res://Assets/Button/RunBoxButtonGroup.tres" type="ButtonGroup" id=52]
-[ext_resource path="res://Assets/Button/Continue-default.png" type="Texture" id=53]
-[ext_resource path="res://Assets/Button/Continue-fouse.png" type="Texture" id=54]
-[ext_resource path="res://Assets/Button/Continue-hover.png" type="Texture" id=55]
-[ext_resource path="res://Assets/Button/Stop-default.png" type="Texture" id=56]
-[ext_resource path="res://Assets/Button/Stop-fouse.png" type="Texture" id=57]
-[ext_resource path="res://Assets/Button/Stop-hover.png" type="Texture" id=58]
-[ext_resource path="res://Assets/Button/Next-default.png" type="Texture" id=59]
-[ext_resource path="res://Assets/Button/Next-fouse.png" type="Texture" id=60]
-[ext_resource path="res://Assets/Button/Next-hover.png" type="Texture" id=61]
-[ext_resource path="res://Assets/Button/Reset-default.png" type="Texture" id=62]
-[ext_resource path="res://Assets/Button/Reset-fouse.png" type="Texture" id=63]
-[ext_resource path="res://Assets/Button/Reset-hover.png" type="Texture" id=64]
-[ext_resource path="res://Assets/Panel/Panel-delete.png" type="Texture" id=65]
-[ext_resource path="res://Assets/Panel/Logo-delete.png" type="Texture" id=66]
+[ext_resource path="res://Module/Clock.tscn" type="PackedScene" id=46]
+[ext_resource path="res://Module/Register.tscn" type="PackedScene" id=47]
+[ext_resource path="res://Module/Memory.tscn" type="PackedScene" id=48]
+[ext_resource path="res://Module/1078Control.tscn" type="PackedScene" id=49]
+[ext_resource path="res://Assets/Panel/Panel-run.png" type="Texture" id=50]
+[ext_resource path="res://Assets/Panel/Logo-run.png" type="Texture" id=51]
+[ext_resource path="res://Assets/Panel/Tab-run.png" type="Texture" id=52]
+[ext_resource path="res://Assets/Button/RunBoxButtonGroup.tres" type="ButtonGroup" id=53]
+[ext_resource path="res://Assets/Button/Continue-default.png" type="Texture" id=54]
+[ext_resource path="res://Assets/Button/Continue-fouse.png" type="Texture" id=55]
+[ext_resource path="res://Assets/Button/Continue-hover.png" type="Texture" id=56]
+[ext_resource path="res://Assets/Button/Stop-default.png" type="Texture" id=57]
+[ext_resource path="res://Assets/Button/Stop-fouse.png" type="Texture" id=58]
+[ext_resource path="res://Assets/Button/Stop-hover.png" type="Texture" id=59]
+[ext_resource path="res://Assets/Button/Next-default.png" type="Texture" id=60]
+[ext_resource path="res://Assets/Button/Next-fouse.png" type="Texture" id=61]
+[ext_resource path="res://Assets/Button/Next-hover.png" type="Texture" id=62]
+[ext_resource path="res://Assets/Button/Reset-default.png" type="Texture" id=63]
+[ext_resource path="res://Assets/Button/Reset-fouse.png" type="Texture" id=64]
+[ext_resource path="res://Assets/Button/Reset-hover.png" type="Texture" id=65]
+[ext_resource path="res://Assets/Panel/Panel-delete.png" type="Texture" id=66]
+[ext_resource path="res://Assets/Panel/Logo-delete.png" type="Texture" id=67]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -136,6 +137,7 @@ current_dir = "C:/Users/sun/SHU-Project/sun-Logic-Playground"
 current_path = "C:/Users/sun/SHU-Project/sun-Logic-Playground/"
 
 [node name="SaveLoadBox" type="NinePatchRect" parent="CanvasLayer"]
+editor/display_folded = true
 margin_left = -99.0
 margin_top = 176.0
 margin_bottom = 249.0
@@ -209,6 +211,7 @@ texture_hover = ExtResource( 16 )
 texture_disabled = ExtResource( 16 )
 
 [node name="ToolBox" type="NinePatchRect" parent="CanvasLayer"]
+editor/display_folded = true
 anchor_bottom = 1.0
 margin_left = -340.0
 margin_top = 4.0
@@ -326,7 +329,7 @@ theme = ExtResource( 31 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/ToolBox/ScrollContainer"]
 margin_right = 296.0
-margin_bottom = 70.0
+margin_bottom = 77.0
 size_flags_horizontal = 3
 custom_constants/separation = 7
 
@@ -455,16 +458,20 @@ margin_right = 296.0
 margin_bottom = 49.0
 Module = ExtResource( 45 )
 
-[node name="Control19" parent="CanvasLayer/ToolBox/ScrollContainer/VBoxContainer" instance=ExtResource( 32 )]
-editor/display_folded = true
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="HBoxContainer5" type="HBoxContainer" parent="CanvasLayer/ToolBox/ScrollContainer/VBoxContainer"]
 margin_top = 56.0
 margin_right = 296.0
 margin_bottom = 56.0
+size_flags_horizontal = 3
+
+[node name="Control16" parent="CanvasLayer/ToolBox/ScrollContainer/VBoxContainer/HBoxContainer5" instance=ExtResource( 32 )]
+editor/display_folded = true
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 5.0
 Module = ExtResource( 46 )
 
-[node name="Control20" parent="CanvasLayer/ToolBox/ScrollContainer/VBoxContainer" instance=ExtResource( 32 )]
+[node name="Control19" parent="CanvasLayer/ToolBox/ScrollContainer/VBoxContainer" instance=ExtResource( 32 )]
 editor/display_folded = true
 anchor_right = 0.0
 anchor_bottom = 0.0
@@ -473,7 +480,7 @@ margin_right = 296.0
 margin_bottom = 63.0
 Module = ExtResource( 47 )
 
-[node name="Control21" parent="CanvasLayer/ToolBox/ScrollContainer/VBoxContainer" instance=ExtResource( 32 )]
+[node name="Control20" parent="CanvasLayer/ToolBox/ScrollContainer/VBoxContainer" instance=ExtResource( 32 )]
 editor/display_folded = true
 anchor_right = 0.0
 anchor_bottom = 0.0
@@ -482,12 +489,22 @@ margin_right = 296.0
 margin_bottom = 70.0
 Module = ExtResource( 48 )
 
+[node name="Control21" parent="CanvasLayer/ToolBox/ScrollContainer/VBoxContainer" instance=ExtResource( 32 )]
+editor/display_folded = true
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 77.0
+margin_right = 296.0
+margin_bottom = 77.0
+Module = ExtResource( 49 )
+
 [node name="RunBox" type="NinePatchRect" parent="CanvasLayer"]
+editor/display_folded = true
 margin_left = -170.0
 margin_top = 4.0
 margin_bottom = 77.0
 mouse_filter = 0
-texture = ExtResource( 49 )
+texture = ExtResource( 50 )
 region_rect = Rect2( 0, 0, 64, 64 )
 patch_margin_left = 27
 patch_margin_top = 30
@@ -507,14 +524,14 @@ margin_left = 10.0
 margin_top = 7.0
 margin_right = 51.0
 margin_bottom = 14.0
-texture = ExtResource( 50 )
+texture = ExtResource( 51 )
 
 [node name="Tab" type="NinePatchRect" parent="CanvasLayer/RunBox"]
 show_behind_parent = true
 margin_left = 151.0
 margin_right = 202.0
 margin_bottom = 60.0
-texture = ExtResource( 51 )
+texture = ExtResource( 52 )
 region_rect = Rect2( 0, 0, 32, 113 )
 patch_margin_top = 5
 patch_margin_right = 32
@@ -538,11 +555,11 @@ focus_mode = 0
 toggle_mode = true
 shortcut_in_tooltip = false
 enabled_focus_mode = 0
-group = ExtResource( 52 )
-texture_normal = ExtResource( 53 )
-texture_pressed = ExtResource( 54 )
-texture_hover = ExtResource( 55 )
-texture_disabled = ExtResource( 55 )
+group = ExtResource( 53 )
+texture_normal = ExtResource( 54 )
+texture_pressed = ExtResource( 55 )
+texture_hover = ExtResource( 56 )
+texture_disabled = ExtResource( 56 )
 
 [node name="ButtonStop" type="TextureButton" parent="CanvasLayer/RunBox"]
 margin_left = 51.0
@@ -554,11 +571,11 @@ toggle_mode = true
 shortcut_in_tooltip = false
 pressed = true
 enabled_focus_mode = 0
-group = ExtResource( 52 )
-texture_normal = ExtResource( 56 )
-texture_pressed = ExtResource( 57 )
-texture_hover = ExtResource( 58 )
-texture_disabled = ExtResource( 58 )
+group = ExtResource( 53 )
+texture_normal = ExtResource( 57 )
+texture_pressed = ExtResource( 58 )
+texture_hover = ExtResource( 59 )
+texture_disabled = ExtResource( 59 )
 
 [node name="ButtonNext" type="TextureButton" parent="CanvasLayer/RunBox"]
 margin_left = 86.0
@@ -568,10 +585,10 @@ margin_bottom = 57.0
 focus_mode = 0
 shortcut_in_tooltip = false
 enabled_focus_mode = 0
-texture_normal = ExtResource( 59 )
-texture_pressed = ExtResource( 60 )
-texture_hover = ExtResource( 61 )
-texture_disabled = ExtResource( 61 )
+texture_normal = ExtResource( 60 )
+texture_pressed = ExtResource( 61 )
+texture_hover = ExtResource( 62 )
+texture_disabled = ExtResource( 62 )
 
 [node name="ButtonReset" type="TextureButton" parent="CanvasLayer/RunBox"]
 margin_left = 122.0
@@ -581,10 +598,10 @@ margin_bottom = 57.0
 focus_mode = 0
 shortcut_in_tooltip = false
 enabled_focus_mode = 0
-texture_normal = ExtResource( 62 )
-texture_pressed = ExtResource( 63 )
-texture_hover = ExtResource( 64 )
-texture_disabled = ExtResource( 64 )
+texture_normal = ExtResource( 63 )
+texture_pressed = ExtResource( 64 )
+texture_hover = ExtResource( 65 )
+texture_disabled = ExtResource( 65 )
 
 [node name="DeleteBox" type="NinePatchRect" parent="CanvasLayer"]
 editor/display_folded = true
@@ -593,7 +610,7 @@ anchor_bottom = 1.0
 margin_left = -40.0
 margin_top = -44.0
 margin_bottom = -4.0
-texture = ExtResource( 65 )
+texture = ExtResource( 66 )
 region_rect = Rect2( 0, 0, 64, 64 )
 patch_margin_left = 10
 patch_margin_top = 10
@@ -616,7 +633,7 @@ margin_top = 4.0
 margin_right = 36.0
 margin_bottom = 36.0
 mouse_filter = 2
-texture = ExtResource( 66 )
+texture = ExtResource( 67 )
 
 [node name="ConnectionLine" type="Node2D" parent="."]
 __meta__ = {

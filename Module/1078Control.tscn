@@ -3,7 +3,7 @@
 [ext_resource path="res://Module/ModuleScript/1078Control.gd" type="Script" id=1]
 [ext_resource path="res://Pin/Pin.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/ModuleBackground/Blank.png" type="Texture" id=3]
-[ext_resource path="res://Assets/ModuleBackground/Memory-title.png" type="Texture" id=4]
+[ext_resource path="res://Assets/ModuleBackground/1078Controller-title.png" type="Texture" id=4]
 [ext_resource path="res://Assets/LED/SingleLED.tscn" type="PackedScene" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -20,6 +20,10 @@ PinBoarder = 12
 position = Vector2( 0, 24 )
 rotation = 4.71239
 PinMode = 0
+
+[node name="Pin_Clock" parent="." instance=ExtResource( 2 )]
+position = Vector2( 0, 48 )
+rotation = 4.71239
 
 [node name="Pin_PC_Enable" parent="." instance=ExtResource( 2 )]
 position = Vector2( 60, 8 )
@@ -136,24 +140,28 @@ patch_margin_bottom = 9
 position = Vector2( 6, 6 )
 texture = ExtResource( 4 )
 centered = false
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="SingleLED1" parent="1078ControlBG" instance=ExtResource( 5 )]
-position = Vector2( 8, 20 )
+position = Vector2( 8, 39 )
 animation = "Mini"
 
 [node name="SingleLED2" parent="1078ControlBG" instance=ExtResource( 5 )]
-position = Vector2( 16, 20 )
+position = Vector2( 16, 39 )
 animation = "Mini"
 
 [node name="SingleLED3" parent="1078ControlBG" instance=ExtResource( 5 )]
-position = Vector2( 24, 20 )
+position = Vector2( 24, 39 )
 animation = "Mini"
 
 [node name="SingleLED4" parent="1078ControlBG" instance=ExtResource( 5 )]
-position = Vector2( 32, 20 )
+position = Vector2( 32, 39 )
 animation = "Mini"
 
 [node name="Area2D" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2( 30, 156 )

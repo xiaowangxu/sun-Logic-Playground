@@ -77,6 +77,9 @@ func save_Module() -> Dictionary:
 	
 func load_Module(data : Dictionary) -> void:
 	if data.has("Data") :
-		Data = data["Data"]
-#	print(Data)
+		var idx : int = 0
+		var dataarray : Array = data["Data"]
+		for d in dataarray :
+			self.Data[idx] = d
+			idx += 1
 	pass

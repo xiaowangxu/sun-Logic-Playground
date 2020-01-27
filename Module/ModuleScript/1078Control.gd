@@ -9,7 +9,7 @@ var Address : int = 0
 const InstructionSet : Array = ["Blank", "Load_A", "Load_B", "Load_C", "Load_D", "Move_Ans", "Move_C", "Move_D", "Add", "Increase", "Decrease", "Save_Ans", "Jump", "Jump_Zero", "Undefined", "Halt"]
 
 func Update() -> void:
-	if Count % 8 == 0 :
+	if $Pin_Clock.update_Data() :
 		self.change_State()
 	self.act_State()
 	self.set_StateLED()

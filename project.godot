@@ -34,6 +34,7 @@ _global_script_class_icons={
 
 config/name="sun Logic Playground"
 run/main_scene="res://Playground.tscn"
+run/frame_delay_msec=8
 boot_splash/image="res://SLP.png"
 boot_splash/fullsize=false
 boot_splash/bg_color=Color( 0.490196, 0.490196, 0.490196, 1 )
@@ -42,10 +43,6 @@ config/icon="res://SLP.png"
 [autoload]
 
 GlobalData="*res://GlobalData.gd"
-
-[debug]
-
-settings/fps/force_fps=120
 
 [display]
 
