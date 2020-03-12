@@ -12,7 +12,5 @@ centered = false
 script = ExtResource( 2 )
 
 [node name="TouchScreenButton" type="TouchScreenButton" parent="."]
-position = Vector2( 10, 6 )
 shape = SubResource( 1 )
-shape_visible = false
 [connection signal="pressed" from="TouchScreenButton" to="." method="_on_TouchScreenButton_pressed"]

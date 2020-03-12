@@ -6,7 +6,7 @@ var Instruction : int = 0
 var Operation : int = 0
 var Address : int = 0
 
-const InstructionSet : Array = ["Blank", "Load_A", "Load_B", "Load_C", "Load_D", "Move_Ans", "Move_C", "Move_D", "Add", "Increase", "Decrease", "Save_Ans", "Jump", "Jump_Zero", "Undefined", "Halt"]
+const InstructionSet : Array = ["Blank", "Load_A", "Load_B", "LC_D", "Load_D", "Move_Ans", "MC_D", "Move_D", "Add", "Increase", "Decrease", "Save_Ans", "Jump", "Jump_Zero", "Jump_B", "Halt"]
 
 func Update() -> void:
 	if $Pin_Clock.update_Data() :
@@ -133,13 +133,13 @@ func act_State() -> void:
 
 func act_Instruction() -> void:
 	match InstructionSet[self.Operation] :
-		"Blank", "Undefined" :
-			self.set_A()
+		"Blank" :
+			self.set_A(true, false)
 			self.set_B()
 			self.set_C()
 			self.set_D()
-			self.set_Ans()
-			self.set_ALU()
+			self.set_Ans(true, true)
+			self.set_ALU(4)
 			self.set_Jump()
 			self.set_DataMemory()
 			return
@@ -163,15 +163,15 @@ func act_Instruction() -> void:
 			self.set_Jump()
 			self.set_DataMemory(true, false, self.Address, 0)
 			return
-		"Load_C" :
+		"LC_D" :
 			self.set_A()
 			self.set_B()
-			self.set_C(true, true)
-			self.set_D()
+			self.set_C(true, false)
+			self.set_D(true, true)
 			self.set_Ans()
 			self.set_ALU()
 			self.set_Jump()
-			self.set_DataMemory(true, false, self.Address, 0)
+			self.set_DataMemory(true, false, 0, 0)
 			return
 		"Load_D" :
 			self.set_A()
@@ -193,15 +193,15 @@ func act_Instruction() -> void:
 			self.set_Jump()
 			self.set_DataMemory(true, true, self.Address, 0)
 			return
-		"Move_C" :
+		"MC_D" :
 			self.set_A()
 			self.set_B()
 			self.set_C(true, false)
-			self.set_D()
+			self.set_D(true, false)
 			self.set_Ans()
 			self.set_ALU()
 			self.set_Jump()
-			self.set_DataMemory(true, true, self.Address, 0)
+			self.set_DataMemory(true, true, 0, 0)
 			return
 		"Move_D" :
 			self.set_A()
@@ -293,6 +293,18 @@ func act_Instruction() -> void:
 			self.set_DataMemory()
 			$Pin_PC_Enable.set_Data(true)
 			$Pin_DataMemory_Address.set_Data(self.Address)
+			return
+		"Jump_B" :
+			self.set_A()
+			self.set_B(true, false)
+			self.set_C()
+			self.set_D()
+			self.set_Ans()
+			self.set_ALU()
+			self.set_Jump(2)
+			self.set_DataMemory()
+			$Pin_PC_Enable.set_Data(true)
+			$Pin_DataMemory_Address.set_Data(0)
 			return
 		"Halt" :
 			self.set_A()
