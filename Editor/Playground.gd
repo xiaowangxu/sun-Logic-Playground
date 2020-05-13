@@ -137,6 +137,7 @@ func refresh_ToolMode() -> void:
 
 func _on_ButtonMove_toggled(button_pressed):
 	if button_pressed :
+		$CanvasLayer/RunBox/ButtonStop.pressed = true
 		GlobalData.ToolMode = "Move"
 		self.refresh_ToolMode()
 	pass

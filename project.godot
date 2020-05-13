@@ -33,7 +33,7 @@ _global_script_class_icons={
 [application]
 
 config/name="sun Logic Playground"
-run/main_scene="res://Playground.tscn"
+run/main_scene="res://Editor/Playground.tscn"
 run/frame_delay_msec=8
 boot_splash/image="res://SLP.png"
 boot_splash/fullsize=false

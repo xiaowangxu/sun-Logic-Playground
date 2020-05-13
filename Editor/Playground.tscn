@@ -1,13 +1,13 @@
 [gd_scene load_steps=69 format=2]
 
-[ext_resource path="res://Playground.gd" type="Script" id=1]
-[ext_resource path="res://Camera2D.gd" type="Script" id=2]
+[ext_resource path="res://Editor/Playground.gd" type="Script" id=1]
+[ext_resource path="res://Editor/Camera2D.gd" type="Script" id=2]
 [ext_resource path="res://Assets/Background.png" type="Texture" id=3]
-[ext_resource path="res://NewModuleLayer.gd" type="Script" id=4]
-[ext_resource path="res://NewLineLayer.gd" type="Script" id=5]
-[ext_resource path="res://BoxLayer.gd" type="Script" id=6]
+[ext_resource path="res://Editor/NewModuleLayer.gd" type="Script" id=4]
+[ext_resource path="res://Editor/NewLineLayer.gd" type="Script" id=5]
+[ext_resource path="res://Editor/BoxLayer.gd" type="Script" id=6]
 [ext_resource path="res://Assets/Panel/Panel-saveload.png" type="Texture" id=7]
-[ext_resource path="res://ToolBox.gd" type="Script" id=8]
+[ext_resource path="res://Editor/ToolBox.gd" type="Script" id=8]
 [ext_resource path="res://Assets/Panel/Logo-saveload.png" type="Texture" id=9]
 [ext_resource path="res://Assets/Panel/Tab-saveloadt.png" type="Texture" id=10]
 [ext_resource path="res://Assets/Button/Save-default.png" type="Texture" id=11]
@@ -19,7 +19,7 @@
 [ext_resource path="res://Assets/Panel/Panel-toolbox.png" type="Texture" id=17]
 [ext_resource path="res://Assets/Panel/Logo-toolbox.png" type="Texture" id=18]
 [ext_resource path="res://Assets/Panel/Tab-toolbox.png" type="Texture" id=19]
-[ext_resource path="res://Tab.gd" type="Script" id=20]
+[ext_resource path="res://Editor/Tab.gd" type="Script" id=20]
 [ext_resource path="res://Assets/Button/ToolBoxButtonGroup.tres" type="ButtonGroup" id=21]
 [ext_resource path="res://Assets/Button/Run-default.png" type="Texture" id=22]
 [ext_resource path="res://Assets/Button/Run-fouse.png" type="Texture" id=23]
@@ -31,7 +31,7 @@
 [ext_resource path="res://Assets/Button/Connect-fouse.png" type="Texture" id=29]
 [ext_resource path="res://Assets/Button/Connect-hover.png" type="Texture" id=30]
 [ext_resource path="res://Theme.tres" type="Theme" id=31]
-[ext_resource path="res://ModuleView.tscn" type="PackedScene" id=32]
+[ext_resource path="res://Editor/ModuleView.tscn" type="PackedScene" id=32]
 [ext_resource path="res://Module/DigitalNumberScreen4.tscn" type="PackedScene" id=33]
 [ext_resource path="res://Module/Counter.tscn" type="PackedScene" id=34]
 [ext_resource path="res://Module/Adder0.tscn" type="PackedScene" id=35]
@@ -304,6 +304,9 @@ texture_normal = ExtResource( 25 )
 texture_pressed = ExtResource( 26 )
 texture_hover = ExtResource( 27 )
 texture_disabled = ExtResource( 27 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="ButtonConnect" type="TextureButton" parent="CanvasLayer/ToolBox/Tab"]
 margin_left = 19.0

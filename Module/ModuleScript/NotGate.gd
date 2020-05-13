@@ -6,3 +6,6 @@ func Update() -> void:
 	$NotGateBG/SingleLED_R.set_LED(!a)
 	$Pin_R.set_Data(!a)
 	pass
+	
+func save_Module() -> Dictionary :
+	return {"SaveID": self.SaveID, "Module": "NotGate", "Position": [self.position.x, self.position.y], "SaveData": {}}
